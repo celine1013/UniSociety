@@ -11,6 +11,8 @@ public class Account {
     private String securityQuestion;
     private int id;
 
+    public Account(){}
+
     public Account(int id,String accountName, String password,
                    String securityQuestion) {
         this.accountName = accountName;

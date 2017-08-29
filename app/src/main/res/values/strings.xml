@@ -28,6 +28,10 @@
     <string name="Text_Event_Title">Event Title</string>
     <string name="Text_Join">Join</string>
 
-
+    <string-array name="societies">
+        <item>BITSA</item>
+        <item>WIT</item>
+        <item>TESTING</item>
+    </string-array>
 
 </resources>
