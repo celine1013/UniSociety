@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">UniSociety</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_category">Category</string>
+    <string name="title_dateSearch">Date</string>
+    <string name="title_accountManagement">Account</string>
+
     <string name="Text_Submit">Submit</string>
     <string name="Text_Manage_History">Manage History</string>
     <string name="Text_Change_Password">Change Password</string>
@@ -25,6 +27,5 @@
     <string name="Text_Student">Student</string>
     <string name="Text_Event_Title">Event Title</string>
     <string name="Text_Join">Join</string>
-
 
 </resources>
