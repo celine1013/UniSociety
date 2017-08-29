@@ -1,11 +1,13 @@
 package Model;
 
 
+import java.io.Serializable;
+
 /**
  *
  * @author Fan
  */
-public class Account {
+public class Account  implements Serializable {
     private String accountName;
     private String password;
     private String securityQuestion;

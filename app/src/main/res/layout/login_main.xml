@@ -21,19 +21,19 @@
         android:weightSum="1">
 
         <TextView
-            android:id="@+id/user_name"
+            android:id="@+id/TV_user_name"
             android:layout_width="82dp"
             android:layout_height="36dp"
             android:text="@string/Text_User_Name"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
         <EditText
-            android:id="@+id/user_name"
+            android:id="@+id/ET_user_name"
             android:layout_width="327dp"
             android:layout_height="match_parent"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/Text_User_Name" />
+            android:text="" />
     </LinearLayout>
 
     <LinearLayout
@@ -43,19 +43,19 @@
         android:weightSum="1">
 
         <TextView
-            android:id="@+id/Password"
+            android:id="@+id/TV_Password"
             android:layout_width="82dp"
             android:layout_height="36dp"
             android:text="@string/Text_Password"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/ET_password"
             android:layout_width="327dp"
             android:layout_height="match_parent"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/Text_Password" />
+            android:inputType="textPassword"
+            android:text="" />
     </LinearLayout>
 
     <Button

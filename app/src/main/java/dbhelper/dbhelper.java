@@ -12,10 +12,12 @@ public class dbhelper {
     //check if the account has already exist
 //true: exist / false: not exist
     public boolean hasExisted(String accountName){
-        if (accountName.equals(Account.getAccountName())) {
+        boolean result = false;
+        /*if (accountName.equals(Account.getAccountName())) {
             return true; }
             else { return false;
-        }
+        }*/
+        return false;
     }
 
     //check if the society match the verification code
@@ -34,9 +36,10 @@ public class dbhelper {
     }
 
     // log-in
-//return current user
+//return current user/null if failed
     public Account logIn (String account, String password){
-        return account;
+        Account currentAccount = new Account();
+        return currentAccount;
     }
 
 

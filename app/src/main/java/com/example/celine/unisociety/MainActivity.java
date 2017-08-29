@@ -1,5 +1,8 @@
 package com.example.celine.unisociety;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -7,9 +10,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+import Model.Account;
+
+public class MainActivity extends Activity {
+
+
+    private static final int REQUEST_CODE_LOG_IN = 0;
 
     private TextView mTextMessage;
+    private Account currentUser;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -28,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_account:
                     mTextMessage.setText(R.string.title_accountManagement);
+                    if (currentUser == null){
+                        Intent intent = new Intent(MainActivity.this, LogIn_Activity.class);
+                        startActivityForResult(intent, REQUEST_CODE_LOG_IN);
+                    }
                     return true;
             }
             return false;
@@ -44,5 +57,16 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        if(resultCode != RESULT_OK)return;
+        if(requestCode == REQUEST_CODE_LOG_IN){
+            if(data == null)return;
+            currentUser = LogIn_Activity.getAccount(data);
+        }
+    }
+
 
 }
