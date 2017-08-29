@@ -61,7 +61,7 @@ public class LogIn_Activity extends AppCompatActivity{
                 //check the database
                 Account currentUser = db.logIn(account,password);
 
-                if(currentUser ==null){
+                if(currentUser == null){
                     //show notification
                     Toast.makeText(LogIn_Activity.this,"Log In Failed", Toast.LENGTH_LONG);
                     //clear fields
@@ -79,6 +79,13 @@ public class LogIn_Activity extends AppCompatActivity{
     }
 
     private void setBtn_SignUp(){
+        btn_SignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LogIn_Activity.this,Sign_Up_Activity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
