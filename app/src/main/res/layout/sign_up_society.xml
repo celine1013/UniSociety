@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="67dp"
+        android:orientation="horizontal"
+        android:layout_weight="0.00"
+        android:weightSum="1">
+
+
+        <ImageButton
+            android:id="@+id/imbtn_back"
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.40"
+            app:srcCompat="?android:attr/floatingToolbarCloseDrawable" />
+
+        <TextView
+            android:id="@+id/text_sign_up"
+            android:layout_width="288dp"
+            android:layout_height="match_parent"
+            android:text="@string/Text_Sign_Up"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
+
+    </LinearLayout>
+
+    <Spinner
+        android:id="@+id/society_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.12" />
+
+    <EditText
+        android:id="@+id/security_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.00"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/Text_Security_Code" />
+
+    <EditText
+        android:id="@+id/uer_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.00"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text="@string/Text_User_Name" />
+
+    <EditText
+        android:id="@+id/Password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.00"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:text="@string/Text_Password" />
+
+    <EditText
+        android:id="@+id/Confirm_Password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.00"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:text="@string/Text_Confirm_Password" />
+
+    <EditText
+        android:id="@+id/Sequrity_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.00"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/Text_Security_Question" />
+
+    <Button
+        android:id="@+id/btn_sign_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0.14"
+        android:text="@string/Text_Sign_Up" />
+</LinearLayout>
