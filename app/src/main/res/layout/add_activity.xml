@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <ImageView
+        android:id="@+id/activity_picture"
+        android:layout_width="144dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:layout_weight="0.13"
+        app:srcCompat="@android:color/darker_gray" />
+
+    <EditText
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.05"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/Text_Title" />
+
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.12"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/Text_Description" />
+
+    <Spinner
+        android:id="@+id/category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.09" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/date"
+            android:layout_width="189dp"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:inputType="date"
+            android:text="@string/Text_Date" />
+
+        <EditText
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:inputType="time"
+            android:text="@string/Text_Time" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.13"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/Text_Location" />
+
+    <Button
+        android:id="@+id/btn_Submit"
+        android:layout_width="350dp"
+        android:layout_height="21dp"
+        android:layout_weight="0.23"
+        android:layout_gravity="center"
+        android:text="@string/Text_Submit" />
+
+</LinearLayout>
