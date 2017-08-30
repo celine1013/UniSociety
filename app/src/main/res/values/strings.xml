@@ -31,4 +31,10 @@
     <string name="Text_Category">Category</string>
     <string name="Text_New_Password">New Password</string>
 
+    <string-array name="societies">
+        <item>BITSA</item>
+        <item>WIT</item>
+        <item>TESTING</item>
+    </string-array>
+
 </resources>

@@ -4,7 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:layout_margin="@dimen/activity_horizontal_margin">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,6 +31,38 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.15"
+        android:layout_gravity="start"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:layout_weight="1"
+                android:text="Society" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:layout_weight="1"
+                android:text="Student" />
+        </RadioGroup>
+
+    </LinearLayout>
+
     <Spinner
         android:id="@+id/society_name"
         android:layout_width="match_parent"
@@ -42,8 +75,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.00"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/Text_Security_Code" />
+        android:fontFamily="sans-serif"
+        android:hint="@string/Text_Security_Code"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/uer_name"
@@ -52,7 +86,7 @@
         android:layout_weight="0.00"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:text="@string/Text_User_Name" />
+        android:hint="@string/Text_User_Name" />
 
     <EditText
         android:id="@+id/Password"
@@ -61,7 +95,7 @@
         android:layout_weight="0.00"
         android:ems="10"
         android:inputType="textPassword"
-        android:text="@string/Text_Password" />
+        android:hint="@string/Text_Password" />
 
     <EditText
         android:id="@+id/Confirm_Password"
@@ -70,7 +104,7 @@
         android:layout_weight="0.00"
         android:ems="10"
         android:inputType="textPassword"
-        android:text="@string/Text_Confirm_Password" />
+        android:hint="@string/Text_Confirm_Password" />
 
     <EditText
         android:id="@+id/Sequrity_question"
@@ -78,8 +112,10 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.00"
         android:ems="10"
+        android:hint="@string/Text_Security_Question"
         android:inputType="textPersonName"
-        android:text="@string/Text_Security_Question" />
+        android:selectAllOnFocus="false"
+        android:singleLine="true" />
 
     <Button
         android:id="@+id/btn_sign_up"
