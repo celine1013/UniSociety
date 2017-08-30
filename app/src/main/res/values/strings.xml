@@ -27,5 +27,8 @@
     <string name="Text_Student">Student</string>
     <string name="Text_Event_Title">Event Title</string>
     <string name="Text_Join">Join</string>
+    <string name="Text_Heading">Heading</string>
+    <string name="Text_Category">Category</string>
+    <string name="Text_New_Password">New Password</string>
 
 </resources>

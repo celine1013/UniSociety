@@ -13,26 +13,24 @@
         android:layout_weight="0.01">
 
         <ImageButton
-            android:id="@+id/imbtn_back"
+            android:id="@+id/imageButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="0.04"
             app:srcCompat="@android:drawable/ic_media_previous" />
 
-        <ImageView
-            android:id="@+id/im_icon"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="154dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.04"
-            app:srcCompat="@mipmap/ic_launcher_round" />
-
+            android:layout_weight="0.06"
+            android:text="@string/Text_Category"
+            android:layout_gravity="end"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/text_heading"
+    <ListView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.07"
-        android:text="@string/Text_Heading" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>
