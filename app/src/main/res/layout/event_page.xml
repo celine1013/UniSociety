@@ -58,16 +58,22 @@
 
         <TextView
             android:id="@+id/btn_join"
-            android:layout_width="95dp"
+            android:layout_width="77dp"
             android:layout_height="match_parent"
             android:text="TextView" />
 
         <Button
             android:id="@+id/button"
-            android:layout_width="wrap_content"
+            android:layout_width="74dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:text="@string/Text_Join" />
+
+        <CheckBox
+            android:id="@+id/checkBox_Notify_Me"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/Text_Notify_Me" />
     </LinearLayout>
 
     <LinearLayout

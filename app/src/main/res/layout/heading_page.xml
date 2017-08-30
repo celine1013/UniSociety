@@ -35,4 +35,49 @@
         android:layout_weight="0.07"
         android:text="@string/Text_Heading" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/TV_society_name"
+            android:layout_width="82dp"
+            android:layout_height="36dp"
+            android:text="@string/Text_Society_Name"
+            android:textColor="@color/textColorDarkBlue"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+        <EditText
+            android:id="@+id/ET_society_name"
+            android:layout_width="327dp"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/TV_Description"
+            android:layout_width="82dp"
+            android:layout_height="36dp"
+            android:text="@string/Text_Description"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+        <EditText
+            android:id="@+id/ET_description"
+            android:layout_width="327dp"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="" />
+    </LinearLayout>
+
 </LinearLayout>
