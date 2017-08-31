@@ -39,13 +39,14 @@
         android:orientation="horizontal">
 
         <RadioGroup
+            android:id="@+id/RG_UserType"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/radioButton"
+                android:id="@+id/RB_society"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
@@ -53,7 +54,7 @@
                 android:text="Society" />
 
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/RB_student"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
@@ -112,7 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.00"
         android:ems="10"
-        android:hint="@string/Text_Security_Question"
+        android:hint="What is your favorite color?"
         android:inputType="textPersonName"
         android:selectAllOnFocus="false"
         android:singleLine="true" />
