@@ -19,34 +19,6 @@
         android:layout_height="125dp"
         android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/imbtn_home"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_home_black_24dp"
-            android:layout_weight="0.90" />
-
-        <ImageButton
-            android:id="@+id/imbtn_calendar"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1.14"
-            android:src="@android:drawable/ic_menu_sort_by_size" />
-
-        <ImageButton
-            android:id="@+id/imbtn_list"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1.14"
-            android:src="@android:drawable/ic_menu_agenda" />
-
-        <ImageButton
-            android:id="@+id/imbtn_personal"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.67"
-            android:src="@mipmap/ic_launcher" />
-
     </LinearLayout>
 
 </LinearLayout>
