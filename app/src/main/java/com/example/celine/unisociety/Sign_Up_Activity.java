@@ -12,6 +12,8 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import Model.Account;
+
 public class Sign_Up_Activity extends AppCompatActivity {
     //Radio button
 
@@ -75,6 +77,18 @@ public class Sign_Up_Activity extends AppCompatActivity {
         btn_SignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Account newUser = new Account();
+
+                String userName = et_userName.getText().toString();
+
+
+                if (userSelected.getId() == R.id.RB_student) {
+
+                } else if (userSelected.getId() == R.id.RB_society) {
+
+                } else {
+                    Log.e("ERROR", "USER SELECTED FAILED");
+                }
                 //get the input
 
                 //check if the society match the securityCode
