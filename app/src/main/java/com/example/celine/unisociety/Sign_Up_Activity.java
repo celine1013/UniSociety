@@ -3,6 +3,7 @@ package com.example.celine.unisociety;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,17 +47,36 @@ public class Sign_Up_Activity extends AppCompatActivity {
 
         btn_SignUp = (Button)findViewById(R.id.btn_sign_up);
 
-        userType = (RadioGroup)findViewById(R.id.RG_UserType);
-        userType.setOnCheckedChangeListener();
-        userSelected
         //change layout based on usertype
-        //hide societyList, securityCode field if it's student
 
+        userType = (RadioGroup)findViewById(R.id.RG_UserType);
+        userType.clearCheck();
+        userType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int selectedID) {
+                Log.d("chk", "id" + selectedID);
+
+                if (selectedID == R.id.RB_society) {
+                    societyList.setVisibility(View.VISIBLE);
+                    et_securityCode.setVisibility(View.VISIBLE);
+
+                } else if (selectedID == R.id.RB_student) {
+                    //hide societyList, securityCode field if it's student
+                    societyList.setVisibility(View.GONE);
+                    et_securityCode.setVisibility(View.GONE);
+                }
+
+            }
+        });
+        userSelected = (RadioButton) findViewById(R.id.RB_society);
+        userSelected.setChecked(true);
+
+        //Sign up
         btn_SignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Sign up
                 //get the input
+
                 //check if the society match the securityCode
                 //check if the account exists
                 //check if password confirmed
