@@ -21,13 +21,13 @@ public class dbhelper {
     }
 
     //check if the society match the verification code
-//true: matched / false: mismatched
-    public boolean verifySocIdentity(String societyName, String verificationCode){
+    //true: matched / false: mismatched
+    public boolean verifySocIdentity(int societyID, String verificationCode) {
         return true;
     }
 
     //register the new society user into the database
-    public void registerNewSocUser(String id, Account account){
+    public void registerNewSocUser(int id, Account account) {
 
     }
 
@@ -35,6 +35,9 @@ public class dbhelper {
     public void registerSocEntity(Society society){
     }
 
+    public void registerNormalUser(int id, Account account) {
+
+    }
     // log-in
 //return current user/null if failed
     public Account logIn (String account, String password){

@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -13,6 +15,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import Model.Account;
+import Model.Society;
+import dbhelper.dbhelper;
 
 public class Sign_Up_Activity extends AppCompatActivity {
     //Radio button
@@ -32,14 +36,20 @@ public class Sign_Up_Activity extends AppCompatActivity {
     private RadioGroup userType;
     private RadioButton userSelected;
 
+    private dbhelper db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up_society);
 
-        //binding
+        //set the spinner
         societyList = (Spinner)findViewById(R.id.society_name);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.societies, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        societyList.setAdapter(adapter);
 
         et_userName = (EditText)findViewById(R.id.ET_user_name);
         et_password = (EditText)findViewById(R.id.ET_password);
@@ -77,25 +87,51 @@ public class Sign_Up_Activity extends AppCompatActivity {
         btn_SignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //get input
                 Account newUser = new Account();
-
                 String userName = et_userName.getText().toString();
+                String password = et_password.getText().toString();
+                String passwordComfirm = et_passwordConfirm.getText().toString();
+                String secQuestion = et_securityQues.getText().toString();
 
-
+                // TODO: 5/09/2017 invalid input handling e.g empty editTextfield
+                //check if the account exist
+                if (db.hasExisted(userName)) {
+                    Toast.makeText(Sign_Up_Activity.this, "This account has already existed.", Toast.LENGTH_LONG).show();
+                    et_userName.setText("");
+                    et_password.setText("");
+                    et_passwordConfirm.setText("");
+                    return;
+                }
+                //confirm password
+                if (!password.equals(passwordComfirm)) {
+                    Toast.makeText(Sign_Up_Activity.this, "Please reconfirm password!", Toast.LENGTH_LONG).show();
+                    et_password.setText("");
+                    et_passwordConfirm.setText("");
+                    return;
+                }
+                newUser.setAccountName(userName);
+                newUser.setPassword(password);
+                newUser.setSecurityQuestion(secQuestion);
                 if (userSelected.getId() == R.id.RB_student) {
-
+                    //register normal user
+                    db.registerNormalUser(0, newUser);
+                    // TODO: 5/09/2017 auto generate userID????
                 } else if (userSelected.getId() == R.id.RB_society) {
+                    //register soc user
+                    int societyID = societyList.getSelectedItemPosition();
+                    String verificationCode = et_securityCode.getText().toString();
+                    if (!db.verifySocIdentity(societyID, verificationCode)) {
+                        et_securityCode.setText("");
+                        Toast.makeText(Sign_Up_Activity.this, "The verification code is incorrect!", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    db.registerNewSocUser(societyID, newUser);
 
                 } else {
                     Log.e("ERROR", "USER SELECTED FAILED");
                 }
-                //get the input
-
-                //check if the society match the securityCode
-                //check if the account exists
-                //check if password confirmed
-                //sign up
-
                 //show success notification
                 Toast.makeText(Sign_Up_Activity.this, "Sign Up Succeed", Toast.LENGTH_LONG);
                 //go back to login page
@@ -104,4 +140,5 @@ public class Sign_Up_Activity extends AppCompatActivity {
         });
 
     }
+
 }
