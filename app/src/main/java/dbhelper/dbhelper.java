@@ -8,6 +8,7 @@ import Model.Society;
 /**
  * Created by Fan
  */
+// TODO: add pictures to the database
 
 public class dbhelper {
     /*Register and Log-In*/
@@ -29,7 +30,7 @@ public class dbhelper {
         return true;
     }
 
-    // TODO: 6/09/2017 id usage??
+
     //register the new user into the database
     public void registerNewSocUser(int type, Account account) {
 
@@ -57,7 +58,7 @@ public class dbhelper {
 
 
     /*Post CRUD*/
-    //// TODO: societyID or Society? 
+
     public void createPost(int societyID, Post newPost) {
     }
 
