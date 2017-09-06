@@ -115,11 +115,11 @@ public class Sign_Up_Activity extends AppCompatActivity {
                 newUser.setSecurityQuestion(secQuestion);
                 if (userSelected.getId() == R.id.RB_student) {
                     //register normal user
-                    db.registerNormalUser(0, newUser);
+                    db.registerNormalUser(0, newUser); //student id == 0
                     // TODO: 5/09/2017 auto generate userID????
                 } else if (userSelected.getId() == R.id.RB_society) {
                     //register soc user
-                    int societyID = societyList.getSelectedItemPosition();
+                    int societyID = societyList.getSelectedItemPosition() + 1; //society id start from 1
                     String verificationCode = et_securityCode.getText().toString();
                     if (!db.verifySocIdentity(societyID, verificationCode)) {
                         et_securityCode.setText("");

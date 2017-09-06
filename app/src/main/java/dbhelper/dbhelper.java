@@ -1,16 +1,19 @@
 package dbhelper;
 
+import java.util.ArrayList;
+
 import Model.Account;
+import Model.Post;
 import Model.Society;
 /**
  * Created by Fan
  */
 
 public class dbhelper {
-    //Register//
-
+    /*Register and Log-In*/
+    
     //check if the account has already exist
-//true: exist / false: not exist
+    //true: exist / false: not exist
     public boolean hasExisted(String accountName){
         boolean result = false;
         /*if (accountName.equals(Account.getAccountName())) {
@@ -26,24 +29,52 @@ public class dbhelper {
         return true;
     }
 
-    //register the new society user into the database
-    public void registerNewSocUser(int id, Account account) {
+    // TODO: 6/09/2017 id usage??
+    //register the new user into the database
+    public void registerNewSocUser(int type, Account account) {
 
+    }
+
+    public void registerNormalUser(int id, Account account) {
     }
 
     //pre-load society data into database
     public void registerSocEntity(Society society){
     }
 
-    public void registerNormalUser(int id, Account account) {
-
-    }
-    // log-in
-//return current user/null if failed
+    //return current user/null if failed
     public Account logIn (String account, String password){
         Account currentAccount = new Account();
         return currentAccount;
     }
 
+    //return accountType: student = 0; society = society id
+    public int checkAccountType(Account account) {
+    }
 
+    public Society getSocietyByID(int societyID) {
+    }
+
+
+    /*Post CRUD*/
+    //// TODO: societyID or Society? 
+    public void createPost(int societyID, Post newPost) {
+    }
+
+    //TODO: how to update a specific post???? use ID?
+    public void updatePost() {
+    }
+
+    public ArrayList<Post> getAllPosts(int societyID) {
+
+    }
+
+    // TODO:  Find the format of the date
+    public ArrayList<Post> getPostsByDate() {
+
+    }
+
+    public ArrayList<Post> getPostsByCategory(String category) {
+
+    }
 }
