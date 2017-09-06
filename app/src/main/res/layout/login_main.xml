@@ -81,4 +81,5 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.05"
         android:text="@string/Text_Sign_Up" />
+
 </LinearLayout>
