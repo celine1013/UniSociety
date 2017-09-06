@@ -15,7 +15,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import Model.Account;
-import Model.Society;
 import dbhelper.dbhelper;
 
 public class Sign_Up_Activity extends AppCompatActivity {
@@ -132,6 +131,7 @@ public class Sign_Up_Activity extends AppCompatActivity {
                 } else {
                     Log.e("ERROR", "USER SELECTED FAILED");
                 }
+
                 //show success notification
                 Toast.makeText(Sign_Up_Activity.this, "Sign Up Succeed", Toast.LENGTH_LONG);
                 //go back to login page
