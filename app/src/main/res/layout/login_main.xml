@@ -12,8 +12,9 @@
         android:layout_width="315dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:layout_weight="0.05" />
+        android:layout_weight="0.60"
+        app:srcCompat="@mipmap/logo"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -80,4 +81,5 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.05"
         android:text="@string/Text_Sign_Up" />
+
 </LinearLayout>

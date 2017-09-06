@@ -2,8 +2,12 @@ package com.example.celine.unisociety;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,7 +18,7 @@ import dbhelper.dbhelper;
 import java.io.Serializable;
 
 
-public class LogIn_Activity extends AppCompatActivity{
+public class LogIn_Activity extends MainActivity {
 
     private static final String CURRENT_USER = "com.example.celine.unisociety.currentUser";
 
@@ -25,11 +29,12 @@ public class LogIn_Activity extends AppCompatActivity{
     private Button btn_forgetPassword;
     private dbhelper db;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_main);
-
+        Log.d("NAVIGATION SETTING", "SETTING COMPLETED");
         accountName_et = (EditText)findViewById(R.id.ET_user_name);
         password_et = (EditText)findViewById(R.id.ET_password);
 
@@ -38,6 +43,7 @@ public class LogIn_Activity extends AppCompatActivity{
         btn_forgetPassword = (Button)findViewById(R.id.btn_forget_password);
 
         setLogInBtn();
+        setBtn_SignUp();
     }
 
 
