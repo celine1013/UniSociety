@@ -16,7 +16,7 @@
             android:layout_height="108dp">
 
             <ImageButton
-                android:id="@+id/imageButton4"
+                android:id="@+id/IB_SocietyProfilePic"
                 android:layout_width="138dp"
                 android:layout_height="98dp"
                 android:layout_gravity="center"

@@ -68,6 +68,12 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             Log.d("FRAGMENT", "GOING TO SOCIETY ACCOUNT MANAGEMENT");
                             AccountManagement_Society accountManagementS = new AccountManagement_Society();
+                            Bundle bundle = new Bundle();
+                            //if currentUser is null
+
+                            //if has already logged in
+                            bundle.putInt("societyID", currentUser.getId());
+                            accountManagementS.setArguments(bundle);
                             manager.beginTransaction().replace(R.id.content, accountManagementS, accountManagementS.getTag()).commit();
                             Log.d("FRAGMENT", "GONE TO SOCIETY MANAGEMENT");
                         }
