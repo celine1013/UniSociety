@@ -27,7 +27,8 @@ public class dbhelper {
     //check if the society match the verification code
     //true: matched / false: mismatched
     public boolean verifySocIdentity(int societyID, String verificationCode) {
-        return true;
+        boolean result = true;
+        return result;
     }
 
 
@@ -44,16 +45,18 @@ public class dbhelper {
     }
 
     //return current user/null if failed
+    //might have issue
+    // ==>if so, add a new function which would return a boolean result of login;
+    //      then add "getAccountByID
     public Account logIn (String account, String password){
         Account currentAccount = new Account();
         return currentAccount;
     }
 
-    //return accountType: student = 0; society = society id
-    public int checkAccountType(Account account) {
-    }
 
     public Society getSocietyByID(int societyID) {
+        Society society = new Society();
+        return society;
     }
 
 
@@ -67,15 +70,18 @@ public class dbhelper {
     }
 
     public ArrayList<Post> getAllPosts(int societyID) {
-
+        ArrayList<Post> posts = new ArrayList<>();
+        return posts;
     }
 
     // TODO:  Find the format of the date
     public ArrayList<Post> getPostsByDate() {
-
+        ArrayList<Post> posts = new ArrayList<>();
+        return posts;
     }
 
     public ArrayList<Post> getPostsByCategory(String category) {
-
+        ArrayList<Post> posts = new ArrayList<>();
+        return posts;
     }
 }
