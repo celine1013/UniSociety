@@ -4,7 +4,7 @@ package Model;
  *
  * @author Fan
  */
-public abstract class Society {
+public class Society {
     private String societyName;
     private String societyDescription;
     private String societyCategory;
@@ -16,6 +16,10 @@ public abstract class Society {
     private String verificationCode;
     private boolean available;
     private int id;
+
+    public Society() {
+    }
+
 
     public Society(int id, String societyName, String societyDescription, String societyCategory,
                    String emailAddress, String contactPerson, String contactNumber, String facebook,

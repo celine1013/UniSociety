@@ -8,6 +8,7 @@ import Model.Society;
 /**
  * Created by Fan
  */
+// TODO: add pictures to the database
 
 public class dbhelper {
     /*Register and Log-In*/
@@ -26,10 +27,11 @@ public class dbhelper {
     //check if the society match the verification code
     //true: matched / false: mismatched
     public boolean verifySocIdentity(int societyID, String verificationCode) {
-        return true;
+        boolean result = true;
+        return result;
     }
 
-    // TODO: 6/09/2017 id usage??
+
     //register the new user into the database
     public void registerNewSocUser(int type, Account account) {
 
@@ -43,21 +45,23 @@ public class dbhelper {
     }
 
     //return current user/null if failed
+    //might have issue
+    // ==>if so, add a new function which would return a boolean result of login;
+    //      then add "getAccountByID
     public Account logIn (String account, String password){
         Account currentAccount = new Account();
         return currentAccount;
     }
 
-    //return accountType: student = 0; society = society id
-    public int checkAccountType(Account account) {
-    }
 
     public Society getSocietyByID(int societyID) {
+        Society society = new Society();
+        return society;
     }
 
 
     /*Post CRUD*/
-    //// TODO: societyID or Society? 
+
     public void createPost(int societyID, Post newPost) {
     }
 
@@ -66,15 +70,18 @@ public class dbhelper {
     }
 
     public ArrayList<Post> getAllPosts(int societyID) {
-
+        ArrayList<Post> posts = new ArrayList<>();
+        return posts;
     }
 
     // TODO:  Find the format of the date
     public ArrayList<Post> getPostsByDate() {
-
+        ArrayList<Post> posts = new ArrayList<>();
+        return posts;
     }
 
     public ArrayList<Post> getPostsByCategory(String category) {
-
+        ArrayList<Post> posts = new ArrayList<>();
+        return posts;
     }
 }
