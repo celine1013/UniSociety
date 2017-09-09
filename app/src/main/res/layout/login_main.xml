@@ -19,22 +19,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:orientation="horizontal"
         android:weightSum="1">
-
-        <TextView
-            android:id="@+id/TV_user_name"
-            android:layout_width="82dp"
-            android:layout_height="36dp"
-            android:text="@string/Text_User_Name"
-            android:textColor="@color/textColorDarkBlue"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
         <EditText
             android:id="@+id/ET_user_name"
-            android:layout_width="327dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:ems="10"
+            android:hint="User Name"
             android:inputType="textPersonName"
             android:text="" />
     </LinearLayout>
@@ -45,18 +37,12 @@
         android:orientation="horizontal"
         android:weightSum="1">
 
-        <TextView
-            android:id="@+id/TV_Password"
-            android:layout_width="82dp"
-            android:layout_height="36dp"
-            android:text="@string/Text_Password"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-
         <EditText
             android:id="@+id/ET_password"
-            android:layout_width="327dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:ems="10"
+            android:hint="Password"
             android:inputType="textPassword"
             android:text="" />
     </LinearLayout>
@@ -65,8 +51,9 @@
         android:id="@+id/btn_forget_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.05"
-        android:text="@string/Text_Forget_Password" />
+        android:background="@android:drawable/screen_background_light_transparent"
+        android:gravity="top|right"
+        android:text="Forget Passwords?" />
 
     <Button
         android:id="@+id/btn_login"
@@ -76,10 +63,11 @@
         android:text="@string/Text_Login" />
 
     <Button
-        android:id="@+id/btn_sign_up"
+        android:id="@+id/btn_signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.05"
-        android:text="@string/Text_Sign_Up" />
+        android:background="@android:drawable/screen_background_light_transparent"
+        android:text="Register Here" />
 
 </LinearLayout>
