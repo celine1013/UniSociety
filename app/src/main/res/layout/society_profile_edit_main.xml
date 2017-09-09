@@ -40,8 +40,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.00"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/Text_Security_Code" />
+        android:hint="@string/Text_Security_Code"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/uer_name"
@@ -49,8 +49,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.00"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/Text_User_Name" />
+        android:hint="@string/Text_User_Name"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/Password"
@@ -58,8 +58,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.00"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/Text_Password" />
+        android:hint="@string/Text_Password"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/Confirm_Password"
@@ -67,8 +67,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.00"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/Text_Confirm_Password" />
+        android:hint="@string/Text_Confirm_Password"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/Sequrity_question"
@@ -76,8 +76,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.00"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/Text_Security_Question" />
+        android:hint="What is your favorite color?"
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/btn_sign_up"
