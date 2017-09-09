@@ -42,6 +42,12 @@
         <item>TESTING</item>
     </string-array>
 
+    <string-array name="categories">
+        <item>Sport</item>
+        <item>Food</item>
+        <item>Social</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_event_list">Events</string>

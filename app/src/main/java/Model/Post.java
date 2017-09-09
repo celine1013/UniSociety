@@ -10,7 +10,7 @@ import java.util.Date;
 public class Post {
     private String postTitle;
     private String postDescription;
-    private String eventCategory;
+    private int eventCategory;
     private Timestamp beginTime;
     private Timestamp endTime;
     private String location;
@@ -23,7 +23,7 @@ public class Post {
     public Post() {
     }
 
-    public Post(int id, String postTitle, String postDescription, String eventCategory,
+    public Post(int id, String postTitle, String postDescription, int eventCategory,
                 String location, String popularity, String picture, Timestamp beginTime,
                 Timestamp endTime, Timestamp postDate, boolean available) {
         this.postTitle = postTitle;
@@ -55,11 +55,11 @@ public class Post {
         this.postDescription = postDescription;
     }
 
-    public String getEventCategory() {
+    public int getEventCategory() {
         return eventCategory;
     }
 
-    public void setEventCategory(String eventCategory) {
+    public void setEventCategory(int eventCategory) {
         this.eventCategory = eventCategory;
     }
 

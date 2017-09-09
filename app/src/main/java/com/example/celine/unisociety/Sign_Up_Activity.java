@@ -116,7 +116,6 @@ public class Sign_Up_Activity extends AppCompatActivity {
                 if (userSelected.getId() == R.id.RB_student) {
                     //register normal user
                     db.registerNormalUser(0, newUser); //student id == 0
-                    // TODO: 5/09/2017 auto generate userID????
                 } else if (userSelected.getId() == R.id.RB_society) {
                     //register soc user
                     int societyID = societyList.getSelectedItemPosition() + 1; //society id start from 1
