@@ -20,8 +20,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.05"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/Text_Title" />
+        android:hint="@string/Text_Title"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/description"
@@ -29,8 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.12"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/Text_Description" />
+        android:hint="@string/Text_Description"
+        android:inputType="textPersonName" />
 
     <Spinner
         android:id="@+id/category"
@@ -48,16 +48,16 @@
             android:layout_width="189dp"
             android:layout_height="match_parent"
             android:ems="10"
-            android:inputType="date"
-            android:text="@string/Text_Date" />
+            android:hint="@string/Text_Date"
+            android:inputType="date" />
 
         <EditText
             android:id="@+id/time"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:ems="10"
-            android:inputType="time"
-            android:text="@string/Text_Time" />
+            android:hint="@string/Text_Time"
+            android:inputType="time" />
 
     </LinearLayout>
 
@@ -67,8 +67,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.13"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/Text_Location" />
+        android:hint="@string/Text_Location"
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/btn_Submit"

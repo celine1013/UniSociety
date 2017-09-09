@@ -21,7 +21,15 @@ import java.util.List;
 
 import Model.Account;
 
+import android.widget.Button;
+import android.widget.ProgressBar;
+
 public class MainActivity extends AppCompatActivity {
+
+    Button mButton;
+    ProgressBar mProgressBar;
+
+
 
     private static final int STUDENT = 0;
     private static final int REQUEST_CODE_LOG_IN = 0;
