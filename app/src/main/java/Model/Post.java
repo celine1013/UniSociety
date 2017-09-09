@@ -7,7 +7,7 @@ import java.util.Date;
  *
  * @author Fan
  */
-public abstract class Post {
+public class Post {
     private String postTitle;
     private String postDescription;
     private String eventCategory;
@@ -19,6 +19,9 @@ public abstract class Post {
     private Timestamp postDate;
     private boolean available;
     private int id;
+
+    public Post() {
+    }
 
     public Post(int id, String postTitle, String postDescription, String eventCategory,
                 String location, String popularity, String picture, Timestamp beginTime,
