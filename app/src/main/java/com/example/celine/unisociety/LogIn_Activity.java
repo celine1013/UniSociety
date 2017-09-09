@@ -18,7 +18,7 @@ import dbhelper.dbhelper;
 import java.io.Serializable;
 
 
-public class LogIn_Activity extends MainActivity {
+public class LogIn_Activity extends AppCompatActivity {
 
     private static final String CURRENT_USER = "com.example.celine.unisociety.currentUser";
 
@@ -100,4 +100,5 @@ public class LogIn_Activity extends MainActivity {
     private void setBtn_forgetPassword(){
 
     }
+
 }

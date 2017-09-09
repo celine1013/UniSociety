@@ -23,11 +23,7 @@
         <activity
             android:name=".EventListActivity"
             android:label="@string/title_event_list"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
             android:name=".EventDetailActivity"
