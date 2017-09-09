@@ -114,6 +114,7 @@ public class CreatePost_Activity extends AppCompatActivity {
 
                 //upload the new post to the database
                 db.createPost(societyID, newPost);
+
                 //show success message
                 Snackbar.make(view, "Post Created!", Snackbar.LENGTH_LONG).show();
                 // TODO: 9/09/2017 implement undo function using snackbar

@@ -23,7 +23,12 @@
         <activity
             android:name=".EventListActivity"
             android:label="@string/title_event_list"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".EventDetailActivity"
             android:label="@string/title_event_detail"
@@ -33,6 +38,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.celine.unisociety.EventListActivity" />
         </activity>
+
         <activity android:name=".CreatePost_Activity"></activity>
     </application>
 
