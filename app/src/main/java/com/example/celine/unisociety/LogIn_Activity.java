@@ -2,6 +2,7 @@ package com.example.celine.unisociety;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import Model.Account;
@@ -28,7 +30,8 @@ public class LogIn_Activity extends AppCompatActivity {
     private Button btn_logIn;
     private Button btn_forgetPassword;
     private dbhelper db;
-
+    TextView tv1, tv2;
+    Typeface tf1, tf2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,7 @@ public class LogIn_Activity extends AppCompatActivity {
         Log.d("LOGIN SETTING", "LOG IN COMPLETED");
         setBtn_SignUp();
         Log.d("LOGIN SETTING", "SIGN UP COMPLETED");
+
     }
 
 
@@ -100,5 +104,7 @@ public class LogIn_Activity extends AppCompatActivity {
     private void setBtn_forgetPassword(){
 
     }
+
+
 
 }
