@@ -20,9 +20,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     private List<Post> mItems;
     private Context mContext;
 
-    public PostAdapter(Context context, List<Post> items) {
+    public PostAdapter(Context context, List<Post> posts) {
         this.mContext = context;
-        this.mItems = items;
+        this.mItems = posts;
     }
 
     @Override

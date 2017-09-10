@@ -18,7 +18,6 @@
             android:layout_gravity="center" />
 
 
-
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"
@@ -28,10 +27,11 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_gravity="center"
-            android:progressDrawable="@drawable/circular_process_view" />
+            android:progressDrawable="@drawable/circular_process_view"
+            android:visibility="invisible" />
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvItems"
+            android:id="@+id/rv_recentEvent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layoutManager="LinearLayoutManager" />
