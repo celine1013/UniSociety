@@ -1,6 +1,7 @@
 package com.example.celine.unisociety;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,7 +14,7 @@ import android.widget.ImageButton;
 
 public class AccountManagement_Society extends Fragment {
 
-    private int userID;
+    private int societyID;
     private ImageButton profileButton;
     private Button bt_changePassword;
     private Button bt_managePosts;
@@ -28,7 +29,7 @@ public class AccountManagement_Society extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        userID = this.getArguments().getInt("societyID", -1);
+        societyID = this.getArguments().getInt("societyID", -1);
         View view = inflater.inflate(R.layout.fragment_account_management__society, container, false);
 
         setProfileButtonOnClick(view);
@@ -47,7 +48,9 @@ public class AccountManagement_Society extends Fragment {
     }
 
     private void setButtonManagePosts(View view) {
-
+        Intent intent = new Intent(getActivity(), EventListActivity.class);
+        intent.putExtra("USER_ID", this.societyID);
+        startActivity(intent);
     }
 
     private void setButtonEditProfile(View view) {

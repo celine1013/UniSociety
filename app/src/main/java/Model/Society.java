@@ -7,7 +7,7 @@ package Model;
 public class Society {
     private String societyName;
     private String societyDescription;
-    private String societyCategory;
+    private int societyCategory;
     private String emailAddress;
     private String contactPerson;
     private String contactNumber;
@@ -21,7 +21,7 @@ public class Society {
     }
 
 
-    public Society(int id, String societyName, String societyDescription, String societyCategory,
+    public Society(int id, String societyName, String societyDescription, int societyCategory,
                    String emailAddress, String contactPerson, String contactNumber, String facebook,
                    String logo, boolean available, String verificationCode) {
         this.societyName = societyName;
@@ -53,11 +53,11 @@ public class Society {
         this.societyDescription = societyDescription;
     }
 
-    public String getSocietyCategory() {
+    public int getSocietyCategory() {
         return societyCategory;
     }
 
-    public void setSocietyCategory(String societyCategory) {
+    public void setSocietyCategory(int societyCategory) {
         this.societyCategory = societyCategory;
     }
 

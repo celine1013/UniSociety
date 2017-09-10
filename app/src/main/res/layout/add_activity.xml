@@ -4,6 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="5dp"
     android:weightSum="1">
 
     <ImageView
@@ -20,17 +21,15 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.05"
         android:ems="10"
-        android:hint="@string/Text_Title"
-        android:inputType="textPersonName" />
+        android:hint="Event Name"
+        android:textAlignment="center" />
 
     <EditText
         android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.12"
-        android:ems="10"
-        android:hint="@string/Text_Description"
-        android:inputType="textPersonName" />
+        android:layout_weight="0.35"
+        android:ems="10" />
 
     <Spinner
         android:id="@+id/category"
@@ -38,26 +37,58 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.09" />
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="68dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="0.15">
 
         <EditText
             android:id="@+id/date"
-            android:layout_width="189dp"
-            android:layout_height="match_parent"
-            android:ems="10"
-            android:hint="@string/Text_Date"
-            android:inputType="date" />
-
-        <EditText
-            android:id="@+id/time"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:ems="10"
-            android:hint="@string/Text_Time"
-            android:inputType="time" />
+            android:fontFamily="casual"
+            android:gravity="center"
+            android:hint="Date"
+            android:inputType="date"
+            android:textColor="@color/colorWhite"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et_startTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:ems="10"
+                android:fontFamily="casual"
+                android:hint="Starting Time"
+                android:inputType="time"
+                android:textAlignment="center"
+                android:textColor="@color/colorWhite"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/et_endTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:ems="10"
+                android:fontFamily="casual"
+                android:hint="Ending Time"
+                android:inputType="time"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -67,15 +98,18 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.13"
         android:ems="10"
-        android:hint="@string/Text_Location"
-        android:inputType="textPersonName" />
+        android:fontFamily="casual"
+        android:hint="Location"
+        android:textAlignment="center"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btn_Submit"
         android:layout_width="350dp"
         android:layout_height="21dp"
-        android:layout_weight="0.23"
+        android:layout_weight="0.09"
         android:layout_gravity="center"
         android:text="@string/Text_Submit" />
 
 </LinearLayout>
+

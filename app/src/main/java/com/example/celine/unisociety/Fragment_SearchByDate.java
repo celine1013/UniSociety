@@ -13,6 +13,9 @@ import android.view.ViewGroup;
  */
 public class Fragment_SearchByDate extends Fragment {
 
+    // TODO: 9/09/2017 datepicker customization
+    // TODO: 9/09/2017 listview popping
+
 
     public Fragment_SearchByDate() {
         // Required empty public constructor

@@ -18,7 +18,7 @@ import dbhelper.dbhelper;
 import java.io.Serializable;
 
 
-public class LogIn_Activity extends MainActivity {
+public class LogIn_Activity extends AppCompatActivity {
 
     private static final String CURRENT_USER = "com.example.celine.unisociety.currentUser";
 
@@ -41,9 +41,11 @@ public class LogIn_Activity extends MainActivity {
         btn_SignUp = (Button)findViewById(R.id.btn_sign_up);
         btn_logIn = (Button)findViewById((R.id.btn_login));
         btn_forgetPassword = (Button)findViewById(R.id.btn_forget_password);
-
+        Log.d("LOGIN SETTING", "BINDING COMPLETED");
         setLogInBtn();
+        Log.d("LOGIN SETTING", "LOG IN COMPLETED");
         setBtn_SignUp();
+        Log.d("LOGIN SETTING", "SIGN UP COMPLETED");
     }
 
 
@@ -88,7 +90,7 @@ public class LogIn_Activity extends MainActivity {
         btn_SignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LogIn_Activity.this,Sign_Up_Activity.class);
+                Intent intent = new Intent(LogIn_Activity.this, Sign_Up_Activity.class);
                 startActivity(intent);
             }
         });
@@ -98,4 +100,5 @@ public class LogIn_Activity extends MainActivity {
     private void setBtn_forgetPassword(){
 
     }
+
 }

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -26,9 +27,9 @@ import android.widget.ProgressBar;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button mButton;
-    ProgressBar mProgressBar;
-
+    private Button mButton;
+    private ProgressBar mProgressBar;
+    public BottomNavigationView navigation;
 
 
     private static final int STUDENT = 0;
@@ -44,28 +45,29 @@ public class MainActivity extends AppCompatActivity {
             FragmentManager manager = getSupportFragmentManager();
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    Log.d("FRAGMENT", "GOING TO STUDENT ACCOUNT MANAGEMENT");
+                    Log.d("FRAGMENT", "GOING TO HOME PAGE");
                     Fragment_HomePage home = new Fragment_HomePage();
-                    manager.beginTransaction().replace(R.id.content, home, home.getTag()).commit();
-                    Log.d("FRAGMENT", "GONE TO STUDENT ACCOUNT MANAGEMENT");
+                    manager.beginTransaction().replace(R.id.content, home).commit();
+                    Log.d("FRAGMENT", "GONE TO HOME PAGE");
                     return true;
 
                 case R.id.navigation_category:
                     Log.d("FRAGMENT", "GOING TO CATEGORY MAIN PAGE");
                     Fragment_CategoryMain categoryMain = new Fragment_CategoryMain();
-                    manager.beginTransaction().replace(R.id.content, categoryMain, categoryMain.getTag()).commit();
+                    manager.beginTransaction().replace(R.id.content, categoryMain).commit();
                     Log.d("FRAGMENT", "GONE TO CATEGORY MAIN PAGE");
                     return true;
 
                 case R.id.navigation_date:
-                    Log.d("FRAGMENT", "GOING TO STUDENT ACCOUNT MANAGEMENT");
+                    Log.d("FRAGMENT", "GOING TO DATE");
                     Fragment_SearchByDate date = new Fragment_SearchByDate();
-                    manager.beginTransaction().replace(R.id.content, date, date.getTag()).commit();
-                    Log.d("FRAGMENT", "GONE TO STUDENT ACCOUNT MANAGEMENT");
+                    manager.beginTransaction().replace(R.id.content, date).commit();
+                    Log.d("FRAGMENT", "GONE TO DATE");
                     return true;
 
                 case R.id.navigation_account:
                     if (currentUser == null) {
+                        Log.d("NEW ACTIVITY", "LOG IN");
                         Intent intent = new Intent(MainActivity.this, LogIn_Activity.class);
                         startActivityForResult(intent, REQUEST_CODE_LOG_IN);
                     } else {
@@ -74,12 +76,10 @@ public class MainActivity extends AppCompatActivity {
 
                             Log.d("FRAGMENT", "GONE TO STUDENT ACCOUNT MANAGEMENT");
                         } else {
+
                             Log.d("FRAGMENT", "GOING TO SOCIETY ACCOUNT MANAGEMENT");
                             AccountManagement_Society accountManagementS = new AccountManagement_Society();
                             Bundle bundle = new Bundle();
-                            //if currentUser is null
-
-                            //if has already logged in
                             bundle.putInt("societyID", currentUser.getId());
                             accountManagementS.setArguments(bundle);
                             manager.beginTransaction().replace(R.id.content, accountManagementS, accountManagementS.getTag()).commit();
@@ -90,20 +90,17 @@ public class MainActivity extends AppCompatActivity {
             }
             return false;
         }
-
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        currentUser = null;
+        navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        Log.d("FRAGMENT", "GOING TO STUDENT ACCOUNT MANAGEMENT");
-        Fragment_HomePage home = new Fragment_HomePage();
-        FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.content, home, home.getTag()).commit();
-        Log.d("FRAGMENT", "GONE TO STUDENT ACCOUNT MANAGEMENT");
+        navigation.setSelectedItemId(R.id.navigation_home);
+
     }
 
 
@@ -113,8 +110,13 @@ public class MainActivity extends AppCompatActivity {
         if(requestCode == REQUEST_CODE_LOG_IN){
             if(data == null)return;
             currentUser = LogIn_Activity.getAccount(data);
+            //after log-in, go to personal accountmanagement page;
+            navigation.setSelectedItemId(R.id.navigation_account);
         }
     }
 
-
+    public BottomNavigationView getNavigation() {
+        return navigation;
+    }
 }
+

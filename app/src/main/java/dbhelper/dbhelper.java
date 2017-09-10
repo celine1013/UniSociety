@@ -1,6 +1,7 @@
 package dbhelper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import Model.Account;
 import Model.Post;
@@ -69,19 +70,19 @@ public class dbhelper {
     public void updatePost() {
     }
 
-    public ArrayList<Post> getAllPosts(int societyID) {
-        ArrayList<Post> posts = new ArrayList<>();
+    public List<Post> getAllPosts(int societyID) {
+        List<Post> posts = new ArrayList<>();
         return posts;
     }
 
     // TODO:  Find the format of the date
-    public ArrayList<Post> getPostsByDate() {
-        ArrayList<Post> posts = new ArrayList<>();
+    public List<Post> getPostsByDate() {
+        List<Post> posts = new ArrayList<>();
         return posts;
     }
 
-    public ArrayList<Post> getPostsByCategory(String category) {
-        ArrayList<Post> posts = new ArrayList<>();
+    public List<Post> getPostsByCategory(String category) {
+        List<Post> posts = new ArrayList<>();
         return posts;
     }
 }
