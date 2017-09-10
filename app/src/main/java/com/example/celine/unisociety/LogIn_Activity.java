@@ -50,14 +50,6 @@ public class LogIn_Activity extends AppCompatActivity {
         setBtn_SignUp();
         Log.d("LOGIN SETTING", "SIGN UP COMPLETED");
 
-        tv1 = (TextView) findViewById(R.id.app_name);
-        tv1 = (TextView) findViewById(R.id.app_solgan);
-
-        tf1 = Typeface.createFromAsset(getAssets(),"font1.ttf");
-        tf2 = Typeface.createFromAsset(getAssets(),"font2.ttf");
-
-        tv1.setTypeface(tf1);
-        tv2.setTypeface(tf2);
     }
 
 

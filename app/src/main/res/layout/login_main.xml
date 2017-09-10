@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layout_marginTop="5dp"
-        android:textSize="18"
+        android:textSize="18sp"
         android:text="U Now Society well" />
 
     <LinearLayout
