@@ -14,10 +14,9 @@
 
         <ImageButton
             android:id="@+id/btn_back"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.02"
-            app:srcCompat="@android:drawable/ic_media_previous" />
+            android:layout_width="49dp"
+            android:layout_height="55dp"
+            app:srcCompat="@mipmap/ic_goback" />
 
         <ImageButton
             android:id="@+id/btn_change_icon"
