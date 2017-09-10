@@ -11,12 +11,12 @@ public class Post {
     private String postTitle;
     private String postDescription;
     private int eventCategory;
-    private Timestamp beginTime;
-    private Timestamp endTime;
+    private String beginTime;
+    private String endTime;
     private String location;
     private String popularity;
     private String picture;
-    private Timestamp postDate;
+    private String postDate;
     private boolean available;
     private int id;
 
@@ -24,8 +24,8 @@ public class Post {
     }
 
     public Post(int id, String postTitle, String postDescription, int eventCategory,
-                String location, String popularity, String picture, Timestamp beginTime,
-                Timestamp endTime, Timestamp postDate, boolean available) {
+                String location, String popularity, String picture, String beginTime,
+                String endTime, String postDate, boolean available) {
         this.postTitle = postTitle;
         this.postDescription = postDescription;
         this.eventCategory = eventCategory;
@@ -83,24 +83,28 @@ public class Post {
         return picture;
     }
 
-    public Timestamp getBeginTime() {
+    public String getBeginTime() {
         return beginTime;
     }
 
-    public void setBeginTime(Timestamp beginTime) {
+    public void setBeginTime(String beginTime) {
         this.beginTime = beginTime;
     }
 
-    public Timestamp getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Timestamp endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 
-    public Timestamp getPostDate() {
+    public String getPostDate() {
         return postDate;
+    }
+
+    public void setPostDate(String date) {
+        this.postDate = date;
     }
 
     public void setAvailable(boolean available) {
