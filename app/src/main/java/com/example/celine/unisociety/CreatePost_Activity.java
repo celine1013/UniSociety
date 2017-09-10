@@ -1,17 +1,22 @@
 package com.example.celine.unisociety;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.Calendar;
 
 import Model.Post;
 import dbhelper.dbhelper;
@@ -22,9 +27,9 @@ public class CreatePost_Activity extends AppCompatActivity {
     private EditText et_eventTitle;
     private EditText et_eventDes;
     private Spinner sp_eventCategory;
-    private EditText et_eventDate;
-    private EditText et_startingTime;
-    private EditText et_endingTime;
+    private Button bt_eventDate;
+    private Button bt_startingTime;
+    private Button bt_endingTime;
     private EditText et_eventLocation;
 
     private Button bt_submit;
@@ -43,9 +48,9 @@ public class CreatePost_Activity extends AppCompatActivity {
         et_eventTitle = (EditText) findViewById(R.id.title);
         et_eventDes = (EditText) findViewById(R.id.description);
         sp_eventCategory = (Spinner) findViewById(R.id.category);
-        et_eventDate = (EditText) findViewById(R.id.date);
-        et_startingTime = (EditText) findViewById(R.id.et_startTime);
-        et_endingTime = (EditText) findViewById(R.id.et_endTime);
+        bt_eventDate = (Button) findViewById(R.id.bt_date);
+        bt_startingTime = (Button) findViewById(R.id.bt_startTime);
+        bt_endingTime = (Button) findViewById(R.id.bt_endTime);
         et_eventLocation = (EditText) findViewById(R.id.location);
 
         //set category spinner
@@ -53,6 +58,8 @@ public class CreatePost_Activity extends AppCompatActivity {
                 R.array.categories, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp_eventCategory.setAdapter(adapter);
+        //set time buttons
+        setEventTimeBTS();
 
         //set submit button
         bt_submit.setOnClickListener(new View.OnClickListener() {
@@ -66,47 +73,48 @@ public class CreatePost_Activity extends AppCompatActivity {
                 //get all the input
                 // TODO: 9/09/2017  if the editText is empty, notify user
                 if (et_eventTitle.getText().toString().equals("")) {
-                    Toast.makeText(CreatePost_Activity.this, "Please enter all fields.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CreatePost_Activity.this, R.string.Text_Enter_All_Fields, Toast.LENGTH_LONG).show();
                     return;
                 } else {
                     newPost.setPostTitle(et_eventTitle.getText().toString());
                 }
 
                 if (et_eventDes.getText().toString().equals("")) {
-                    Toast.makeText(CreatePost_Activity.this, "Please enter all fields.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CreatePost_Activity.this, R.string.Text_Enter_All_Fields, Toast.LENGTH_LONG).show();
                     return;
                 } else {
                     newPost.setPostDescription(et_eventDes.getText().toString());
                 }
 
                 if (et_eventLocation.getText().toString().equals("")) {
-                    Toast.makeText(CreatePost_Activity.this, "Please enter all fields.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CreatePost_Activity.this, R.string.Text_Enter_All_Fields, Toast.LENGTH_LONG).show();
                     return;
                 } else {
                     newPost.setLocation(et_eventLocation.getText().toString());
                 }
 
-                if (et_eventDate.getText().toString().equals("")) {
-                    Toast.makeText(CreatePost_Activity.this, "Please enter all fields.", Toast.LENGTH_LONG).show();
+                if (bt_eventDate.getText().toString().equals(R.string.Text_Choose_Date)) {
+                    Toast.makeText(CreatePost_Activity.this, R.string.Text_Enter_All_Fields, Toast.LENGTH_LONG).show();
                     return;
                 } else {
-                    // TODO: 9/09/2017 deal with the data and time
+                    newPost.setPostDate(bt_eventDate.getText().toString());
                 }
-                if (et_startingTime.getText().toString().equals("")) {
-                    Toast.makeText(CreatePost_Activity.this, "Please enter all fields.", Toast.LENGTH_LONG).show();
+                if (bt_startingTime.getText().toString().equals("")) {
+                    Toast.makeText(CreatePost_Activity.this, R.string.Text_Enter_All_Fields, Toast.LENGTH_LONG).show();
                     return;
                 } else {
-                    // TODO: 9/09/2017 deal with the data and time
+                    newPost.setBeginTime(bt_startingTime.getText().toString());
+
                 }
-                if (et_endingTime.getText().toString().equals("")) {
-                    Toast.makeText(CreatePost_Activity.this, "Please enter all fields.", Toast.LENGTH_LONG).show();
+                if (bt_endingTime.getText().toString().equals("")) {
+                    Toast.makeText(CreatePost_Activity.this, R.string.Text_Enter_All_Fields, Toast.LENGTH_LONG).show();
                     return;
                 } else {
-                    // TODO: 9/09/2017 deal with the data and time
+                    newPost.setEndTime(bt_endingTime.getText().toString());
                 }
 
                 if (sp_eventCategory.getSelectedItemPosition() == -1) {
-                    Toast.makeText(CreatePost_Activity.this, "Please enter all fields.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CreatePost_Activity.this, R.string.Text_Enter_All_Fields, Toast.LENGTH_LONG).show();
                     return;
                 } else {
                     newPost.setEventCategory(sp_eventCategory.getSelectedItemPosition());
@@ -124,5 +132,85 @@ public class CreatePost_Activity extends AppCompatActivity {
         });
 
 
+    }
+
+    //ref.http://terryyamg.blogspot.com.au/2015/03/android-jump-datepicker-timepicker.html
+    private void setEventTimeBTS() {
+        bt_eventDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDatePickerDialog();
+            }
+        });
+        bt_startingTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showStartTimePickerDialog();
+            }
+        });
+        bt_endingTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showEndTimePickerDialog();
+            }
+        });
+
+    }
+
+    public void showDatePickerDialog() {
+
+        final Calendar c = Calendar.getInstance();
+        int mYear = c.get(Calendar.YEAR);
+        int mMonth = c.get(Calendar.MONTH);
+        int mDay = c.get(Calendar.DAY_OF_MONTH);
+
+
+        DatePickerDialog dpd = new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+                    public void onDateSet(DatePicker view, int year,
+                                          int monthOfYear, int dayOfMonth) {
+                        // 完成選擇，顯示日期
+                        bt_eventDate.setText(year + "-" + (monthOfYear + 1) + "-"
+                                + dayOfMonth);
+
+                    }
+                }, mYear, mMonth, mDay);
+        dpd.show();
+    }
+
+    public void showStartTimePickerDialog() {
+        // 設定初始時間
+        final Calendar c = Calendar.getInstance();
+        int mHour = c.get(Calendar.HOUR_OF_DAY);
+        int mMinute = c.get(Calendar.MINUTE);
+
+        // 跳出時間選擇器
+        TimePickerDialog tpd = new TimePickerDialog(this,
+                new TimePickerDialog.OnTimeSetListener() {
+                    public void onTimeSet(TimePicker view, int hourOfDay,
+                                          int minute) {
+                        // 完成選擇，顯示時間
+                        bt_startingTime.setText(hourOfDay + ":" + minute);
+                    }
+                }, mHour, mMinute, false);
+        tpd.show();
+    }
+
+    public void showEndTimePickerDialog() {
+        // 設定初始時間
+        final Calendar c = Calendar.getInstance();
+        int mHour = c.get(Calendar.HOUR_OF_DAY);
+        int mMinute = c.get(Calendar.MINUTE);
+
+        // 跳出時間選擇器
+        TimePickerDialog tpd = new TimePickerDialog(this,
+                new TimePickerDialog.OnTimeSetListener() {
+                    public void onTimeSet(TimePicker view, int hourOfDay,
+                                          int minute) {
+                        // 完成選擇，顯示時間
+                        bt_startingTime.setText(hourOfDay + ":" + minute);
+                    }
+                }, mHour, mMinute, false);
+        tpd.show();
     }
 }

@@ -34,6 +34,10 @@
     <string name="Text_Choose_From_Photo">Choose From Photo</string>
     <string name="Text_Take_A_Photo">Take A Photo</string>
     <string name="Text_Society_Name">Society Name</string>
+    <string name="Text_Choose_Date">Choose Date</string>
+    <string name="Text_Starting_Time">Starting Time</string>
+    <string name="Text_Ending_Time">Ending Time</string>
+    <string name="Text_Enter_All_Fields">Please enter all fields.</string>
 
 
     <string-array name="societies">
