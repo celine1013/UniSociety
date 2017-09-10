@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "720178356846",
+    "firebase_url": "https://infs3605-uni-society.firebaseio.com",
+    "project_id": "infs3605-uni-society",
+    "storage_bucket": "infs3605-uni-society.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720178356846:android:d04e48acfb530d8e",
+        "android_client_info": {
+          "package_name": "com.example.celine.unisociety"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "720178356846-ccbunnqup3u4ld4g9utvi58kbsl4mrt3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbh8MP1IVfiEOme9FuYeoeHga0oJuLkEc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
