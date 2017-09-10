@@ -17,10 +17,7 @@
             android:layout_height="150dp"
             android:layout_gravity="center" />
 
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="151dp"
-            android:layout_weight="1.02" />
+
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -32,6 +29,12 @@
             android:layout_centerVertical="true"
             android:layout_gravity="center"
             android:progressDrawable="@drawable/circular_process_view" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvItems"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layoutManager="LinearLayoutManager" />
 
     </LinearLayout>
 
