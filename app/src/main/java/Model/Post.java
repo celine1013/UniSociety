@@ -133,7 +133,7 @@ public class Post {
         result.put("beginTime", beginTime);
         result.put("endTime", endTime);
         result.put("postDate", postDate);
-        
+
         return result;
     }
 
