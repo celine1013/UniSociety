@@ -70,7 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:drawable/screen_background_light_transparent"
-        android:gravity="top|right"
+        android:gravity="top"
         android:text="Forget Passwords?" />
 
     <Button
@@ -81,12 +81,12 @@
         android:text="@string/Text_Login" />
 
     <Button
-        android:id="@+id/btn_signup"
+        android:id="@+id/btn_sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.05"
-        android:background="@android:drawable/screen_background_light_transparent"
+        android:background="@android:color/transparent"
         android:text="Do not have an account? Register Here!"
-        tools:gravity="bottom|center_horizontal" />
+        tools:gravity="bottom" />
 
 </LinearLayout>
