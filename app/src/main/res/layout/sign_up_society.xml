@@ -18,16 +18,18 @@
         <ImageButton
             android:id="@+id/imbtn_back"
             android:layout_width="36dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.40"
-            app:srcCompat="@android:drawable/ic_media_previous" />
+            android:layout_height="53dp"
+            app:srcCompat="@mipmap/ic_goback"
+            android:layout_weight="0.34" />
 
         <TextView
             android:id="@+id/text_sign_up"
             android:layout_width="288dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal|center"
             android:text="@string/Text_Sign_Up"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+            android:textSize="40dp" />
 
     </LinearLayout>
 
@@ -78,6 +80,7 @@
         android:ems="10"
         android:fontFamily="sans-serif"
         android:hint="@string/Text_Security_Code"
+        android:layout_marginBottom="5dp"
         android:inputType="textPersonName" />
 
     <EditText
@@ -87,6 +90,7 @@
         android:layout_weight="0.00"
         android:ems="10"
         android:inputType="textEmailAddress"
+        android:layout_marginBottom="5dp"
         android:hint="@string/Text_User_Name" />
 
     <EditText
@@ -96,6 +100,7 @@
         android:layout_weight="0.00"
         android:ems="10"
         android:inputType="textPassword"
+        android:layout_marginBottom="5dp"
         android:hint="@string/Text_Password" />
 
     <EditText
@@ -105,6 +110,7 @@
         android:layout_weight="0.00"
         android:ems="10"
         android:inputType="textPassword"
+        android:layout_marginBottom="5dp"
         android:hint="@string/Text_Confirm_Password" />
 
     <EditText
@@ -116,6 +122,7 @@
         android:hint="What is your favorite color?"
         android:inputType="textPersonName"
         android:selectAllOnFocus="false"
+        android:layout_marginBottom="5dp"
         android:singleLine="true" />
 
     <Button
@@ -124,5 +131,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="0.14"
+        android:layout_marginBottom="5dp"
         android:text="@string/Text_Sign_Up" />
 </LinearLayout>

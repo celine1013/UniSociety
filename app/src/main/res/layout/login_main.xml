@@ -20,10 +20,10 @@
         android:id="@+id/app_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:textSize="30dp"
         android:layout_marginBottom="5dp"
-        android:text="Unisociety" />
+        android:gravity="center_horizontal"
+        android:text="Unisociety"
+        android:textSize="30dp" />
 
     <TextView
         android:id="@+id/app_solgan"
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:layout_marginTop="5dp"
-        android:textSize="18sp"
+        android:textSize="18dp"
         android:text="U Now Society well" />
 
     <LinearLayout
