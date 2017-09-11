@@ -41,12 +41,18 @@ public class Fragment_HomePage extends Fragment {
         //recentEvents = db.getRecentEvent();
 
         // TODO: 10/09/2017 sorting 
-        /*Collections.sort(recentEvents, new Comparator<Post>() {
+        Collections.sort(recentEvents, new Comparator<Post>() {
             @Override
             public int compare(Post p1, Post p2) {
-                return p1.getPostDate().comparesTo(p2.get);
+                StringBuilder sb1 = new StringBuilder(p1.getPostDate());
+                sb1.append(p1.getBeginTime());
+                StringBuilder sb2 = new StringBuilder(p2.getPostDate());
+                sb2.append(p2.getBeginTime());
+                String str1 = sb1.toString();
+                String str2 = sb2.toString();
+                return str1.compareToIgnoreCase(str2);
             }
-        });*/
+        });
         PostAdapter postAdapter = new PostAdapter(this.getActivity(), recentEvents);
         recentEvent = (RecyclerView) v.findViewById(R.id.rv_recentEvent);
         recentEvent.setAdapter(postAdapter);
