@@ -1,7 +1,11 @@
 package Model;
 
+import com.google.firebase.database.Exclude;
+
 import java.security.Timestamp;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -116,4 +120,21 @@ public class Post {
     public int getId() {
         return id;
     }
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("id", id);
+        result.put("postTitle", postTitle);
+        result.put("postDescription", postDescription);
+        result.put("eventCategory", eventCategory);
+        result.put("location", location);
+        result.put("popularity", popularity);
+        result.put("beginTime", beginTime);
+        result.put("endTime", endTime);
+        result.put("postDate", postDate);
+
+        return result;
+    }
+
 }
