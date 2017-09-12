@@ -52,6 +52,7 @@ public class CreatePost_Activity extends AppCompatActivity {
         bt_startingTime = (Button) findViewById(R.id.bt_startTime);
         bt_endingTime = (Button) findViewById(R.id.bt_endTime);
         et_eventLocation = (EditText) findViewById(R.id.location);
+        bt_submit = (Button)findViewById(R.id.btn_Submit);
 
         //set category spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -169,7 +170,6 @@ public class CreatePost_Activity extends AppCompatActivity {
                 new DatePickerDialog.OnDateSetListener() {
                     public void onDateSet(DatePicker view, int year,
                                           int monthOfYear, int dayOfMonth) {
-                        // 完成選擇，顯示日期
                         bt_eventDate.setText(year + "-" + (monthOfYear + 1) + "-"
                                 + dayOfMonth);
 
@@ -179,17 +179,16 @@ public class CreatePost_Activity extends AppCompatActivity {
     }
 
     public void showStartTimePickerDialog() {
-        // 設定初始時間
+
         final Calendar c = Calendar.getInstance();
         int mHour = c.get(Calendar.HOUR_OF_DAY);
         int mMinute = c.get(Calendar.MINUTE);
 
-        // 跳出時間選擇器
+
         TimePickerDialog tpd = new TimePickerDialog(this,
                 new TimePickerDialog.OnTimeSetListener() {
                     public void onTimeSet(TimePicker view, int hourOfDay,
                                           int minute) {
-                        // 完成選擇，顯示時間
                         bt_startingTime.setText(hourOfDay + ":" + minute);
                     }
                 }, mHour, mMinute, false);
@@ -197,17 +196,15 @@ public class CreatePost_Activity extends AppCompatActivity {
     }
 
     public void showEndTimePickerDialog() {
-        // 設定初始時間
+
         final Calendar c = Calendar.getInstance();
         int mHour = c.get(Calendar.HOUR_OF_DAY);
         int mMinute = c.get(Calendar.MINUTE);
 
-        // 跳出時間選擇器
         TimePickerDialog tpd = new TimePickerDialog(this,
                 new TimePickerDialog.OnTimeSetListener() {
                     public void onTimeSet(TimePicker view, int hourOfDay,
                                           int minute) {
-                        // 完成選擇，顯示時間
                         bt_startingTime.setText(hourOfDay + ":" + minute);
                     }
                 }, mHour, mMinute, false);
