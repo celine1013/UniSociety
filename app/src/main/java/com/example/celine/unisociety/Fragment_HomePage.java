@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -38,10 +39,10 @@ public class Fragment_HomePage extends Fragment {
         View v = inflater.inflate(R.layout.fragment_home_page, container, false);
 
         // TODO: 10/09/2017 db.getRecentEvent(); 
-        //recentEvents = db.getRecentEvent();
+        recentEvents = new ArrayList<Post>();
 
         // TODO: 10/09/2017 sorting 
-        Collections.sort(recentEvents, new Comparator<Post>() {
+        /*Collections.sort(recentEvents, new Comparator<Post>() {
             @Override
             public int compare(Post p1, Post p2) {
                 StringBuilder sb1 = new StringBuilder(p1.getPostDate());
@@ -52,7 +53,7 @@ public class Fragment_HomePage extends Fragment {
                 String str2 = sb2.toString();
                 return str1.compareToIgnoreCase(str2);
             }
-        });
+        });*/
         PostAdapter postAdapter = new PostAdapter(this.getActivity(), recentEvents);
         recentEvent = (RecyclerView) v.findViewById(R.id.rv_recentEvent);
         recentEvent.setAdapter(postAdapter);
