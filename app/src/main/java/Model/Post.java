@@ -23,6 +23,7 @@ public class Post {
     private String postDate;
     private boolean available;
     private int id;
+    private Map<String, Boolean> stars = new HashMap<>();
 
     public Post() {
     }

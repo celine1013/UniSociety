@@ -17,6 +17,14 @@ import android.widget.Toast;
 import Model.Account;
 import dbhelper.dbhelper;
 
+
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+
 public class Sign_Up_Activity extends AppCompatActivity {
     //Radio button
 
@@ -36,12 +44,17 @@ public class Sign_Up_Activity extends AppCompatActivity {
     private RadioButton userSelected;
 
     private dbhelper db;
-
+    private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up_society);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("User");
+        mAuth = FirebaseAuth.getInstance();
 
         //set the spinner
         societyList = (Spinner)findViewById(R.id.society_name);
@@ -110,9 +123,11 @@ public class Sign_Up_Activity extends AppCompatActivity {
                     et_passwordConfirm.setText("");
                     return;
                 }
+
                 newUser.setAccountName(userName);
                 newUser.setPassword(password);
                 newUser.setSecurityQuestion(secQuestion);
+
                 if (userSelected.getId() == R.id.RB_student) {
                     //register normal user
                     db.registerNormalUser(0, newUser); //student id == 0
@@ -125,13 +140,12 @@ public class Sign_Up_Activity extends AppCompatActivity {
                         Toast.makeText(Sign_Up_Activity.this, "The verification code is incorrect!", Toast.LENGTH_LONG).show();
                         return;
                     }
-                    db.registerNewSocUser(societyID, newUser);
-
+                    startPosting();
                 } else {
                     Log.e("ERROR", "USER SELECTED FAILED");
                 }
-
                 //show success notification
+                startPosting();
                 Toast.makeText(Sign_Up_Activity.this, "Sign Up Succeed", Toast.LENGTH_LONG);
                 //go back to login page
                 finish();
@@ -140,4 +154,18 @@ public class Sign_Up_Activity extends AppCompatActivity {
 
     }
 
+    private void startPosting() {
+        final String userName_val = et_userName.getText().toString();
+        final String password_val = et_password.getText().toString();
+        final String secQuestion_val = et_securityQues.getText().toString();
+
+        DatabaseReference registerNewUser = mDatabase.push();
+
+        registerNewUser.child("Username").setValue(userName_val);
+        registerNewUser.child("Username").setValue(password_val);
+        registerNewUser.child("Username").setValue(secQuestion_val);
+    }
+
 }
+
+

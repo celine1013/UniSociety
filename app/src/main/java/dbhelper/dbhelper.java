@@ -6,6 +6,12 @@ import java.util.List;
 import Model.Account;
 import Model.Post;
 import Model.Society;
+
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+
 /**
  * Created by Fan
  */
