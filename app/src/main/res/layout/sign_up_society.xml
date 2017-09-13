@@ -76,54 +76,59 @@
         android:id="@+id/security_code"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:layout_weight="0.00"
         android:ems="10"
         android:fontFamily="sans-serif"
         android:hint="@string/Text_Security_Code"
-        android:layout_marginBottom="5dp"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textColor="@color/textColorDarkBlue" />
 
     <EditText
-        android:id="@+id/uer_name"
+        android:id="@+id/signup_user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:layout_weight="0.00"
         android:ems="10"
+        android:hint="@string/Text_User_Name"
         android:inputType="textEmailAddress"
-        android:layout_marginBottom="5dp"
-        android:hint="@string/Text_User_Name" />
+        android:textColor="@color/textColorDarkBlue" />
 
     <EditText
-        android:id="@+id/Password"
+        android:id="@+id/signup_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:layout_weight="0.00"
         android:ems="10"
+        android:hint="@string/Text_Password"
         android:inputType="textPassword"
-        android:layout_marginBottom="5dp"
-        android:hint="@string/Text_Password" />
+        android:textColor="@color/textColorDarkBlue" />
 
     <EditText
         android:id="@+id/Confirm_Password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:layout_weight="0.00"
         android:ems="10"
+        android:hint="@string/Text_Confirm_Password"
         android:inputType="textPassword"
-        android:layout_marginBottom="5dp"
-        android:hint="@string/Text_Confirm_Password" />
+        android:textColor="@color/textColorDarkBlue" />
 
     <EditText
         android:id="@+id/Sequrity_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:layout_weight="0.00"
         android:ems="10"
         android:hint="What is your favorite color?"
         android:inputType="textPersonName"
         android:selectAllOnFocus="false"
-        android:layout_marginBottom="5dp"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:textColor="@color/textColorDarkBlue" />
 
     <Button
         android:id="@+id/btn_sign_up"

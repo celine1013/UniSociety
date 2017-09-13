@@ -14,11 +14,11 @@ public class PostDetail_Activity extends AppCompatActivity {
 
 
         Post post = getIntent().getExtras().getParcelable(PostAdapter.POST_KEY);
-        if (post != null) {
+        /*if (post != null) {
             //Toast.makeText(this, "Received item " + item.getItemName(),
                     //Toast.LENGTH_SHORT).show();
         } else {
             //Toast.makeText(this, "Didn't receive any data", Toast.LENGTH_SHORT).show();
-        }
+        }*/
     }
 }

@@ -63,8 +63,8 @@ public class Sign_Up_Activity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         societyList.setAdapter(adapter);
 
-        et_userName = (EditText)findViewById(R.id.ET_user_name);
-        et_password = (EditText)findViewById(R.id.ET_password);
+        et_userName = (EditText)findViewById(R.id.signup_user_name);
+        et_password = (EditText)findViewById(R.id.signup_password);
         et_passwordConfirm = (EditText)findViewById(R.id.Confirm_Password);
         et_securityCode = (EditText)findViewById(R.id.security_code);
         et_securityQues = (EditText)findViewById(R.id.Sequrity_question);
@@ -109,13 +109,13 @@ public class Sign_Up_Activity extends AppCompatActivity {
 
                 // TODO: 5/09/2017 invalid input handling e.g empty editTextfield
                 //check if the account exist
-                if (db.hasExisted(userName)) {
+                /*if (db.hasExisted(userName)) {
                     Toast.makeText(Sign_Up_Activity.this, "This account has already existed.", Toast.LENGTH_LONG).show();
                     et_userName.setText("");
                     et_password.setText("");
                     et_passwordConfirm.setText("");
                     return;
-                }
+                }*/
                 //confirm password
                 if (!password.equals(passwordComfirm)) {
                     Toast.makeText(Sign_Up_Activity.this, "Please reconfirm password!", Toast.LENGTH_LONG).show();
@@ -134,19 +134,20 @@ public class Sign_Up_Activity extends AppCompatActivity {
                 } else if (userSelected.getId() == R.id.RB_society) {
                     //register soc user
                     int societyID = societyList.getSelectedItemPosition() + 1; //society id start from 1
-                    String verificationCode = et_securityCode.getText().toString();
-                    if (!db.verifySocIdentity(societyID, verificationCode)) {
+                    //String verificationCode = et_securityCode.getText().toString();
+                    /*if (!db.verifySocIdentity(societyID, verificationCode)) {
                         et_securityCode.setText("");
                         Toast.makeText(Sign_Up_Activity.this, "The verification code is incorrect!", Toast.LENGTH_LONG).show();
                         return;
-                    }
-                    startPosting();
+                    }*/
+                    Log.d("SIGN UP", "USERNAME"+newUser.getAccountName());
+                    Log.d("SIGN UP", "PASSWORD"+newUser.getPassword());
+                    startPosting(societyID, newUser);
                 } else {
                     Log.e("ERROR", "USER SELECTED FAILED");
                 }
                 //show success notification
-                startPosting();
-                Toast.makeText(Sign_Up_Activity.this, "Sign Up Succeed", Toast.LENGTH_LONG);
+                Toast.makeText(Sign_Up_Activity.this, "Sign Up Succeed", Toast.LENGTH_LONG).show();
                 //go back to login page
                 finish();
             }
@@ -154,16 +155,17 @@ public class Sign_Up_Activity extends AppCompatActivity {
 
     }
 
-    private void startPosting() {
-        final String userName_val = et_userName.getText().toString();
-        final String password_val = et_password.getText().toString();
-        final String secQuestion_val = et_securityQues.getText().toString();
+    private void startPosting(int userID, Account u) {
+        final int uid_val = userID;
+        final String userName_val = u.getAccountName();
+        final String password_val = u.getPassword();
+        final String secQuestion_val = u.getSecurityQuestion();
 
         DatabaseReference registerNewUser = mDatabase.push();
 
         registerNewUser.child("Username").setValue(userName_val);
-        registerNewUser.child("Username").setValue(password_val);
-        registerNewUser.child("Username").setValue(secQuestion_val);
+        registerNewUser.child("Password").setValue(password_val);
+        registerNewUser.child("SecQuestion").setValue(secQuestion_val);
     }
 
 }
