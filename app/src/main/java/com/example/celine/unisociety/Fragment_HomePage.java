@@ -42,7 +42,7 @@ public class Fragment_HomePage extends Fragment {
         recentEvents = new ArrayList<Post>();
 
         // TODO: 10/09/2017 sorting 
-        /*Collections.sort(recentEvents, new Comparator<Post>() {
+        Collections.sort(recentEvents, new Comparator<Post>() {
             @Override
             public int compare(Post p1, Post p2) {
                 StringBuilder sb1 = new StringBuilder(p1.getPostDate());
@@ -53,7 +53,7 @@ public class Fragment_HomePage extends Fragment {
                 String str2 = sb2.toString();
                 return str1.compareToIgnoreCase(str2);
             }
-        });*/
+        });
         PostAdapter postAdapter = new PostAdapter(this.getActivity(), recentEvents);
         recentEvent = (RecyclerView) v.findViewById(R.id.rv_recentEvent);
         recentEvent.setAdapter(postAdapter);

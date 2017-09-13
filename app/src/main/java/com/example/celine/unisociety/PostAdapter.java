@@ -1,6 +1,7 @@
 package com.example.celine.unisociety;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import java.util.List;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
+    public static final String POST_KEY = "post_key";
     private List<Post> mItems;
     private Context mContext;
 
@@ -35,20 +37,32 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Post post = mItems.get(position);
+        final Post post = mItems.get(position);
 
         // TODO: 10/09/2017 add the image
         //try {
         //set view
         holder.tv_EventTitle.setText(post.getPostTitle());
-        holder.tv_EventDate.setText("tbc");// TODO: 10/09/2017 change date format
+        holder.tv_EventDate.setText("tbc");
         holder.tv_EventTime.setText("tbc");
         holder.tv_EventLocation.setText(post.getLocation());
 
         /*} catch (IOException e) {
             e.printStackTrace();
         }*/
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, PostDetail_Activity.class);
+                // TODO: 13/09/2017 change model into parcelable
+                //intent.putExtra(POST_KEY, post);
+                mContext.startActivity(intent);
+            }
+        });
     }
+
+
 
     @Override
     public int getItemCount() {
