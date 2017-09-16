@@ -24,6 +24,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class Sign_Up_Activity extends AppCompatActivity {
     //Radio button
@@ -43,10 +46,8 @@ public class Sign_Up_Activity extends AppCompatActivity {
     private RadioGroup userType;
     private RadioButton userSelected;
 
-    private dbhelper db;
-    private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
-    private FirebaseAuth.AuthStateListener mAuthListener;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,6 @@ public class Sign_Up_Activity extends AppCompatActivity {
         setContentView(R.layout.sign_up_society);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("User");
-        mAuth = FirebaseAuth.getInstance();
 
         //set the spinner
         societyList = (Spinner)findViewById(R.id.society_name);
@@ -130,7 +130,7 @@ public class Sign_Up_Activity extends AppCompatActivity {
 
                 if (userSelected.getId() == R.id.RB_student) {
                     //register normal user
-                    db.registerNormalUser(0, newUser); //student id == 0
+
                 } else if (userSelected.getId() == R.id.RB_society) {
                     //register soc user
                     int societyID = societyList.getSelectedItemPosition() + 1; //society id start from 1
@@ -156,7 +156,7 @@ public class Sign_Up_Activity extends AppCompatActivity {
     }
 
     private void startPosting(Account u) {
-        final int uid_val = u.getId();
+        /*final int uid_val = u.getId();
         final String userName_val = u.getAccountName();
         final String password_val = u.getPassword();
         final String secQuestion_val = u.getSecurityQuestion();
@@ -166,8 +166,10 @@ public class Sign_Up_Activity extends AppCompatActivity {
         registerNewUser.child("UserID").setValue(uid_val);
         registerNewUser.child("Username").setValue(userName_val);
         registerNewUser.child("Password").setValue(password_val);
-        registerNewUser.child("SecQuestion").setValue(secQuestion_val);
-        // TODO: 13/09/2017 userid push
+        registerNewUser.child("SecQuestion").setValue(secQuestion_val);*/
+
+        DatabaseReference usersRef = mDatabase.child(u.getAccountName());
+        usersRef.setValue(u);
 
         Log.d("SIGN UP", "NEW USER REGISTERED");
     }
