@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,7 +45,8 @@ public class LogIn_Activity extends AppCompatActivity {
     private ValueEventListener mAccountListener;
     private DatabaseReference mRef;
     private Account currentUser;
-
+    //private boolean logInCompleted = false;
+    private boolean result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,28 +88,9 @@ public class LogIn_Activity extends AppCompatActivity {
                 String account = accountName_et.getText().toString();
                 String password = password_et.getText().toString();
                 //check the database
-                checkLogIn(account);
-                boolean logInReslt = true;
-                if(currentUser == null){
-                    logInReslt = false;
-                }else {
-                    logInReslt = currentUser.getPassword().equals(password);
-                }
-
-                if(!logInReslt){
-                    //show notification
-                    Toast.makeText(LogIn_Activity.this,"Log In Failed", Toast.LENGTH_LONG);
-                    //clear fields
-                    accountName_et.setText("");
-                    password_et.setText("");
-                }else{
-                    setLogInResult(currentUser);
-                    //show toast of log-in success
-                    Toast.makeText(LogIn_Activity.this,"Log In Succeed", Toast.LENGTH_LONG);
-                    //go back to main page;
-                    finish();
-                }
+                checkLogIn(account, password);
             }
+
         });
     }
 
@@ -126,24 +109,58 @@ public class LogIn_Activity extends AppCompatActivity {
 
     }
 
-    private void checkLogIn(String a) {
+    private void checkLogIn(String a, String p) {
 
         mRef = FirebaseDatabase.getInstance().getReference();
+        final String p2 = p;
+        com.google.firebase.database.Query query = mRef.child("User").orderByChild("accountName").equalTo(a);
 
-        com.google.firebase.database.Query query = mRef.child("Users").orderByChild("Username").equalTo(a);
+        query.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                currentUser = dataSnapshot.getValue(Account.class);
 
-        query.addValueEventListener(new ValueEventListener(){
-           @Override
-           public void onDataChange(DataSnapshot dataSnapshot) {
-               currentUser = dataSnapshot.getValue(Account.class);
-           }
+                if (currentUser == null) {
+                    Log.d("LOG IN", "NULL USER");
+                    Toast.makeText(LogIn_Activity.this, "Log In Failed", Toast.LENGTH_LONG).show();
+                } else {
+                    result = currentUser.getPassword().equals(p2);
+                    Log.d("TESTING", String.valueOf(result));
+                    if (!result) {
+                        Toast.makeText(LogIn_Activity.this, "Log In Failed", Toast.LENGTH_LONG).show();
 
-           @Override
-           public void onCancelled(DatabaseError databaseError) {
+                        accountName_et.setText("");
+                        password_et.setText("");
+                    } else {
+                        setLogInResult(currentUser);
+                        //show toast of log-in success
+                        Toast.makeText(LogIn_Activity.this, "Log In Succeed", Toast.LENGTH_LONG).show();
+                        //go back to main page;
+                        finish();
+                    }
+                }
+            }
 
-           }
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
         });
-
     }
 
 

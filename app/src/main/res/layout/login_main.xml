@@ -46,7 +46,8 @@
             android:ems="10"
             android:hint="User Name"
             android:inputType="textPersonName"
-            android:text="" />
+            android:text=""
+            android:textColor="@color/textColorDarkBlue" />
     </LinearLayout>
 
     <LinearLayout
@@ -62,7 +63,8 @@
             android:ems="10"
             android:hint="Password"
             android:inputType="textPassword"
-            android:text="" />
+            android:text=""
+            android:textColor="@color/textColorDarkBlue" />
     </LinearLayout>
 
     <Button
