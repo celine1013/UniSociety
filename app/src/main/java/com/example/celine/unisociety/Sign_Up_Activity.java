@@ -134,7 +134,7 @@ public class Sign_Up_Activity extends AppCompatActivity {
                 } else if (userSelected.getId() == R.id.RB_society) {
                     //register soc user
                     int societyID = societyList.getSelectedItemPosition() + 1; //society id start from 1
-
+                    newUser.setId(societyID);
                     // TODO: 13/09/2017 verify identity
                     String verificationCode = et_securityCode.getText().toString();
                     /*if (!db.verifySocIdentity(societyID, verificationCode)) {
@@ -142,7 +142,7 @@ public class Sign_Up_Activity extends AppCompatActivity {
                         Toast.makeText(Sign_Up_Activity.this, "The verification code is incorrect!", Toast.LENGTH_LONG).show();
                         return;
                     }*/
-                    startPosting(societyID, newUser);
+                    startPosting(newUser);
                 } else {
                     Log.e("ERROR", "USER SELECTED FAILED");
                 }
@@ -155,14 +155,15 @@ public class Sign_Up_Activity extends AppCompatActivity {
 
     }
 
-    private void startPosting(int userID, Account u) {
-        final int uid_val = userID;
+    private void startPosting(Account u) {
+        final int uid_val = u.getId();
         final String userName_val = u.getAccountName();
         final String password_val = u.getPassword();
         final String secQuestion_val = u.getSecurityQuestion();
 
         DatabaseReference registerNewUser = mDatabase.push();
 
+        registerNewUser.child("UserID").setValue(uid_val);
         registerNewUser.child("Username").setValue(userName_val);
         registerNewUser.child("Password").setValue(password_val);
         registerNewUser.child("SecQuestion").setValue(secQuestion_val);

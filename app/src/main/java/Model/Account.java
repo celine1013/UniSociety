@@ -47,6 +47,9 @@ public class Account  implements Serializable {
         this.securityQuestion = securityQuestion;
     }
 
+    public void setId(int id){
+        this.id = id;
+    }
     public int getId() {
         return id;
     }
