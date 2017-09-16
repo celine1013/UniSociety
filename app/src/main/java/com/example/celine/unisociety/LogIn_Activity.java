@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,9 +16,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import Model.Account;
 import dbhelper.dbhelper;
 import java.io.Serializable;
+import java.util.Map;
 
 
 public class LogIn_Activity extends AppCompatActivity {
@@ -30,13 +41,17 @@ public class LogIn_Activity extends AppCompatActivity {
     private Button btn_logIn;
     private Button btn_forgetPassword;
     private dbhelper db;
-    TextView tv1, tv2;
-    Typeface tf1, tf2;
+    private ValueEventListener mAccountListener;
+    private DatabaseReference mRef;
+    private Account currentUser;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_main);
+        mRef = FirebaseDatabase.getInstance().getReference("User");
+
         Log.d("NAVIGATION SETTING", "SETTING COMPLETED");
         accountName_et = (EditText)findViewById(R.id.ET_user_name);
         password_et = (EditText)findViewById(R.id.ET_password);
@@ -71,9 +86,15 @@ public class LogIn_Activity extends AppCompatActivity {
                 String account = accountName_et.getText().toString();
                 String password = password_et.getText().toString();
                 //check the database
-                Account currentUser = db.logIn(account,password);
-
+                checkLogIn(account);
+                boolean logInReslt = true;
                 if(currentUser == null){
+                    logInReslt = false;
+                }else {
+                    logInReslt = currentUser.getPassword().equals(password);
+                }
+
+                if(!logInReslt){
                     //show notification
                     Toast.makeText(LogIn_Activity.this,"Log In Failed", Toast.LENGTH_LONG);
                     //clear fields
@@ -102,6 +123,26 @@ public class LogIn_Activity extends AppCompatActivity {
     }
 
     private void setBtn_forgetPassword(){
+
+    }
+
+    private void checkLogIn(String a) {
+
+        mRef = FirebaseDatabase.getInstance().getReference();
+
+        com.google.firebase.database.Query query = mRef.child("Users").orderByChild("Username").equalTo(a);
+
+        query.addValueEventListener(new ValueEventListener(){
+           @Override
+           public void onDataChange(DataSnapshot dataSnapshot) {
+               currentUser = dataSnapshot.getValue(Account.class);
+           }
+
+           @Override
+           public void onCancelled(DatabaseError databaseError) {
+
+           }
+        });
 
     }
 
