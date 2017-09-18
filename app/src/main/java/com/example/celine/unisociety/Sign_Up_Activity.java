@@ -15,14 +15,19 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import Model.Account;
+import Model.Society;
 import dbhelper.dbhelper;
 
 
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 
 public class Sign_Up_Activity extends AppCompatActivity {
@@ -43,18 +48,13 @@ public class Sign_Up_Activity extends AppCompatActivity {
     private RadioGroup userType;
     private RadioButton userSelected;
 
-    private dbhelper db;
-    private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase;
-    private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up_society);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("User");
-        mAuth = FirebaseAuth.getInstance();
+        //mDatabase = FirebaseDatabase.getInstance().getReference().child("User");
 
         //set the spinner
         societyList = (Spinner)findViewById(R.id.society_name);
@@ -107,15 +107,7 @@ public class Sign_Up_Activity extends AppCompatActivity {
                 String passwordComfirm = et_passwordConfirm.getText().toString();
                 String secQuestion = et_securityQues.getText().toString();
 
-                // TODO: 5/09/2017 invalid input handling e.g empty editTextfield
-                //check if the account exist
-                /*if (db.hasExisted(userName)) {
-                    Toast.makeText(Sign_Up_Activity.this, "This account has already existed.", Toast.LENGTH_LONG).show();
-                    et_userName.setText("");
-                    et_password.setText("");
-                    et_passwordConfirm.setText("");
-                    return;
-                }*/
+                // TODO: 17/09/2017 empty input
                 //confirm password
                 if (!password.equals(passwordComfirm)) {
                     Toast.makeText(Sign_Up_Activity.this, "Please reconfirm password!", Toast.LENGTH_LONG).show();
@@ -127,35 +119,14 @@ public class Sign_Up_Activity extends AppCompatActivity {
                 newUser.setAccountName(userName);
                 newUser.setPassword(password);
                 newUser.setSecurityQuestion(secQuestion);
+                registerUser(newUser);
 
-                if (userSelected.getId() == R.id.RB_student) {
-                    //register normal user
-                    db.registerNormalUser(0, newUser); //student id == 0
-                } else if (userSelected.getId() == R.id.RB_society) {
-                    //register soc user
-                    int societyID = societyList.getSelectedItemPosition() + 1; //society id start from 1
-                    newUser.setId(societyID);
-                    // TODO: 13/09/2017 verify identity
-                    String verificationCode = et_securityCode.getText().toString();
-                    /*if (!db.verifySocIdentity(societyID, verificationCode)) {
-                        et_securityCode.setText("");
-                        Toast.makeText(Sign_Up_Activity.this, "The verification code is incorrect!", Toast.LENGTH_LONG).show();
-                        return;
-                    }*/
-                    startPosting(newUser);
-                } else {
-                    Log.e("ERROR", "USER SELECTED FAILED");
-                }
-                //show success notification
-                Toast.makeText(Sign_Up_Activity.this, "Sign Up Succeed", Toast.LENGTH_LONG).show();
-                //go back to login page
-                finish();
             }
         });
 
     }
 
-    private void startPosting(Account u) {
+    private void registerUser(Account u) {
         /*final int uid_val = userID;
         final String userName_val = u.getAccountName();
         final String password_val = u.getPassword();
@@ -167,10 +138,103 @@ public class Sign_Up_Activity extends AppCompatActivity {
         registerNewUser.child("Password").setValue(password_val);
         registerNewUser.child("SecQuestion").setValue(secQuestion_val);*/
         // TODO: 13/09/2017 userid push
+        final Account newUser = u;
+        final DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
+        Log.d("SIGN UP TESTING", "LINE 143");
+        com.google.firebase.database.Query query = mRef.child("User").orderByChild("accountName").equalTo(newUser.getAccountName());
+        query.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Account a = dataSnapshot.getValue(Account.class);
+                if (a == null) {
 
-        DatabaseReference usersRef = mDatabase.child(u.getAccountName());
-        usersRef.setValue(u);
-        Log.d("SIGN UP", "NEW USER REGISTERED");
+                    if (userSelected.getId() != R.id.RB_student) {
+                        //if it is society user
+
+                        //verify verification code
+                        final int societyID = societyList.getSelectedItemPosition() + 1;//set societyID
+                        Query q = mRef.child("Society").orderByChild("societyID")
+                                .equalTo(societyID);
+
+                        q.addChildEventListener(new ChildEventListener() {
+                            @Override
+                            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                String verificationCode = et_securityCode.getText().toString();
+                                Society society = dataSnapshot.getValue(Society.class);
+
+                                //if verified
+                                if (society.getVerifationCode().equals(verificationCode)) {
+                                    newUser.setId(societyID);
+                                    DatabaseReference usersRef = mRef.child(newUser.getAccountName());
+                                    usersRef.setValue(newUser);
+                                    Log.d("SIGN UP", "NEW SOCIETY USER REGISTERED");
+                                    Toast.makeText(Sign_Up_Activity.this, "Sign Up Succeed", Toast.LENGTH_LONG).show();
+                                    finish();
+                                } else {
+                                    et_securityCode.setText("");
+                                    Toast.makeText(Sign_Up_Activity.this, "Incorrect Verification Code", Toast.LENGTH_LONG).show();
+                                }
+                            }
+
+                            @Override
+                            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                            }
+
+                            @Override
+                            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                            }
+
+                            @Override
+                            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+                    } else {
+                        //if it is a student
+                        newUser.setId(0);//set studentType
+                        DatabaseReference usersRef = mRef.child(newUser.getAccountName());
+                        usersRef.setValue(newUser);
+                        Log.d("SIGN UP", "NEW STUDENT USER REGISTERED");
+                        Toast.makeText(Sign_Up_Activity.this, "Sign Up Succeed", Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+
+                } else {
+                    //if the account has already existed
+                    Log.d("SIGN UP TESTING", "EXISTING ACCOUNT");
+                    Toast.makeText(Sign_Up_Activity.this, "The account already exists.", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
     }
 
 }
