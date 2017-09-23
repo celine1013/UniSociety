@@ -21,7 +21,9 @@
         <activity android:name=".LogIn_Activity" />
         <activity android:name=".Sign_Up_Activity" />
         <activity android:name=".CreatePost_Activity" />
-        <activity android:name=".PostDetail_Activity"></activity>
+        <activity android:name=".PostDetail_Activity" />
+        <activity android:name=".PostHistoryActivity" />
+        <activity android:name=".EventListByCategory_Activity"></activity>
     </application>
 
 </manifest>

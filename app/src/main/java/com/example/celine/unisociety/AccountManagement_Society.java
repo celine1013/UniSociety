@@ -48,9 +48,9 @@ public class AccountManagement_Society extends Fragment {
     }
 
     private void setButtonManagePosts(View view) {
-        //Intent intent = new Intent(getActivity(), EventListActivity.class);
-        //intent.putExtra("USER_ID", this.societyID);
-        //startActivity(intent);
+        Intent intent = new Intent(getActivity(), PostHistoryActivity.class);
+        intent.putExtra("USER_ID", this.societyID);
+        startActivity(intent);
     }
 
     private void setButtonEditProfile(View view) {

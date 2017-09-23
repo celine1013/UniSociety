@@ -23,6 +23,7 @@ import dbhelper.dbhelper;
 
 public class CreatePost_Activity extends AppCompatActivity {
     private int societyID;
+    private String postType;
 
     private EditText et_eventTitle;
     private EditText et_eventDes;
@@ -44,6 +45,7 @@ public class CreatePost_Activity extends AppCompatActivity {
             finish();
         }
 
+
         //binding
         et_eventTitle = (EditText) findViewById(R.id.title);
         et_eventDes = (EditText) findViewById(R.id.description);
@@ -61,6 +63,14 @@ public class CreatePost_Activity extends AppCompatActivity {
         sp_eventCategory.setAdapter(adapter);
         //set time buttons
         setEventTimeBTS();
+
+        //show the data if it's editing existing post
+        postType = this.getIntent().getStringExtra("POST_TYPE");
+        if(postType.equals(PostHistoryActivity.EDIT_POST)){
+            //show all data;
+            Post p = this.getIntent().getParcelableExtra(HistoryAdapter.POST_KEY);
+            // TODO: 23/09/2017 push the info to the interface
+        }
 
         //set submit button
         bt_submit.setOnClickListener(new View.OnClickListener() {
@@ -122,7 +132,8 @@ public class CreatePost_Activity extends AppCompatActivity {
                 }
 
                 //upload the new post to the database
-                db.createPost(societyID, newPost);
+                // TODO: 23/09/2017 create or update the post
+                //if()
 
                 //show success message
                 Snackbar.make(view, "Post Created!", Snackbar.LENGTH_LONG).show();
@@ -131,6 +142,8 @@ public class CreatePost_Activity extends AppCompatActivity {
                 finish();
             }
         });
+
+
 
 
     }

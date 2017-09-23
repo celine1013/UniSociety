@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="@dimen/activity_horizontal_margin"
     android:weightSum="1">
 
     <LinearLayout
+        android:id="@+id/headline"
         android:layout_width="match_parent"
-        android:layout_height="67dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_weight="0.01">
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.04"
-            app:srcCompat="@android:drawable/ic_media_previous" />
+        android:layout_weight="0.01"
+        tools:ignore="ObsoleteLayoutParam">
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="154dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="0.06"
             android:text="@string/Text_History"
@@ -29,8 +26,25 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
     </LinearLayout>
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_history"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/headline"
+        />
 
-</LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/rv_history"
+        android:layout_alignParentRight="true"
+
+        android:tint="@color/cardview_light_background"
+        app:backgroundTint="@color/colorPrimary"
+        app:elevation="5dp"
+        app:fabSize="normal"
+        app:rippleColor="@color/common_google_signin_btn_text_dark_focused"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+</RelativeLayout>

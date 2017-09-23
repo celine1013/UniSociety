@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        currentUser = null;
+        //currentUser = null;
         navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_home);
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
             if(data == null)return;
             currentUser = LogIn_Activity.getAccount(data);
             //after log-in, go to personal accountmanagement page;
-            navigation.setSelectedItemId(R.id.navigation_account);
+            navigation.setSelectedItemId(R.id.navigation_home);
         }
     }
 
