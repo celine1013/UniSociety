@@ -1,13 +1,16 @@
 package Model;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 
 /**
  *
  * @author Fan
  */
-public class Account  implements Serializable {
+public class Account  implements Parcelable {
     private String accountName;
     private String password;
     private String securityQuestion;
@@ -22,6 +25,25 @@ public class Account  implements Serializable {
         this.securityQuestion = securityQuestion;
         this.id = id;
     }
+
+    protected Account(Parcel in) {
+        accountName = in.readString();
+        password = in.readString();
+        securityQuestion = in.readString();
+        id = in.readInt();
+    }
+
+    public static final Creator<Account> CREATOR = new Creator<Account>() {
+        @Override
+        public Account createFromParcel(Parcel in) {
+            return new Account(in);
+        }
+
+        @Override
+        public Account[] newArray(int size) {
+            return new Account[size];
+        }
+    };
 
     public String getAccountName() {
         return accountName;
@@ -50,7 +72,21 @@ public class Account  implements Serializable {
     public void setId(int id){
         this.id = id;
     }
+
     public int getId() {
         return id;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(accountName);
+        parcel.writeString(password);
+        parcel.writeString(securityQuestion);
+        parcel.writeInt(id);
     }
 }

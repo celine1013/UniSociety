@@ -1,5 +1,8 @@
 package Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.firebase.database.Exclude;
 
 import java.security.Timestamp;
@@ -11,7 +14,7 @@ import java.util.Map;
  *
  * @author Fan
  */
-public class Post {
+public class Post implements Parcelable{
     private String postTitle;
     private String postDescription;
     private int eventCategory;
@@ -43,6 +46,32 @@ public class Post {
         this.available = available;
         this.id = id;
     }
+
+    protected Post(Parcel in) {
+        postTitle = in.readString();
+        postDescription = in.readString();
+        eventCategory = in.readInt();
+        beginTime = in.readString();
+        endTime = in.readString();
+        location = in.readString();
+        popularity = in.readString();
+        picture = in.readString();
+        postDate = in.readString();
+        available = in.readByte() != 0;
+        id = in.readInt();
+    }
+
+    public static final Creator<Post> CREATOR = new Creator<Post>() {
+        @Override
+        public Post createFromParcel(Parcel in) {
+            return new Post(in);
+        }
+
+        @Override
+        public Post[] newArray(int size) {
+            return new Post[size];
+        }
+    };
 
     public String getPostTitle() {
         return postTitle;
@@ -138,4 +167,23 @@ public class Post {
         return result;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(postTitle);
+        parcel.writeString(postDescription);
+        parcel.writeInt(eventCategory);
+        parcel.writeString(beginTime);
+        parcel.writeString(endTime);
+        parcel.writeString(location);
+        parcel.writeString(popularity);
+        parcel.writeString(picture);
+        parcel.writeString(postDate);
+        parcel.writeByte((byte) (available ? 1 : 0));
+        parcel.writeInt(id);
+    }
 }

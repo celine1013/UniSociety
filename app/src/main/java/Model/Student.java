@@ -1,10 +1,12 @@
 package Model;
 
+import android.os.Parcelable;
+
 /**
  *
  * @author Fan
  */
-public abstract class Student {
+public abstract class Student implements Parcelable{
     private String studentName;
     private String emailAddress;
     private String facebook;

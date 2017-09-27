@@ -1,10 +1,13 @@
 package Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  *
  * @author Fan
  */
-public class Society {
+public class Society implements Parcelable{
     private String societyName;
     private String societyDescription;
     private int societyCategory;
@@ -36,6 +39,32 @@ public class Society {
         this.verificationCode = verificationCode;
         this.id = id;
     }
+
+    protected Society(Parcel in) {
+        societyName = in.readString();
+        societyDescription = in.readString();
+        societyCategory = in.readInt();
+        emailAddress = in.readString();
+        contactPerson = in.readString();
+        contactNumber = in.readString();
+        logo = in.readString();
+        facebook = in.readString();
+        verificationCode = in.readString();
+        available = in.readByte() != 0;
+        id = in.readInt();
+    }
+
+    public static final Creator<Society> CREATOR = new Creator<Society>() {
+        @Override
+        public Society createFromParcel(Parcel in) {
+            return new Society(in);
+        }
+
+        @Override
+        public Society[] newArray(int size) {
+            return new Society[size];
+        }
+    };
 
     public String getSocietyName() {
         return societyName;
@@ -113,6 +142,26 @@ public class Society {
 
     public int getId() {
         return id;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(societyName);
+        parcel.writeString(societyDescription);
+        parcel.writeInt(societyCategory);
+        parcel.writeString(emailAddress);
+        parcel.writeString(contactPerson);
+        parcel.writeString(contactNumber);
+        parcel.writeString(logo);
+        parcel.writeString(facebook);
+        parcel.writeString(verificationCode);
+        parcel.writeByte((byte) (available ? 1 : 0));
+        parcel.writeInt(id);
     }
 }
 

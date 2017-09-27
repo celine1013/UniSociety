@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
             if(data == null)return;
             currentUser = LogIn_Activity.getAccount(data);
             //after log-in, go to personal accountmanagement page;
-            navigation.setSelectedItemId(R.id.navigation_home);
+            //navigation.setSelectedItemId(R.id.navigation_home);
         }
     }
 

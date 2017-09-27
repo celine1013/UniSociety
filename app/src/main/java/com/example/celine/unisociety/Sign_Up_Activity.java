@@ -15,14 +15,20 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import Model.Account;
+import Model.Society;
 import dbhelper.dbhelper;
 
 
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class Sign_Up_Activity extends AppCompatActivity {
@@ -42,6 +48,7 @@ public class Sign_Up_Activity extends AppCompatActivity {
 
     private RadioGroup userType;
     private RadioButton userSelected;
+    private int currentChecked;
 
     private dbhelper db;
     private FirebaseAuth mAuth;
@@ -83,11 +90,13 @@ public class Sign_Up_Activity extends AppCompatActivity {
                 if (selectedID == R.id.RB_society) {
                     societyList.setVisibility(View.VISIBLE);
                     et_securityCode.setVisibility(View.VISIBLE);
+                    currentChecked = R.id.RB_society;
 
                 } else if (selectedID == R.id.RB_student) {
                     //hide societyList, securityCode field if it's student
                     societyList.setVisibility(View.GONE);
                     et_securityCode.setVisibility(View.GONE);
+                    currentChecked = R.id.RB_student;
                 }
 
             }
@@ -128,26 +137,20 @@ public class Sign_Up_Activity extends AppCompatActivity {
                 newUser.setPassword(password);
                 newUser.setSecurityQuestion(secQuestion);
 
-                if (userSelected.getId() == R.id.RB_student) {
+                if (currentChecked == R.id.RB_student) {
                     //register normal user
-                    db.registerNormalUser(0, newUser); //student id == 0
-                } else if (userSelected.getId() == R.id.RB_society) {
+                    newUser.setId(0);
+                    registerNormalUser(newUser);
+                } else if (currentChecked == R.id.RB_society) {
                     //register soc user
                     int societyID = societyList.getSelectedItemPosition() + 1; //society id start from 1
                     newUser.setId(societyID);
-                    // TODO: 13/09/2017 verify identity
-                    String verificationCode = et_securityCode.getText().toString();
-                    /*if (!db.verifySocIdentity(societyID, verificationCode)) {
-                        et_securityCode.setText("");
-                        Toast.makeText(Sign_Up_Activity.this, "The verification code is incorrect!", Toast.LENGTH_LONG).show();
-                        return;
-                    }*/
-                    startPosting(newUser);
+                    registerSocietyUser(newUser);
                 } else {
                     Log.e("ERROR", "USER SELECTED FAILED");
                 }
                 //show success notification
-                Toast.makeText(Sign_Up_Activity.this, "Sign Up Succeed", Toast.LENGTH_LONG).show();
+                //Toast.makeText(Sign_Up_Activity.this, "Sign Up Succeed", Toast.LENGTH_LONG).show();
                 //go back to login page
                 finish();
             }
@@ -155,7 +158,7 @@ public class Sign_Up_Activity extends AppCompatActivity {
 
     }
 
-    private void startPosting(Account u) {
+    private void registerSocietyUser(Account u) {
         /*final int uid_val = userID;
         final String userName_val = u.getAccountName();
         final String password_val = u.getPassword();
@@ -168,10 +171,119 @@ public class Sign_Up_Activity extends AppCompatActivity {
         registerNewUser.child("SecQuestion").setValue(secQuestion_val);*/
         // TODO: 13/09/2017 userid push
 
-        DatabaseReference usersRef = mDatabase.child(u.getAccountName());
-        usersRef.setValue(u);
-        Log.d("SIGN UP", "NEW USER REGISTERED");
+        DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
+        final String v = et_securityCode.getText().toString();
+        final Account newUser = u;
+        com.google.firebase.database.Query query = mRef.child("Society").orderByChild("id").equalTo(u.getId());
+
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getValue()==null){
+                    //IF NO SOCIETY FOUND
+                    Toast.makeText(Sign_Up_Activity.this, "Unknown Error", Toast.LENGTH_LONG).show();
+                    Log.d("SIGN UP", "CANNOT FIND SOCIETY");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        query.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    //GET SOCIETY
+                    Society society = dataSnapshot.getValue(Society.class);
+
+                    if (!v.equals(society.getVerifationCode())) {
+                        //IF VERIFICATION FAILED
+                        et_securityCode.setText("");
+                        Toast.makeText(Sign_Up_Activity.this, "Verification Failed", Toast.LENGTH_LONG).show();
+                    } else {
+                        //IF VERIFICATION SUCCESS
+                        Log.v("SIGN UP", "VERIFICATION SUCCEED");
+                        DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference();
+                        Query q = ref2.child("Account").orderByChild("accountName").equalTo(newUser.getAccountName());
+                        q.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                if(dataSnapshot.getValue() == null){
+                                    //IF ACCOUNT NOT YET CREATED
+                                    DatabaseReference usersRef = mDatabase.child(newUser.getAccountName());
+                                    usersRef.setValue(newUser);
+                                    Toast.makeText(Sign_Up_Activity.this, "Sign Up Succeed", Toast.LENGTH_LONG).show();
+                                }else{
+                                    //IF ACCOUNT ALREADY EXISTS
+                                    et_userName.setText("");
+                                    et_password.setText("");
+                                    et_passwordConfirm.setText("");
+                                    Toast.makeText(Sign_Up_Activity.this, "Account already exists.", Toast.LENGTH_LONG).show();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+                    }
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
+
+    private void registerNormalUser(Account u){
+        final Account newUser = u;
+        DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference();
+        Query q = ref2.child("Account").orderByChild("accountName").equalTo(newUser.getAccountName());
+        q.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getValue() == null){
+                    //IF ACCOUNT NOT YET CREATED
+                    DatabaseReference usersRef = mDatabase.child(newUser.getAccountName());
+                    usersRef.setValue(newUser);
+                    Toast.makeText(Sign_Up_Activity.this, "Sign Up Succeed", Toast.LENGTH_LONG).show();
+                    Log.v("SIGN UP", "NORMAL USER CREATED");
+                }else{
+                    //IF ACCOUNT ALREADY EXISTS
+                    et_userName.setText("");
+                    et_password.setText("");
+                    et_passwordConfirm.setText("");
+                    Toast.makeText(Sign_Up_Activity.this, "Account already exists.", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
 
 }
 

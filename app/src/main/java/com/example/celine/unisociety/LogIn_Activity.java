@@ -77,7 +77,7 @@ public class LogIn_Activity extends AppCompatActivity {
     }
 
     public static Account getAccount(Intent result){
-        return (Account)result.getSerializableExtra(CURRENT_USER);
+        return (Account)result.getParcelableExtra(CURRENT_USER);
     }
 
     private void setLogInBtn(){
@@ -115,18 +115,31 @@ public class LogIn_Activity extends AppCompatActivity {
         final String p2 = p;
         com.google.firebase.database.Query query = mRef.child("User").orderByChild("accountName").equalTo(a);
 
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getValue() == null) {
+                    Log.d("LOG IN", "NULL USER");
+                    accountName_et.setText("");
+                    password_et.setText("");
+                    Toast.makeText(LogIn_Activity.this, "Log In Failed, no user existed", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                currentUser = dataSnapshot.getValue(Account.class);
+                    currentUser = dataSnapshot.getValue(Account.class);
+                    Log.d("LOG IN", currentUser.getAccountName());
+                    Log.d("LOG IN", "LINE 127");
 
-                if (currentUser == null) {
-                    Log.d("LOG IN", "NULL USER");
-                    Toast.makeText(LogIn_Activity.this, "Log In Failed", Toast.LENGTH_LONG).show();
-                } else {
-                    result = currentUser.getPassword().equals(p2);
                     Log.d("TESTING", String.valueOf(result));
-                    if (!result) {
+                    if (!p2.equals(currentUser.getPassword())) {
                         Toast.makeText(LogIn_Activity.this, "Log In Failed", Toast.LENGTH_LONG).show();
 
                         accountName_et.setText("");
@@ -138,7 +151,7 @@ public class LogIn_Activity extends AppCompatActivity {
                         //go back to main page;
                         finish();
                     }
-                }
+
             }
 
             @Override
@@ -161,7 +174,7 @@ public class LogIn_Activity extends AppCompatActivity {
 
             }
         });
-    }
+        }
 
 
 
