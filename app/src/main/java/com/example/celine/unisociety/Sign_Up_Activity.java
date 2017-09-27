@@ -60,7 +60,7 @@ public class Sign_Up_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up_society);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("User");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child(Account.ACCOUNT);
         mAuth = FirebaseAuth.getInstance();
 
         //set the spinner
@@ -174,7 +174,7 @@ public class Sign_Up_Activity extends AppCompatActivity {
         DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
         final String v = et_securityCode.getText().toString();
         final Account newUser = u;
-        com.google.firebase.database.Query query = mRef.child("Society").orderByChild("id").equalTo(u.getId());
+        com.google.firebase.database.Query query = mRef.child(Society.SOCIETY).orderByChild(Society.SOCIETY_ID).equalTo(u.getId());
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -205,13 +205,13 @@ public class Sign_Up_Activity extends AppCompatActivity {
                         //IF VERIFICATION SUCCESS
                         Log.v("SIGN UP", "VERIFICATION SUCCEED");
                         DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference();
-                        Query q = ref2.child("Account").orderByChild("accountName").equalTo(newUser.getAccountName());
+                        Query q = ref2.child(Account.ACCOUNT).orderByChild(Account.ACCOUNT_ACCOUNT_NAME).equalTo(newUser.getAccountName());
                         q.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 if(dataSnapshot.getValue() == null){
                                     //IF ACCOUNT NOT YET CREATED
-                                    DatabaseReference usersRef = mDatabase.child(newUser.getAccountName());
+                                    DatabaseReference usersRef = mDatabase.child(mDatabase.push().getKey());
                                     usersRef.setValue(newUser);
                                     Toast.makeText(Sign_Up_Activity.this, "Sign Up Succeed", Toast.LENGTH_LONG).show();
                                 }else{
@@ -257,13 +257,13 @@ public class Sign_Up_Activity extends AppCompatActivity {
     private void registerNormalUser(Account u){
         final Account newUser = u;
         DatabaseReference ref2 = FirebaseDatabase.getInstance().getReference();
-        Query q = ref2.child("Account").orderByChild("accountName").equalTo(newUser.getAccountName());
+        Query q = ref2.child(Account.ACCOUNT).orderByChild(Account.ACCOUNT_ACCOUNT_NAME).equalTo(newUser.getAccountName());
         q.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.getValue() == null){
                     //IF ACCOUNT NOT YET CREATED
-                    DatabaseReference usersRef = mDatabase.child(newUser.getAccountName());
+                    DatabaseReference usersRef = mDatabase.child(mDatabase.push().getKey());
                     usersRef.setValue(newUser);
                     Toast.makeText(Sign_Up_Activity.this, "Sign Up Succeed", Toast.LENGTH_LONG).show();
                     Log.v("SIGN UP", "NORMAL USER CREATED");

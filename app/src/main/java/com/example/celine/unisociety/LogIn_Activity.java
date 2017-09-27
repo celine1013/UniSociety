@@ -113,7 +113,7 @@ public class LogIn_Activity extends AppCompatActivity {
 
         mRef = FirebaseDatabase.getInstance().getReference();
         final String p2 = p;
-        com.google.firebase.database.Query query = mRef.child("User").orderByChild("accountName").equalTo(a);
+        com.google.firebase.database.Query query = mRef.child(Account.ACCOUNT).orderByChild(Account.ACCOUNT_ACCOUNT_NAME).equalTo(a);
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
