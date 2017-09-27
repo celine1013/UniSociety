@@ -7,31 +7,15 @@
     android:weightSum="1"
     android:layout_margin="@dimen/activity_horizontal_margin">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/text_sign_up"
         android:layout_width="match_parent"
-        android:layout_height="67dp"
-        android:orientation="horizontal"
+        android:layout_height="wrap_content"
         android:layout_weight="0.00"
-        android:weightSum="1">
-
-
-        <ImageButton
-            android:id="@+id/imbtn_back"
-            android:layout_width="36dp"
-            android:layout_height="53dp"
-            app:srcCompat="@mipmap/ic_goback"
-            android:layout_weight="0.34" />
-
-        <TextView
-            android:id="@+id/text_sign_up"
-            android:layout_width="288dp"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal|center"
-            android:text="@string/Text_Sign_Up"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-            android:textSize="40dp" />
-
-    </LinearLayout>
+        android:gravity="center_horizontal|center"
+        android:text="@string/Text_Sign_Up"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+        android:textSize="40dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"

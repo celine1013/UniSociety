@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import Model.Society;
+
 
 public class AccountManagement_Society extends Fragment {
 
@@ -29,7 +31,7 @@ public class AccountManagement_Society extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        societyID = this.getArguments().getInt("societyID", -1);
+        societyID = this.getArguments().getInt(Society.SOCIETY_ID, -1);
         View view = inflater.inflate(R.layout.fragment_account_management__society, container, false);
 
         setProfileButtonOnClick(view);
@@ -48,9 +50,9 @@ public class AccountManagement_Society extends Fragment {
     }
 
     private void setButtonManagePosts(View view) {
-        Intent intent = new Intent(getActivity(), PostHistoryActivity.class);
-        intent.putExtra("USER_ID", this.societyID);
-        startActivity(intent);
+        /*Intent intent = new Intent(getActivity(), PostHistoryActivity.class);
+        intent.putExtra(Society.SOCIETY_ID, this.societyID);
+        startActivity(intent);*/
     }
 
     private void setButtonEditProfile(View view) {

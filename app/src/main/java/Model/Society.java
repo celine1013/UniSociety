@@ -144,7 +144,7 @@ public class Society implements Parcelable{
 
     public boolean getAvailable() { return available; }
 
-    public String getVerifationCode() {
+    public String getVerificationCode() {
         return verificationCode;
     }
 

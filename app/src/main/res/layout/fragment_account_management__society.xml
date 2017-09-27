@@ -1,8 +1,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/accountManagement_Society"
+    android:layout_margin="@dimen/activity_horizontal_margin"
     tools:context="com.example.celine.unisociety.AccountManagement_Society">
 
     <LinearLayout
@@ -14,6 +16,13 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="108dp">
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="36dp"
+                android:layout_height="53dp"
+                android:layout_weight="0.34"
+                app:srcCompat="@mipmap/ic_goback" />
 
             <ImageButton
                 android:id="@+id/IB_SocietyProfilePic"

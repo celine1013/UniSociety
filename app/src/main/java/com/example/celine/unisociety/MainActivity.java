@@ -21,6 +21,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import Model.Account;
+import Model.Society;
 
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -30,6 +31,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -87,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                             Log.d("FRAGMENT", "GOING TO SOCIETY ACCOUNT MANAGEMENT");
                             AccountManagement_Society accountManagementS = new AccountManagement_Society();
                             Bundle bundle = new Bundle();
-                            bundle.putInt("societyID", currentUser.getId());
+                            bundle.putInt(Society.SOCIETY_ID, currentUser.getId());
                             accountManagementS.setArguments(bundle);
                             manager.beginTransaction().replace(R.id.content, accountManagementS, accountManagementS.getTag()).commit();
                             Log.d("FRAGMENT", "GONE TO SOCIETY MANAGEMENT");
@@ -107,6 +111,27 @@ public class MainActivity extends AppCompatActivity {
         navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_home);
+
+        //TEMP PRELOADING SOCIETIES
+        /*Society s1 = new Society(1, "BITSA", "RANDOM SOMETHING FOR BITSA", 3,
+                "bitsa@unsw.edu.au", "Emily", "0000000000", "exampleFacebook.com","logo",
+                true, "bitsa");
+
+        Society s2 = new Society(2, "WIT", "RANDOM SOMETHING FOR WIT", 3,
+                "WIT@unsw.edu.au", "Silvia", "0000000002", "exampleFacebook.com2","logo2",
+                true, "wit");
+
+        Society s3 = new Society(3, "ADMIN", "RANDOM SOMETHING FOR ADMIN", 1,
+                "ADMIN@unsw.edu.au", "Celine", "not going to tell you :)", "exampleFacebook.com3","logo3",
+                true, "admin");
+
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child(Society.SOCIETY);
+        DatabaseReference ref2 = ref.child(ref.push().getKey());
+        ref2.setValue(s1);
+        DatabaseReference ref3 = ref.child(ref.push().getKey());
+        ref3.setValue(s2);
+        DatabaseReference ref4 = ref.child(ref.push().getKey());
+        ref4.setValue(s3);*/
 
     }
 

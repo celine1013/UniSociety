@@ -61,7 +61,7 @@ public class Sign_Up_Activity extends AppCompatActivity {
         setContentView(R.layout.sign_up_society);
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child(Account.ACCOUNT);
-        mAuth = FirebaseAuth.getInstance();
+
 
         //set the spinner
         societyList = (Spinner)findViewById(R.id.society_name);
@@ -144,6 +144,7 @@ public class Sign_Up_Activity extends AppCompatActivity {
                 } else if (currentChecked == R.id.RB_society) {
                     //register soc user
                     int societyID = societyList.getSelectedItemPosition() + 1; //society id start from 1
+                    Log.d("SIGN UP_SOC ID" ,String.valueOf(societyID) );
                     newUser.setId(societyID);
                     registerSocietyUser(newUser);
                 } else {
@@ -152,7 +153,7 @@ public class Sign_Up_Activity extends AppCompatActivity {
                 //show success notification
                 //Toast.makeText(Sign_Up_Activity.this, "Sign Up Succeed", Toast.LENGTH_LONG).show();
                 //go back to login page
-                finish();
+
             }
         });
 
@@ -196,8 +197,10 @@ public class Sign_Up_Activity extends AppCompatActivity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     //GET SOCIETY
                     Society society = dataSnapshot.getValue(Society.class);
-
-                    if (!v.equals(society.getVerifationCode())) {
+                    Log.d("SIGN UP SOCIETY ID", String.valueOf(society.getId()));
+                    Log.d("SIGN UP VE V", v);
+                    Log.d("SIGN UP VE S", society.getVerificationCode());
+                    if (!v.equals(society.getVerificationCode())) {
                         //IF VERIFICATION FAILED
                         et_securityCode.setText("");
                         Toast.makeText(Sign_Up_Activity.this, "Verification Failed", Toast.LENGTH_LONG).show();
@@ -214,6 +217,7 @@ public class Sign_Up_Activity extends AppCompatActivity {
                                     DatabaseReference usersRef = mDatabase.child(mDatabase.push().getKey());
                                     usersRef.setValue(newUser);
                                     Toast.makeText(Sign_Up_Activity.this, "Sign Up Succeed", Toast.LENGTH_LONG).show();
+                                    finish();
                                 }else{
                                     //IF ACCOUNT ALREADY EXISTS
                                     et_userName.setText("");
@@ -267,6 +271,7 @@ public class Sign_Up_Activity extends AppCompatActivity {
                     usersRef.setValue(newUser);
                     Toast.makeText(Sign_Up_Activity.this, "Sign Up Succeed", Toast.LENGTH_LONG).show();
                     Log.v("SIGN UP", "NORMAL USER CREATED");
+                    finish();
                 }else{
                     //IF ACCOUNT ALREADY EXISTS
                     et_userName.setText("");

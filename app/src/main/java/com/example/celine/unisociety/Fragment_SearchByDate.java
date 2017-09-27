@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -45,6 +46,8 @@ public class Fragment_SearchByDate extends Fragment {
         tv_date = v.findViewById(R.id.tv_DateChose);
         bt_chooseDate = v.findViewById(R.id.bt_chooseDate);
         bt_searchEvDate = v.findViewById(R.id.bt_searchDate);
+
+        events = new ArrayList<>();
 
         PostAdapter postAdapter = new PostAdapter(this.getActivity(), events);
         eventRecycler = v.findViewById(R.id.rv_eventByDate);
