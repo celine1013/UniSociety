@@ -8,6 +8,18 @@ import android.os.Parcelable;
  * @author Fan
  */
 public class Society implements Parcelable{
+    public static final String SOCIETY = "Society";
+    public static final String SOCIETY_NAME = "societyName";
+    public static final String SOCIETY_DESCRIPTION = "societyDescription";
+    public static final String SOCIETY_CATEGORY = "societyCategory";
+    public static final String SOCIETY_EMAIL = "emailAddress";
+    public static final String SOCIETY_CONTACT_PERSON = "contactPerson";
+    public static final String SOCIETY_CONTACT_NUMBER = "contactNumber";
+    public static final String SOCIETY_LOGO = "logo";
+    public static final String SOCIETY_FACEBOOK = "facebook";
+    public static final String SOCIETY_VERIFICATION_CODE = "verificationCode";
+    public static final String SOCIETY_AVAILABLE = "available";
+    public static final String SOCIETY_ID = "id";
     private String societyName;
     private String societyDescription;
     private int societyCategory;

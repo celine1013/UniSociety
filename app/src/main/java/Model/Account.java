@@ -11,6 +11,12 @@ import java.io.Serializable;
  * @author Fan
  */
 public class Account  implements Parcelable {
+    public static final String ACCOUNT = "Account";
+    public static final String ACCOUNT_ACCOUNT_NAME = "accountName";
+    public static final String ACCOUNT_PASSWORD = "password";
+    public static final String ACCOUNT_SECURITY_QUESTION = "securityQuestion";
+    public static final String ACCOUNT_TYPE = "id";
+
     private String accountName;
     private String password;
     private String securityQuestion;

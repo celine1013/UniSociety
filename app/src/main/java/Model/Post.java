@@ -15,11 +15,27 @@ import java.util.Map;
  * @author Fan
  */
 public class Post implements Parcelable{
+    public static final String POST = "Post";
+    public static final String POST_POST_TITLE = "postTitle";
+    public static final String POST_DESCRIPTION = "postDescription";
+    public static final String POST_CATEGORY = "eventCategory";
+    public static final String POST_BEGIN_TIME ="beginTime";
+
+    public static final String POST_END_TIME = "endTime";
+    public static final String POST_LOCATION = "location";
+    public static final String POST_POPULARITY = "popularity";
+    public static final String POST_PICTURE = "picture";
+    public static final String POST_DATE = "postDate";
+
+    public static final String POST_AVAILABLE = "available";
+    public static final String POST_SOCIETY_ID = "id";
+
     private String postTitle;
     private String postDescription;
     private int eventCategory;
     private String beginTime;
     private String endTime;
+
     private String location;
     private String popularity;
     private String picture;
