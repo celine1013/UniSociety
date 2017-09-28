@@ -76,7 +76,8 @@ public class Fragment_SearchByDate extends Fragment {
         int mDay = c.get(Calendar.DAY_OF_MONTH);
 
 
-        DatePickerDialog dpd = new DatePickerDialog(this.getActivity(),
+        DatePickerDialog dpd;
+        dpd = new DatePickerDialog(this.getActivity(),
                 new DatePickerDialog.OnDateSetListener() {
                     public void onDateSet(DatePicker view, int year,
                                           int monthOfYear, int dayOfMonth) {
