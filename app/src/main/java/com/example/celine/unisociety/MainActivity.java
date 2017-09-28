@@ -32,6 +32,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.firebase.ui.database.FirebaseListAdapter;
+import com.firebase.ui.database.FirebaseRecyclerAdapter_LifecycleAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -132,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
         ref3.setValue(s2);
         DatabaseReference ref4 = ref.child(ref.push().getKey());
         ref4.setValue(s3);*/
+
 
     }
 

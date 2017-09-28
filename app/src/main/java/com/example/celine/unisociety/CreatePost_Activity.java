@@ -19,7 +19,6 @@ import java.sql.Timestamp;
 import java.util.Calendar;
 
 import Model.Post;
-import dbhelper.dbhelper;
 
 public class CreatePost_Activity extends AppCompatActivity {
     private int societyID;
@@ -34,7 +33,7 @@ public class CreatePost_Activity extends AppCompatActivity {
     private EditText et_eventLocation;
 
     private Button bt_submit;
-    private dbhelper db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -17,7 +17,7 @@ import java.util.List;
 
 import Model.Post;
 
-import dbhelper.dbhelper;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -25,7 +25,7 @@ public class Fragment_HomePage extends Fragment {
 
     private RecyclerView recentEvent;
     private List<Post> recentEvents;
-    private dbhelper db;
+
 
     public Fragment_HomePage() {
         // Required empty public constructor

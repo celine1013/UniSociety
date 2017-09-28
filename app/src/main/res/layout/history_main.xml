@@ -44,7 +44,7 @@
         app:backgroundTint="@color/colorPrimary"
         app:elevation="5dp"
         app:fabSize="normal"
-        app:rippleColor="@color/common_google_signin_btn_text_dark_focused"
+        app:rippleColor="@android:color/background_dark"
         app:srcCompat="@android:drawable/ic_input_add" />
 
 </RelativeLayout>
