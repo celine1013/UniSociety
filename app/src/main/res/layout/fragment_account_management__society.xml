@@ -7,69 +7,81 @@
     android:layout_margin="@dimen/activity_horizontal_margin"
     tools:context="com.example.celine.unisociety.AccountManagement_Society">
 
-    <ImageButton
-        android:id="@+id/IB_SocietyProfilePic"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="false"
-        android:layout_gravity="center"
-        android:adjustViewBounds="true"
-        android:background="@android:color/transparent"
-        android:cropToPadding="true"
-        android:elevation="9dp"
-        android:padding="@dimen/activity_horizontal_margin"
-        android:scaleType="fitCenter"
-        android:src="@drawable/bitsa_logo"
-        android:layout_below="@+id/textview_me"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="42dp" />
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="500dp"
+        android:orientation="vertical"
+        android:layout_marginLeft="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
 
-    <Button
-        android:id="@+id/btn_edit_profile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="false"
-        android:padding="@dimen/btn_padding"
-        android:text="@string/Text_Edit_Profile"
-        android:layout_marginLeft="@dimen/btn_padding"
-        android:layout_marginRight="@dimen/btn_padding"
-        android:layout_marginTop="34dp"
-        android:layout_below="@+id/IB_SocietyProfilePic"
-        android:layout_alignStart="@+id/btn_change_password" />
+        <ImageButton
+            android:id="@+id/IB_SocietyProfilePic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textview_me"
+            android:layout_centerInParent="false"
+            android:layout_gravity="center"
+            android:layout_marginTop="42dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:cropToPadding="true"
+            android:elevation="9dp"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:scaleType="fitCenter"
+            android:src="@drawable/bitsa_logo" />
 
-    <Button
-        android:id="@+id/btn_change_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.38"
-        android:padding="@dimen/btn_padding"
-        android:text="@string/Text_Change_Password"
-        android:layout_marginLeft="@dimen/btn_padding"
-        android:layout_marginRight="@dimen/btn_padding"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/btn_edit_profile" />
+        <Button
+            android:id="@+id/btn_edit_profile"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_alignStart="@+id/btn_change_password"
+            android:layout_below="@+id/IB_SocietyProfilePic"
+            android:layout_centerInParent="false"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="34dp"
+            android:padding="@dimen/btn_padding"
+            android:text="@string/Text_Edit_Profile"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/blue_onclickwhite"/>
 
-    <Button
-        android:id="@+id/btn_manage_history"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.30"
-        android:padding="@dimen/btn_padding"
-        android:text="@string/Text_Manage_History"
-        android:layout_marginLeft="@dimen/btn_padding"
-        android:layout_marginRight="@dimen/btn_padding"
-        android:layout_below="@+id/btn_change_password"
-        android:layout_marginTop="33dp" />
+        <Button
+            android:id="@+id/btn_change_password"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_edit_profile"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="20dp"
+            android:padding="@dimen/btn_padding"
+            android:text="@string/Text_Change_Password"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/blue_onclickwhite"/>
 
-    <!-- TODO: Update blank fragment layout -->
+        <Button
+            android:id="@+id/btn_manage_history"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_change_password"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="20dp"
+            android:padding="@dimen/btn_padding"
+            android:text="@string/Text_Manage_History"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/blue_onclickwhite"/>
+    </LinearLayout>
+
     <TextView
         android:id="@+id/textview_me"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/btn_edit_profile"
         android:gravity="center"
         android:text="@string/Text_Me"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
