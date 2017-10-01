@@ -8,87 +8,97 @@
     android:layout_margin="@dimen/activity_horizontal_margin"
     android:weightSum="1">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:layout_weight="0.60"
-        app:srcCompat="@mipmap/logo_circle" />
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="15dp"
+        android:orientation="vertical"
+        android:layout_weight="0.36">
 
-    <TextView
-        android:id="@+id/app_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:gravity="center_horizontal"
-        android:text="Unisociety"
-        android:textSize="30dp" />
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/logobule"
+            android:layout_gravity="center"/>
 
-    <TextView
-        android:id="@+id/app_solgan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="5dp"
-        android:textSize="18dp"
-        android:text="U Now Society well" />
+        <TextView
+            android:id="@+id/app_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="Unisociety"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/app_solgan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="U Now Society well"
+            android:textSize="18dp" />
+    </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:weightSum="1">
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:weightSum="1"
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/ET_user_name"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:ems="10"
             android:hint="User Name"
             android:inputType="textPersonName"
             android:text=""
-            android:textColor="@color/textColorDarkBlue" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="horizontal"
-        android:weightSum="1">
+            android:textColor="@color/colorGray" />
 
         <EditText
             android:id="@+id/ET_password"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="0.17"
             android:ems="10"
             android:hint="Password"
             android:inputType="textPassword"
             android:text=""
-            android:textColor="@color/textColorDarkBlue" />
+            android:textColor="@color/colorGray" />
+
+        <Button
+            android:id="@+id/btn_forget_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:gravity="right"
+            android:text="Forget Passwords?" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/blue_onclickwhite"
+            android:text="@string/Text_Login" />
+
+        <Button
+            android:id="@+id/btn_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:text="Do not have an account? Register Here!"
+            android:gravity="center"
+            tools:gravity="bottom"
+            android:layout_marginBottom="0dp"
+            android:layout_weight="0.41" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_forget_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:drawable/screen_background_light_transparent"
-        android:gravity="top"
-        android:text="Forget Passwords?" />
-
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.05"
-        android:text="@string/Text_Login" />
-
-    <Button
-        android:id="@+id/btn_sign_up"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.05"
-        android:background="@android:color/transparent"
-        android:text="Do not have an account? Register Here!"
-        tools:gravity="bottom" />
 
 </LinearLayout>

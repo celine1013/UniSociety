@@ -3,7 +3,7 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/colorBlack</item>
         <item name="android:textColorPrimary">@color/textColorDarkBlue</item>
         <item name="android:textColor">@color/textColorDarkBlue</item>
         <item name="android:textColorHint">@color/textColorDarkBlue</item>

@@ -3,6 +3,7 @@ package com.example.celine.unisociety;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
@@ -109,6 +110,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Typeface unitypeface = Typeface.createFromAsset(getAssets(),"font2.ttf");
+        TextView appnametextview = (TextView)findViewById(R.id.app_name);
+        appnametextview.setTypeface(unitypeface);
+
+        Typeface slogantypeface = Typeface.createFromAsset(getAssets(),"font2.ttf");
+        TextView slogantextview = (TextView)findViewById(R.id.app_solgan);
+        slogantextview.setTypeface(slogantypeface);
+
         //currentUser = null;
         navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
