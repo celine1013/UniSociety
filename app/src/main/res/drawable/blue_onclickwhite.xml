@@ -7,10 +7,10 @@
             <solid
                 android:color="#aaaaaa"></solid>
             <stroke
-                android:color="#207EFF"
+                android:color="#00BCD4"
                 android:width="2dp"></stroke>
             <corners
-                android:radius="6dp"></corners>
+                android:radius="90dp"></corners>
             <padding
                 android:left="10dp"
                 android:right="10dp"
@@ -23,12 +23,12 @@
     <item>
         <shape>
             <solid
-                android:color="#207EFF"></solid>
+                android:color="#00BCD4"></solid>
             <stroke
-                android:color="#207EFF"
+                android:color="#00BCD4"
                 android:width="2dp"></stroke>
             <corners
-                android:radius="6dp"></corners>
+                android:radius="90dp"></corners>
             <padding
                 android:left="10dp"
                 android:right="10dp"
