@@ -4,16 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/accountManagement_Society"
-    android:layout_margin="@dimen/activity_horizontal_margin"
     tools:context="com.example.celine.unisociety.AccountManagement_Society">
 
+
     <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="500dp"
-        android:orientation="vertical"
-        android:layout_marginLeft="30dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true">
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@color/MainColor"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textview_me"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="20dp"
+            android:gravity="center"
+            android:text="@string/Text_Me"
+            android:textColor="@color/colorWhite"
+            android:textSize="20dp" />
 
         <ImageButton
             android:id="@+id/IB_SocietyProfilePic"
@@ -23,7 +32,6 @@
             android:layout_below="@+id/textview_me"
             android:layout_centerInParent="false"
             android:layout_gravity="center"
-            android:layout_marginTop="42dp"
             android:adjustViewBounds="true"
             android:background="@android:color/transparent"
             android:cropToPadding="true"
@@ -32,6 +40,15 @@
             android:scaleType="fitCenter"
             android:src="@drawable/bitsa_logo" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:layout_below="@+id/linearLayout"
+        android:orientation="vertical">
+
         <Button
             android:id="@+id/btn_edit_profile"
             android:layout_width="200dp"
@@ -39,49 +56,36 @@
             android:layout_alignStart="@+id/btn_change_password"
             android:layout_below="@+id/IB_SocietyProfilePic"
             android:layout_centerInParent="false"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginTop="34dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/blue_onclickwhite"
             android:padding="@dimen/btn_padding"
             android:text="@string/Text_Edit_Profile"
-            android:textColor="@color/colorWhite"
-            android:background="@drawable/blue_onclickwhite"/>
+            android:textColor="@color/colorWhite" />
 
         <Button
             android:id="@+id/btn_change_password"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btn_edit_profile"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginLeft="45dp"
             android:layout_marginTop="20dp"
+            android:background="@drawable/blue_onclickwhite"
             android:padding="@dimen/btn_padding"
             android:text="@string/Text_Change_Password"
-            android:textColor="@color/colorWhite"
-            android:background="@drawable/blue_onclickwhite"/>
+            android:textColor="@color/colorWhite" />
 
         <Button
             android:id="@+id/btn_manage_history"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btn_change_password"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginLeft="45dp"
             android:layout_marginTop="20dp"
+            android:background="@drawable/blue_onclickwhite"
             android:padding="@dimen/btn_padding"
             android:text="@string/Text_Manage_History"
-            android:textColor="@color/colorWhite"
-            android:background="@drawable/blue_onclickwhite"/>
+            android:textColor="@color/colorWhite" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/textview_me"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/Text_Me"
-        android:textSize="20dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
