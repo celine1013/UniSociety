@@ -5,6 +5,7 @@ import android.app.TimePickerDialog;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,6 +15,10 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Calendar;
@@ -21,6 +26,7 @@ import java.util.Calendar;
 import Model.Post;
 
 public class CreatePost_Activity extends AppCompatActivity {
+    public static final String USER_ID = "user_id";
     private int societyID;
     private String postType;
 
@@ -38,7 +44,7 @@ public class CreatePost_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_activity);
-        societyID = getIntent().getIntExtra("USER_ID", -1);
+        societyID = getIntent().getIntExtra(USER_ID, -1);
         if (societyID == -1) {
             Toast.makeText(CreatePost_Activity.this, "unknown error", Toast.LENGTH_LONG);
             finish();
@@ -67,7 +73,7 @@ public class CreatePost_Activity extends AppCompatActivity {
         postType = this.getIntent().getStringExtra("POST_TYPE");
         if(postType.equals(PostHistoryActivity.EDIT_POST)){
             //show all data;
-            Post p = this.getIntent().getParcelableExtra(HistoryAdapter.POST_KEY);
+            Post p = this.getIntent().getParcelableExtra(HistoryAdapter.POST_CONTENT);
             // TODO: 23/09/2017 push the info to the interface
         }
 
@@ -132,7 +138,23 @@ public class CreatePost_Activity extends AppCompatActivity {
 
                 //upload the new post to the database
                 // TODO: 23/09/2017 create or update the post
-                //if()
+                switch (postType){
+                    case PostHistoryActivity.EDIT_POST:
+                        //update the post
+                        break;
+
+                    case PostHistoryActivity.NEW_POST:
+                        //create new post
+                        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Post.POST);
+                        DatabaseReference postRef = ref.child(ref.push().getKey());
+                        postRef.setValue(newPost);
+                        Toast.makeText(CreatePost_Activity.this, "New Post Created.", Toast.LENGTH_LONG).show();
+                        Log.v("CREATE POST", "NEW POST CREATED");
+                        finish();
+                        break;
+
+                    default:
+                }
 
                 //show success message
                 Snackbar.make(view, "Post Created!", Snackbar.LENGTH_LONG).show();

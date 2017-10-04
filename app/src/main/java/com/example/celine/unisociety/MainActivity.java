@@ -22,6 +22,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import Model.Account;
+import Model.Post;
 import Model.Society;
 
 import android.widget.Button;
@@ -35,8 +36,12 @@ import android.view.MenuItem;
 
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.database.FirebaseRecyclerAdapter_LifecycleAdapter;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -115,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
         navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         navigation.setSelectedItemId(R.id.navigation_home);
+
 
         //TEMP PRELOADING SOCIETIES
         /*Society s1 = new Society(1, "BITSA", "RANDOM SOMETHING FOR BITSA", 3,

@@ -20,6 +20,7 @@ import Model.Society;
 // TODO: 23/09/2017 history_item.xml + widget id
 
 public class HistoryAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
+    public static final String POST_CONTENT = "post_content";
     public static final String POST_KEY = "post_key";
 
     private List<Post> mItems;
@@ -33,7 +34,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
     @Override
     public PostAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        View itemView = inflater.inflate(R.layout.history_item, parent, false);
+        View itemView = inflater.inflate(R.layout.postlist_item, parent, false);
         PostAdapter.ViewHolder viewHolder = new PostAdapter.ViewHolder(itemView);
         return viewHolder;
     }
@@ -58,8 +59,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, CreatePost_Activity.class);
-                // TODO: 13/09/2017 change model into parcelable
-                //intent.putExtra(POST_KEY, post);
+                intent.putExtra(POST_CONTENT, post);
                 intent.putExtra("POST_TYPE", PostHistoryActivity.EDIT_POST);
                 mContext.startActivity(intent);
             }
@@ -82,6 +82,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>
 
         public ViewHolder(View itemView) {
             super(itemView);
+            // TODO: 4/10/2017 images
             tv_EventTitle = (TextView) itemView.findViewById(R.id.tv_postTitle);
             tv_EventDate = (TextView) itemView.findViewById(R.id.tv_eventDate);
             tv_EventTime = (TextView) itemView.findViewById(R.id.tv_eventTime);

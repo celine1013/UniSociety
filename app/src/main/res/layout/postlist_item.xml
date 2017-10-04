@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:weightSum="1"
+    android:layout_margin="@dimen/activity_horizontal_margin"
     android:paddingBottom="5dp"
     android:paddingTop="5dp">
 
@@ -14,7 +15,7 @@
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0.1"
+
         app:srcCompat="@mipmap/logo" />
 
     <LinearLayout

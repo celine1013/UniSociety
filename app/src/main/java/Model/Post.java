@@ -29,6 +29,7 @@ public class Post implements Parcelable{
 
     public static final String POST_AVAILABLE = "available";
     public static final String POST_SOCIETY_ID = "id";
+    public static final String POST_KEY = "key";
 
     private String postTitle;
     private String postDescription;
@@ -42,6 +43,7 @@ public class Post implements Parcelable{
     private String postDate;
     private boolean available;
     private int id;
+    private String key;
     private Map<String, Boolean> stars = new HashMap<>();
 
     public Post() {
@@ -75,6 +77,7 @@ public class Post implements Parcelable{
         postDate = in.readString();
         available = in.readByte() != 0;
         id = in.readInt();
+        key = in.readString();
     }
 
     public static final Creator<Post> CREATOR = new Creator<Post>() {
@@ -167,10 +170,19 @@ public class Post implements Parcelable{
         return id;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
         result.put("id", id);
+        result.put("key", key);
         result.put("postTitle", postTitle);
         result.put("postDescription", postDescription);
         result.put("eventCategory", eventCategory);
@@ -201,5 +213,6 @@ public class Post implements Parcelable{
         parcel.writeString(postDate);
         parcel.writeByte((byte) (available ? 1 : 0));
         parcel.writeInt(id);
+        parcel.writeString(key);
     }
 }
