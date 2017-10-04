@@ -87,7 +87,7 @@ public class CreatePost_Activity extends AppCompatActivity {
                 //create a post
                 Post newPost = new Post();
                 newPost.setAvailable(true);
-
+                newPost.setId(societyID);
 
                 //get all the input
                 // TODO: 9/09/2017  if the editText is empty, notify user
