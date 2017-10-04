@@ -47,10 +47,10 @@
     </string-array>
 
     <string-array name="categories">
-        <item>Sport</item>
-        <item>Food</item>
+        <item>Workshop</item>
         <item>Social</item>
-        <item>Faculty</item>
+        <item>Party</item>
+        <item>Food</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->

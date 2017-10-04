@@ -2,6 +2,7 @@ package com.example.celine.unisociety;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -70,7 +71,9 @@ public class CreatePost_Activity extends AppCompatActivity {
         setEventTimeBTS();
 
         //show the data if it's editing existing post
-        postType = this.getIntent().getStringExtra("POST_TYPE");
+        Intent i= this.getIntent();
+        postType = i.getStringExtra(PostHistoryActivity.POST_TYPE);
+        Log.d("CREATE POST", postType);
         if(postType.equals(PostHistoryActivity.EDIT_POST)){
             //show all data;
             Post p = this.getIntent().getParcelableExtra(HistoryAdapter.POST_CONTENT);
@@ -239,7 +242,7 @@ public class CreatePost_Activity extends AppCompatActivity {
                 new TimePickerDialog.OnTimeSetListener() {
                     public void onTimeSet(TimePicker view, int hourOfDay,
                                           int minute) {
-                        bt_startingTime.setText(hourOfDay + ":" + minute);
+                        bt_endingTime.setText(hourOfDay + ":" + minute);
                     }
                 }, mHour, mMinute, false);
         tpd.show();

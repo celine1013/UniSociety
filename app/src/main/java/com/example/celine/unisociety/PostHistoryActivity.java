@@ -13,8 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Model.Post;
+import Model.Society;
 
 public class PostHistoryActivity extends AppCompatActivity {
+    public static final String POST_TYPE = "post_type";
     public static final String EDIT_POST = "edit_post";
     public static final String NEW_POST = "new_post";
 
@@ -23,14 +25,14 @@ public class PostHistoryActivity extends AppCompatActivity {
     private FloatingActionButton fab_createPost;
     private Button btn_back;
 
-    private int userID = -1;
+    private int userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.history_main);
 
-        if(userID == -1)userID= this.getIntent().getIntExtra("USER_ID", -1);
+        userID= this.getIntent().getIntExtra(Society.SOCIETY_ID, -1);
         if(userID == -1) Log.e("ERROR","HISTORY ACTIVITY FAILED");
 
         //create new post
@@ -38,9 +40,10 @@ public class PostHistoryActivity extends AppCompatActivity {
         fab_createPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("HISTORY", "CLIKED");
                 Intent intent = new Intent(PostHistoryActivity.this, CreatePost_Activity.class);
                 intent.putExtra(CreatePost_Activity.USER_ID, userID);
-                intent.putExtra("POST_TYPE", PostHistoryActivity.NEW_POST);
+                intent.putExtra(POST_TYPE, PostHistoryActivity.NEW_POST);
                 startActivity(intent);
             }
         });
