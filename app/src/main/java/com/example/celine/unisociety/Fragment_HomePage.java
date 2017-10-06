@@ -12,11 +12,13 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -51,33 +53,74 @@ public class Fragment_HomePage extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_home_page, container, false);
+        final View v = inflater.inflate(R.layout.fragment_home_page, container, false);
         cv_newEvents = v.findViewById(R.id.cv_home_events);
         tv_notification = v.findViewById(R.id.tv_home_notification);
         recentEvent = (RecyclerView) v.findViewById(R.id.rv_recentEvent);
 
-        // TODO: 4/10/2017 retrieve events
-        /*PostAdapter postAdapter = new PostAdapter(Fragment_HomePage.this.getContext(), recentEvents);
-        recentEvent.setAdapter(postAdapter);
-
-        // TODO: 4/10/2017 if no records, set notification into visible;
-        //tv_notification.setVisibility(View.VISIBLE);
-
-        // TODO: 10/09/2017 sorting
-        Collections.sort(recentEvents, new Comparator<Post>() {
+        final DatabaseReference postRef = FirebaseDatabase.getInstance().getReference(Post.POST);
+        FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Post, PostViewHolder>(Post.class,
+        R.layout.postlist_item, PostViewHolder.class, postRef) {
+            @Override
+            protected void populateViewHolder(final PostViewHolder viewHolder, Post model, int position) {
+                //final PostViewHolder v = viewHolder;
+                viewHolder.setPost(model);
+                /*postRef.child(Post.POST).addChildEventListener(new ChildEventListener() {
                     @Override
-                    public int compare(Post p1, Post p2) {
-                        StringBuilder sb1 = new StringBuilder(p1.getPostDate());
-                        sb1.append(p1.getBeginTime());
-                        StringBuilder sb2 = new StringBuilder(p2.getPostDate());
-                        sb2.append(p2.getBeginTime());
-                        String str1 = sb1.toString();
-                        String str2 = sb2.toString();
-                        return str1.compareToIgnoreCase(str2);
-                    }
-                });
-*/
+                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                        final Post p = dataSnapshot.getValue(Post.class);
+                        recentEvents.add(p);
+                        viewHolder.setPost(p);
 
+                    }
+
+                    @Override
+                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });*/
+            }
+        };
+        recentEvent.setAdapter(adapter);
         return v;
     }
+
+    public static class PostViewHolder extends RecyclerView.ViewHolder {
+        public TextView tv_EventTitle;
+        public TextView tv_EventDate;
+        public TextView tv_EventTime;
+        public TextView tv_EventLocation;
+
+        public PostViewHolder(View itemView) {
+            super(itemView);
+            tv_EventTitle = (TextView) itemView.findViewById(R.id.tv_postTitle);
+            tv_EventDate = (TextView) itemView.findViewById(R.id.tv_eventDate);
+            tv_EventTime = (TextView) itemView.findViewById(R.id.tv_eventTime);
+            tv_EventLocation = (TextView) itemView.findViewById(R.id.tv_eventLocation);
+        }
+
+        public void setPost(Post post){
+            tv_EventTitle.setText(post.getPostTitle());
+            tv_EventDate.setText(post.getPostDate());
+            tv_EventTime.setText(post.getBeginTime()+"~"+post.getEndTime());
+            tv_EventLocation.setText(post.getLocation());
+        }
+
+    }
+
 }

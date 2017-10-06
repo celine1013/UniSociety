@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         if (currentUser.getId() == STUDENT) {
                             Log.d("FRAGMENT", "GOING TO STUDENT ACCOUNT MANAGEMENT");
-
+                            // TODO: 4/10/2017 pass current user to new activity 
                             Log.d("FRAGMENT", "GONE TO STUDENT ACCOUNT MANAGEMENT");
                         } else {
 

@@ -149,6 +149,7 @@ public class CreatePost_Activity extends AppCompatActivity {
                     case PostHistoryActivity.NEW_POST:
                         //create new post
                         DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Post.POST);
+                        newPost.setKey(ref.push().getKey());
                         DatabaseReference postRef = ref.child(ref.push().getKey());
                         postRef.setValue(newPost);
                         Toast.makeText(CreatePost_Activity.this, "New Post Created.", Toast.LENGTH_LONG).show();

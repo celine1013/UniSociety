@@ -12,13 +12,6 @@
         android:orientation="horizontal"
         android:layout_weight="0.01">
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0.04"
-            app:srcCompat="@android:drawable/ic_media_previous" />
-
         <TextView
             android:id="@+id/textView"
             android:layout_width="154dp"
