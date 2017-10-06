@@ -22,6 +22,8 @@ import Model.Post;
 import Model.Society;
 
 public class PostDetail_Activity extends AppCompatActivity {
+
+    public static final String CURRENT_USER = "CURRENT_USER";
     private Post post;
     private Account currentUser;
 
@@ -43,7 +45,7 @@ public class PostDetail_Activity extends AppCompatActivity {
 
         //get info from the intent
         post = this.getIntent().getParcelableExtra(Post.POST);
-        currentUser = this.getIntent().getParcelableExtra("CURRENT USER");
+        currentUser = this.getIntent().getParcelableExtra(CURRENT_USER);
 
         st_attend = (Switch)findViewById(R.id.st_attend);
         iv_eventImage = findViewById(R.id.eventImage);
