@@ -84,6 +84,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="0.14"
-        android:text="@string/Text_Edit_Profile" />
+        android:text="@string/Text_Edit_Profile"
+        android:textSize="20dp"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/blue_onclickwhite" />
 </LinearLayout>
 
