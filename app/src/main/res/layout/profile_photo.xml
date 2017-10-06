@@ -33,14 +33,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.15"
-        android:text="@string/Text_Choose_From_Photo" />
+        android:text="@string/Text_Choose_From_Photo"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp"
+        android:background="@drawable/blue_onclickwhite" />
 
     <Button
         android:id="@+id/btn_take_a_photo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.18"
-        android:text="@string/Text_Take_A_Photo" />
+        android:text="@string/Text_Take_A_Photo"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp"
+        android:background="@drawable/blue_onclickwhite" />
 
 
 </LinearLayout>

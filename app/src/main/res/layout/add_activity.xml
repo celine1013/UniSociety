@@ -107,7 +107,10 @@
         android:layout_height="21dp"
         android:layout_weight="0.09"
         android:layout_gravity="center"
-        android:text="@string/Text_Submit" />
+        android:text="@string/Text_Submit"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp"
+        android:background="@drawable/blue_onclickwhite" />
 
 </LinearLayout>
 

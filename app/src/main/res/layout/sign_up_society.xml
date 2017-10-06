@@ -121,5 +121,8 @@
         android:layout_gravity="center"
         android:layout_weight="0.14"
         android:layout_marginBottom="5dp"
-        android:text="@string/Text_Sign_Up" />
+        android:text="@string/Text_Sign_Up"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp"
+        android:background="@drawable/blue_onclickwhite" />
 </LinearLayout>
