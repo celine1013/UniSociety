@@ -161,5 +161,7 @@ public class MainActivity extends AppCompatActivity {
     public BottomNavigationView getNavigation() {
         return navigation;
     }
+
+
 }
 

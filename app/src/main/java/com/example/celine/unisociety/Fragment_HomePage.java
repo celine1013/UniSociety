@@ -59,41 +59,13 @@ public class Fragment_HomePage extends Fragment {
         recentEvent = (RecyclerView) v.findViewById(R.id.rv_recentEvent);
 
         final DatabaseReference postRef = FirebaseDatabase.getInstance().getReference(Post.POST);
+        Query q = postRef.orderByChild(Post.POST_DATE).limitToFirst(3);
         FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Post, PostViewHolder>(Post.class,
-        R.layout.postlist_item, PostViewHolder.class, postRef) {
+        R.layout.postlist_item, PostViewHolder.class, q) {
             @Override
             protected void populateViewHolder(final PostViewHolder viewHolder, Post model, int position) {
-                //final PostViewHolder v = viewHolder;
                 viewHolder.setPost(model);
-                /*postRef.child(Post.POST).addChildEventListener(new ChildEventListener() {
-                    @Override
-                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                        final Post p = dataSnapshot.getValue(Post.class);
-                        recentEvents.add(p);
-                        viewHolder.setPost(p);
 
-                    }
-
-                    @Override
-                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                    }
-
-                    @Override
-                    public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                    }
-
-                    @Override
-                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });*/
             }
         };
         recentEvent.setAdapter(adapter);

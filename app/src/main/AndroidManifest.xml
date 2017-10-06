@@ -8,18 +8,23 @@
         android:roundIcon="@mipmap/ic_logo"
         android:supportsRtl="true"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:screenOrientation="portrait">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LogIn_Activity" />
-        <activity android:name=".Sign_Up_Activity" />
-        <activity android:name=".CreatePost_Activity" />
+        <activity android:name=".LogIn_Activity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Sign_Up_Activity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".CreatePost_Activity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".PostDetail_Activity" />
         <activity android:name=".PostHistoryActivity" />
         <activity android:name=".EventListByCategory_Activity"></activity>

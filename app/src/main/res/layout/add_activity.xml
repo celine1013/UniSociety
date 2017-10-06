@@ -29,7 +29,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.35"
-        android:ems="10" />
+        android:ems="10"
+        android:hint="Event Description" />
 
     <Spinner
         android:id="@+id/category"
