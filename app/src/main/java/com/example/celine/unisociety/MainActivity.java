@@ -51,10 +51,10 @@ public class MainActivity extends AppCompatActivity {
     public BottomNavigationView navigation;
 
 
-    private static final int STUDENT = 0;
+    public static final int STUDENT = 0;
     private static final int REQUEST_CODE_LOG_IN = 0;
 
-    private Account currentUser;
+    public static Account currentUser;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -162,6 +162,8 @@ public class MainActivity extends AppCompatActivity {
         return navigation;
     }
 
-
+    public Account getCurrentUser() {
+        return currentUser;
+    }
 }
 

@@ -47,11 +47,11 @@
                     android:layout_alignBaseline="@+id/societyIcon"
                     android:layout_below="@+id/societyIcon"
                     android:layout_gravity="center"
-                    android:text="BITSA"
                     android:padding="4sp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    app:layout_constraintTop_toBottomOf="@+id/societyIcon"
+                    android:text="BITSA"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/societyIcon"
                     tools:layout_editor_absoluteX="8dp" />
 
                 <TextView
@@ -62,16 +62,17 @@
                     android:padding="@dimen/activity_horizontal_margin"
                     android:text="InfoSys Night"
                     android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     app:layout_constraintStart_toEndOf="@id/societyIcon" />
 
                 <Switch
-                    android:id="@+id/switch1"
+                    android:id="@+id/st_attend"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
                     android:text="Attend"
                     android:textAppearance="@style/TextAppearance.AppCompat.Menu"
+                    android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintRight_toRightOf="parent" />
             </android.support.constraint.ConstraintLayout>
@@ -99,21 +100,14 @@
                     android:padding="8sp" />
 
                 <TextView
-                    android:id="@+id/tv_Location"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ASB"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    app:layout_constraintLeft_toRightOf="@+id/icon_location"
-                   />
-
-                <TextView
                     android:id="@+id/tv_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_Location"
+                    android:text="UNSW Business School"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     app:layout_constraintLeft_toRightOf="@+id/icon_location"
-                    android:text="UNSW Business School" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_editor_absoluteY="26dp" />
 
             </android.support.constraint.ConstraintLayout>
 

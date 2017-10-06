@@ -1,6 +1,7 @@
 package com.example.celine.unisociety;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.ChildEventListener;
@@ -63,16 +65,28 @@ public class Fragment_HomePage extends Fragment {
         FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Post, PostViewHolder>(Post.class,
         R.layout.postlist_item, PostViewHolder.class, q) {
             @Override
-            protected void populateViewHolder(final PostViewHolder viewHolder, Post model, int position) {
+            protected void populateViewHolder(final PostViewHolder viewHolder, final Post model, int position) {
+                viewHolder.postView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(Fragment_HomePage.this.getActivity(), PostDetail_Activity.class);
+                        intent.putExtra("CURRENT USER", MainActivity.currentUser);
+                        intent.putExtra(Post.POST, model);
+                        startActivity(intent);
+                        //Toast.makeText(Fragment_HomePage.this.getActivity(), String.valueOf(model.getId()),Toast.LENGTH_LONG).show();
+                    }
+                });
                 viewHolder.setPost(model);
 
             }
         };
+
         recentEvent.setAdapter(adapter);
         return v;
     }
 
     public static class PostViewHolder extends RecyclerView.ViewHolder {
+        public View postView;
         public TextView tv_EventTitle;
         public TextView tv_EventDate;
         public TextView tv_EventTime;
@@ -80,6 +94,7 @@ public class Fragment_HomePage extends Fragment {
 
         public PostViewHolder(View itemView) {
             super(itemView);
+            postView = itemView;
             tv_EventTitle = (TextView) itemView.findViewById(R.id.tv_postTitle);
             tv_EventDate = (TextView) itemView.findViewById(R.id.tv_eventDate);
             tv_EventTime = (TextView) itemView.findViewById(R.id.tv_eventTime);
