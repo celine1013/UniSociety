@@ -70,7 +70,7 @@ public class Fragment_HomePage extends Fragment {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(Fragment_HomePage.this.getActivity(), PostDetail_Activity.class);
-                        intent.putExtra(PostDetail_Activity.CURRENT_USER, MainActivity.currentUser);
+                        intent.putExtra(MainActivity.CURRENT_USER, MainActivity.currentUser);
                         intent.putExtra(Post.POST, model);
                         startActivity(intent);
                         //Toast.makeText(Fragment_HomePage.this.getActivity(), String.valueOf(model.getId()),Toast.LENGTH_LONG).show();
@@ -85,7 +85,7 @@ public class Fragment_HomePage extends Fragment {
         return v;
     }
 
-    public static class PostViewHolder extends RecyclerView.ViewHolder {
+    private static class PostViewHolder extends RecyclerView.ViewHolder {
         public View postView;
         public TextView tv_EventTitle;
         public TextView tv_EventDate;

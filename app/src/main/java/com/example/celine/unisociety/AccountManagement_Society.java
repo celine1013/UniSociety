@@ -5,18 +5,20 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import Model.Account;
 import Model.Society;
 
 
 public class AccountManagement_Society extends Fragment {
 
-    private int societyID;
+    private Account currentUser = null;
     private ImageButton profileButton;
     private Button bt_changePassword;
     private Button bt_managePosts;
@@ -30,8 +32,9 @@ public class AccountManagement_Society extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        societyID = this.getArguments().getInt(Society.SOCIETY_ID, -1);
         View view = inflater.inflate(R.layout.fragment_account_management__society, container, false);
+        currentUser = this.getArguments().getParcelable(MainActivity.CURRENT_USER);
+
         profileButton = (ImageButton)view.findViewById(R.id.IB_SocietyProfilePic);
         bt_editProfile = view.findViewById(R.id.btn_edit_profile);
         bt_changePassword = view.findViewById(R.id.btn_change_password);
@@ -39,7 +42,7 @@ public class AccountManagement_Society extends Fragment {
 
         setProfileButtonOnClick(view);
         setButtonChangePassword(view);
-        setButtonManagePosts(view, this.societyID);
+        setButtonManagePosts(view, this.currentUser);
         setButtonEditProfile(view);
         return view;
     }
@@ -62,12 +65,12 @@ public class AccountManagement_Society extends Fragment {
         });
     }
 
-    private void setButtonManagePosts(View view, final int societyID) {
+    private void setButtonManagePosts(View view, final Account currentUser) {
         bt_managePosts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), PostHistoryActivity.class);
-                intent.putExtra(Society.SOCIETY_ID, societyID);
+                intent.putExtra(MainActivity.CURRENT_USER, currentUser);
                 startActivity(intent);
             }
         });

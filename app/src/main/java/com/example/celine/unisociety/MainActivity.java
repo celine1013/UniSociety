@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mButton;
     private ProgressBar mProgressBar;
     public BottomNavigationView navigation;
-
+    public static final String CURRENT_USER = "CURRENT_USER";
 
     public static final int STUDENT = 0;
     private static final int REQUEST_CODE_LOG_IN = 0;
@@ -93,13 +93,15 @@ public class MainActivity extends AppCompatActivity {
                         if (currentUser.getId() == STUDENT) {
                             Log.d("FRAGMENT", "GOING TO STUDENT ACCOUNT MANAGEMENT");
                             // TODO: 4/10/2017 pass current user to new activity 
+                            
                             Log.d("FRAGMENT", "GONE TO STUDENT ACCOUNT MANAGEMENT");
                         } else {
 
                             Log.d("FRAGMENT", "GOING TO SOCIETY ACCOUNT MANAGEMENT");
                             AccountManagement_Society accountManagementS = new AccountManagement_Society();
                             Bundle bundle = new Bundle();
-                            bundle.putInt(Society.SOCIETY_ID, currentUser.getId());
+                            // TODO: 8/10/2017 change user.getid to currentUser itself 
+                            bundle.putParcelable(MainActivity.CURRENT_USER, currentUser);
                             accountManagementS.setArguments(bundle);
                             manager.beginTransaction().replace(R.id.content, accountManagementS, accountManagementS.getTag()).commit();
                             Log.d("FRAGMENT", "GONE TO SOCIETY MANAGEMENT");

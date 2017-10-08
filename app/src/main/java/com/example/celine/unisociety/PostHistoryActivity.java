@@ -12,6 +12,7 @@ import android.widget.Button;
 import java.util.ArrayList;
 import java.util.List;
 
+import Model.Account;
 import Model.Post;
 import Model.Society;
 
@@ -25,15 +26,15 @@ public class PostHistoryActivity extends AppCompatActivity {
     private FloatingActionButton fab_createPost;
     private Button btn_back;
 
-    private int userID;
+    private Account currentUser = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.history_main);
 
-        userID= this.getIntent().getIntExtra(Society.SOCIETY_ID, -1);
-        if(userID == -1) Log.e("ERROR","HISTORY ACTIVITY FAILED");
+        currentUser= this.getIntent().getParcelableExtra(MainActivity.CURRENT_USER);
+        if(currentUser == null) Log.e("ERROR","HISTORY ACTIVITY FAILED");
 
         //create new post
         fab_createPost = (FloatingActionButton)findViewById(R.id.fab_newPost);
@@ -42,7 +43,7 @@ public class PostHistoryActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Log.d("HISTORY", "CLIKED");
                 Intent intent = new Intent(PostHistoryActivity.this, CreatePost_Activity.class);
-                intent.putExtra(CreatePost_Activity.USER_ID, userID);
+                intent.putExtra(MainActivity.CURRENT_USER, currentUser);
                 intent.putExtra(POST_TYPE, PostHistoryActivity.NEW_POST);
                 startActivity(intent);
             }
