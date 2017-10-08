@@ -61,10 +61,9 @@ public class Fragment_HomePage extends Fragment {
         recentEvent = (RecyclerView) v.findViewById(R.id.rv_recentEvent);
 
         final DatabaseReference postRef = FirebaseDatabase.getInstance().getReference(Post.POST);
-        Query q2 = postRef.orderByChild(Post.POST_DATE).limitToFirst(7);
 
         FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Post, PostViewHolder>(Post.class,
-        R.layout.postlist_item, PostViewHolder.class, q2) {
+        R.layout.postlist_item, PostViewHolder.class, postRef) {
             @Override
             protected void populateViewHolder(final PostViewHolder viewHolder, final Post model, int position) {
                 viewHolder.postView.setOnClickListener(new View.OnClickListener() {
