@@ -71,7 +71,6 @@ public class Fragment_SearchByDate extends Fragment {
             @Override
             public void onClick(View view) {
                 final DatabaseReference postRef = FirebaseDatabase.getInstance().getReference(Post.POST);
-                Toast.makeText(Fragment_SearchByDate.this.getActivity(), tv_date.getText().toString(), Toast.LENGTH_LONG).show();
                 Query q = postRef.orderByChild(Post.POST_DATE).equalTo(tv_date.getText().toString());
                 q.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -101,7 +100,6 @@ public class Fragment_SearchByDate extends Fragment {
                                 intent.putExtra(MainActivity.CURRENT_USER, MainActivity.currentUser);
                                 intent.putExtra(Post.POST, model);
                                 startActivity(intent);
-                                //Toast.makeText(Fragment_HomePage.this.getActivity(), String.valueOf(model.getId()),Toast.LENGTH_LONG).show();
                             }
                         });
 

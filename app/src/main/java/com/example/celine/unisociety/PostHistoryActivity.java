@@ -39,7 +39,7 @@ public class PostHistoryActivity extends AppCompatActivity {
 
         currentUser = this.getIntent().getParcelableExtra(MainActivity.CURRENT_USER);
         if (currentUser == null) {
-            Log.e("ERROR", "HISTORY ACTIVITY FAILED");
+            Log.e("POST_HISTORY", "HISTORY ACTIVITY FAILED");
             finish();
         }
 
@@ -48,7 +48,7 @@ public class PostHistoryActivity extends AppCompatActivity {
         fab_createPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("HISTORY", "CLIKED");
+                Log.d("POST_HISTORY", "CLIKED");
                 Intent intent = new Intent(PostHistoryActivity.this, CreatePost_Activity.class);
                 intent.putExtra(MainActivity.CURRENT_USER, currentUser);
                 intent.putExtra(POST_TYPE, NEW_POST);
