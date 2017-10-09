@@ -38,13 +38,11 @@ public class EventListByCategory_Activity extends AppCompatActivity{
         tv_categoryTitle.setText(cats[currentCat]);
 
         final DatabaseReference postRef = FirebaseDatabase.getInstance().getReference(Post.POST);
-        Log.d("CATEGORY_EVENT LIST", "DATABASE");
         Query q = postRef.orderByChild(Post.POST_CATEGORY).equalTo(currentCat);
-        Log.d("CATEGORY_EVENT LIST", "QUERY");
-        FirebaseRecyclerAdapter adapter2 = new FirebaseRecyclerAdapter<Post, CateViewHolder>(Post.class,
-                R.layout.postlist_item, CateViewHolder.class, q) {
+        FirebaseRecyclerAdapter adapter2 = new FirebaseRecyclerAdapter<Post, PostViewHolder>(Post.class,
+                R.layout.postlist_item, PostViewHolder.class, q) {
             @Override
-            protected void populateViewHolder(final CateViewHolder viewHolder, final Post model, int position) {
+            protected void populateViewHolder(final PostViewHolder viewHolder, final Post model, int position) {
 
                 viewHolder.postView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -64,30 +62,6 @@ public class EventListByCategory_Activity extends AppCompatActivity{
         LinearLayoutManager manager = new LinearLayoutManager(this);
         rv_eventsByCate.setLayoutManager(manager);
         rv_eventsByCate.setAdapter(adapter2);
-    }
-    private static class CateViewHolder extends RecyclerView.ViewHolder {
-        public View postView;
-        public TextView tv_EventTitle;
-        public TextView tv_EventDate;
-        public TextView tv_EventTime;
-        public TextView tv_EventLocation;
-
-        public CateViewHolder(View itemView) {
-            super(itemView);
-            postView = itemView;
-            tv_EventTitle = (TextView) itemView.findViewById(R.id.tv_postTitle);
-            tv_EventDate = (TextView) itemView.findViewById(R.id.tv_eventDate);
-            tv_EventTime = (TextView) itemView.findViewById(R.id.tv_eventTime);
-            tv_EventLocation = (TextView) itemView.findViewById(R.id.tv_eventLocation);
-        }
-
-        public void setPost(Post post){
-            tv_EventTitle.setText(post.getPostTitle());
-            tv_EventDate.setText(post.getPostDate());
-            tv_EventTime.setText(post.getBeginTime()+"~"+post.getEndTime());
-            tv_EventLocation.setText(post.getLocation());
-        }
-
     }
 
 }

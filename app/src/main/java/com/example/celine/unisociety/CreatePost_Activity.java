@@ -29,6 +29,7 @@ import Model.Post;
 
 public class CreatePost_Activity extends AppCompatActivity {
     public static final String USER_ID = "user_id";
+    public static final String POST_CONTENT = "POST_CONTENT";
     private Account currentUser = null;
     private String postType;
 
@@ -77,7 +78,7 @@ public class CreatePost_Activity extends AppCompatActivity {
         Log.d("CREATE POST", postType);
         if(postType.equals(PostHistoryActivity.EDIT_POST)){
             //show all data;
-            Post p = this.getIntent().getParcelableExtra(HistoryAdapter.POST_CONTENT);
+            Post p = this.getIntent().getParcelableExtra(CreatePost_Activity.POST_CONTENT);
             // TODO: 23/09/2017 push the info to the interface
         }
 
