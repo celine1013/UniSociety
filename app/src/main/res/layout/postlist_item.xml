@@ -1,77 +1,61 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:weightSum="1"
-    android:layout_margin="@dimen/activity_horizontal_margin"
-    android:paddingBottom="5dp"
-    android:paddingTop="5dp">
-
+    android:layout_marginBottom="@dimen/list_item_margin"
+    android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/ib_socIcon"
+        android:layout_width="80sp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="false"
+        android:layout_marginEnd="@dimen/btn_padding"
+        android:adjustViewBounds="true"
+        android:baselineAlignBottom="false"
+        app:srcCompat="@drawable/bitsa_logo" />
+
+    <TextView
+        android:id="@+id/tv_eventLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentEnd="false"
+        android:layout_below="@+id/tv_eventTitle"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_toRightOf="@+id/ib_socIcon"
+        android:text="@string/Text_Location" />
 
-        app:srcCompat="@mipmap/logo" />
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/tv_eventTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:layout_weight="0.4">
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_toRightOf="@+id/ib_socIcon"
+        android:text="Event Title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
-        <TextView
-            android:id="@+id/tv_postTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="1sp"
-            android:text="Post Title" />
-
-    </LinearLayout>
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/tv_eventDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="0.5"
-        android:orientation="vertical">
+        android:layout_alignParentBottom="false"
+        android:layout_below="@+id/tv_eventLocation"
+        android:layout_toRightOf="@+id/ib_socIcon"
+        android:text="2017-10-22" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="1sp"
-            android:orientation="horizontal">
+    <TextView
+        android:id="@+id/tv_eventTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_eventDate"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/tv_eventDate"
+        android:gravity="end"
+        android:paddingRight="@dimen/activity_vertical_margin"
+        android:text="19:00~20:00" />
 
-            <TextView
-                android:id="@+id/tv_eventDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="end"
-                android:text="@string/Text_Date" />
-
-            <TextView
-                android:id="@+id/tv_eventTime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="end"
-                android:text="@string/Text_Time" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tv_eventLocation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="end"
-            android:text="@string/Text_Location" />
-
-    </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>

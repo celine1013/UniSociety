@@ -20,7 +20,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
     public PostViewHolder(View itemView) {
         super(itemView);
         postView = itemView;
-        tv_EventTitle = (TextView) itemView.findViewById(R.id.tv_postTitle);
+        tv_EventTitle = (TextView) itemView.findViewById(R.id.tv_eventTitle);
         tv_EventDate = (TextView) itemView.findViewById(R.id.tv_eventDate);
         tv_EventTime = (TextView) itemView.findViewById(R.id.tv_eventTime);
         tv_EventLocation = (TextView) itemView.findViewById(R.id.tv_eventLocation);

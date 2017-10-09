@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -16,12 +17,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import Model.Account;
 import Model.Post;
-import Model.Society;
 
 public class PostHistoryActivity extends AppCompatActivity {
     public static final String POST_TYPE = "post_type";
@@ -29,9 +28,7 @@ public class PostHistoryActivity extends AppCompatActivity {
     public static final String NEW_POST = "new_post";
 
     private RecyclerView history;
-    private List<Post> pastEvents;
     private FloatingActionButton fab_createPost;
-    private Button btn_back;
 
     private Account currentUser = null;
 
@@ -41,7 +38,10 @@ public class PostHistoryActivity extends AppCompatActivity {
         setContentView(R.layout.history_main);
 
         currentUser = this.getIntent().getParcelableExtra(MainActivity.CURRENT_USER);
-        if (currentUser == null) Log.e("ERROR", "HISTORY ACTIVITY FAILED");
+        if (currentUser == null) {
+            Log.e("ERROR", "HISTORY ACTIVITY FAILED");
+            finish();
+        }
 
         //create new post
         fab_createPost = (FloatingActionButton) findViewById(R.id.fab_newPost);
@@ -91,16 +91,36 @@ public class PostHistoryActivity extends AppCompatActivity {
 
     private class HistoryViewHolder extends RecyclerView.ViewHolder {
         private View postView;
-
+        private ImageButton ib_socIcon;
+        private ImageButton ib_editPost;
+        public TextView tv_EventTitle;
+        public TextView tv_EventDate;
+        public TextView tv_EventTime;
+        public TextView tv_EventLocation;
 
         public HistoryViewHolder(View itemView) {
             super(itemView);
             postView = itemView;
+            ib_socIcon = itemView.findViewById(R.id.his_socIcon);
+            ib_editPost = itemView.findViewById(R.id.ib_editPost);
+            tv_EventTitle = itemView.findViewById(R.id.his_postTitle);
+            tv_EventLocation = itemView.findViewById(R.id.his_location);
+            tv_EventDate = itemView.findViewById(R.id.his_date);
+            tv_EventTime = itemView.findViewById(R.id.his_time);
 
         }
 
         public void setPost(Post post) {
+            tv_EventTitle.setText(post.getPostTitle());
+            tv_EventDate.setText(post.getPostDate());
+            tv_EventTime.setText(post.getBeginTime()+"~"+post.getEndTime());
+            tv_EventLocation.setText(post.getLocation());
+            ib_editPost.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
+                }
+            });
         }
 
 
