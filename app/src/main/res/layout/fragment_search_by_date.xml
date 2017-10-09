@@ -7,7 +7,7 @@
     tools:context="com.example.celine.unisociety.Fragment_SearchByDate">
 
     <!-- TODO: Update blank fragment layout -->
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -17,7 +17,19 @@
         android:layout_alignParentStart="true">
 
 
+        <TextView
+            android:id="@+id/notification_pageDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bt_searchDate"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:text="No Events Held On This Day :("
+            android:textAppearance="@style/TextAppearance.AppCompat.Notification"
+            android:visibility="invisible" />
+
         <LinearLayout
+            android:id="@+id/set_chooseDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.025"
@@ -47,17 +59,19 @@
             android:id="@+id/bt_searchDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/set_chooseDate"
             android:layout_gravity="center"
+            android:layout_marginTop="3sp"
             android:layout_weight="0.025"
-            android:text="Search"
-            android:layout_marginTop="3sp" />
+            android:text="Search" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_eventByDate"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/bt_searchDate"
             app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>
