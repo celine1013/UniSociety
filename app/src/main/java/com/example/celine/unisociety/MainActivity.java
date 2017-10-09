@@ -100,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
                             Log.d("FRAGMENT", "GOING TO SOCIETY ACCOUNT MANAGEMENT");
                             AccountManagement_Society accountManagementS = new AccountManagement_Society();
                             Bundle bundle = new Bundle();
-                            // TODO: 8/10/2017 change user.getid to currentUser itself 
                             bundle.putParcelable(MainActivity.CURRENT_USER, currentUser);
                             accountManagementS.setArguments(bundle);
                             manager.beginTransaction().replace(R.id.content, accountManagementS, accountManagementS.getTag()).commit();
