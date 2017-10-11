@@ -1,5 +1,6 @@
 package Model;
 
+import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -39,7 +40,7 @@ public class Post implements Parcelable{
 
     private String location;
     private String popularity;
-    private String picture;
+    private String imageUrl;
     private String postDate;
     private boolean available;
     private int id;
@@ -50,14 +51,14 @@ public class Post implements Parcelable{
     }
 
     public Post(int id, String postTitle, String postDescription, int eventCategory,
-                String location, String popularity, String picture, String beginTime,
+                String location, String popularity, String imageUrl, String beginTime,
                 String endTime, String postDate, boolean available) {
         this.postTitle = postTitle;
         this.postDescription = postDescription;
         this.eventCategory = eventCategory;
         this.location = location;
         this.popularity = popularity;
-        this.picture = picture;
+        this.imageUrl = imageUrl;
         this.beginTime = beginTime;
         this.endTime = endTime;
         this.postDate = postDate;
@@ -73,7 +74,7 @@ public class Post implements Parcelable{
         endTime = in.readString();
         location = in.readString();
         popularity = in.readString();
-        picture = in.readString();
+        imageUrl = in.readString();
         postDate = in.readString();
         available = in.readByte() != 0;
         id = in.readInt();
@@ -132,8 +133,12 @@ public class Post implements Parcelable{
         this.popularity = popularity;
     }
 
-    public String getPicture() {
-        return picture;
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getBeginTime() {
@@ -211,7 +216,7 @@ public class Post implements Parcelable{
         parcel.writeString(endTime);
         parcel.writeString(location);
         parcel.writeString(popularity);
-        parcel.writeString(picture);
+        parcel.writeString(imageUrl);
         parcel.writeString(postDate);
         parcel.writeByte((byte) (available ? 1 : 0));
         parcel.writeInt(id);
