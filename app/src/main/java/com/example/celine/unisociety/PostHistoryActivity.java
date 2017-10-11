@@ -55,6 +55,7 @@ public class PostHistoryActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        /*
         // TODO: 23/09/2017 get history using id
         history = (RecyclerView) findViewById(R.id.rv_history);
         final DatabaseReference postRef = FirebaseDatabase.getInstance().getReference(Post.POST);
@@ -124,6 +125,7 @@ public class PostHistoryActivity extends AppCompatActivity {
         }
 
 
+    }*/
     }
 }
 
