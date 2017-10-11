@@ -191,9 +191,7 @@ public class Sign_Up_Activity extends AppCompatActivity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     //GET SOCIETY
                     Society society = dataSnapshot.getValue(Society.class);
-                    Log.d("SIGN UP SOCIETY ID", String.valueOf(society.getId()));
-                    Log.d("SIGN UP VE V", v);
-                    Log.d("SIGN UP VE S", society.getVerificationCode());
+
                     if (!v.equals(society.getVerificationCode())) {
                         //IF VERIFICATION FAILED
                         et_securityCode.setText("");

@@ -35,13 +35,15 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Calendar;
 
+import Model.Account;
 import Model.Post;
 
 import static android.R.attr.data;
 
 public class CreatePost_Activity extends AppCompatActivity {
     public static final String USER_ID = "user_id";
-    private int societyID;
+    public static final String POST_CONTENT = "POST_CONTENT";
+    private Account currentUser = null;
     private String postType;
     private Post newPost;
 
@@ -65,8 +67,8 @@ public class CreatePost_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_activity);
-        societyID = getIntent().getIntExtra(USER_ID, -1);
-        if (societyID == -1) {
+        currentUser = getIntent().getParcelableExtra(MainActivity.CURRENT_USER);
+        if (currentUser == null) {
             Toast.makeText(CreatePost_Activity.this, "unknown error", Toast.LENGTH_LONG);
             finish();
         }
@@ -106,7 +108,7 @@ public class CreatePost_Activity extends AppCompatActivity {
         Log.d("CREATE POST", postType);
         if (postType.equals(PostHistoryActivity.EDIT_POST)) {
             //show all data;
-            Post p = this.getIntent().getParcelableExtra(HistoryAdapter.POST_CONTENT);
+            Post p = this.getIntent().getParcelableExtra(CreatePost_Activity.POST_CONTENT);
             // TODO: 23/09/2017 push the info to the interface
         }
 
@@ -117,7 +119,7 @@ public class CreatePost_Activity extends AppCompatActivity {
                 //create a post
                // Post newPost = new Post();
                 newPost.setAvailable(true);
-                newPost.setId(societyID);
+                newPost.setId(currentUser.getId());
 
                 //get all the input
                 // TODO: 9/09/2017  if the editText is empty, notify user

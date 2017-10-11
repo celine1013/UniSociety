@@ -34,7 +34,7 @@ public class Post implements Parcelable{
 
     private String postTitle;
     private String postDescription;
-    private int eventCategory;
+    private int eventCategory; //start from 0
     private String beginTime;
     private String endTime;
 

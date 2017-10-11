@@ -12,6 +12,7 @@
         android:layout_height="@dimen/app_bar_height"
         android:layout_alignParentTop="true"
         android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:clickable="true"
         android:foreground="?selectableItemBackground"
         app:cardElevation="@dimen/btn_padding">

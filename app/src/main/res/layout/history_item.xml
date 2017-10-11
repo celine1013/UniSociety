@@ -1,6 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/his_socIcon"
+        android:layout_width="80sp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/ib_editPost"
+        android:layout_alignBottom="@+id/ib_editPost"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="false"
+        android:layout_marginEnd="@dimen/btn_padding"
+        android:adjustViewBounds="true"
+        android:baselineAlignBottom="false"
+        app:srcCompat="@drawable/bitsa_logo" />
+
+    <TextView
+        android:id="@+id/his_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentEnd="false"
+        android:layout_below="@+id/his_postTitle"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_toRightOf="@+id/his_socIcon"
+        android:text="@string/Text_Location" />
+
+    <TextView
+        android:id="@+id/his_postTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_toRightOf="@+id/his_socIcon"
+        android:text="Event Title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+    <TextView
+        android:id="@+id/his_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="false"
+        android:layout_below="@+id/his_location"
+        android:layout_toRightOf="@+id/his_socIcon"
+        android:text="2017-10-22" />
+
+    <TextView
+        android:id="@+id/his_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/his_date"
+        android:layout_alignParentBottom="false"
+        android:layout_toLeftOf="@+id/ib_editPost"
+        android:layout_toRightOf="@+id/his_date"
+        android:gravity="end"
+        android:paddingRight="@dimen/activity_vertical_margin"
+        android:text="19:00~20:00" />
+
+    <ImageButton
+        android:id="@+id/ib_editPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:background="@color/colorWhite"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
+
+</RelativeLayout>
