@@ -59,9 +59,23 @@ public class Fragment_HomePage extends Fragment {
         cv_newEvents = v.findViewById(R.id.cv_home_events);
         tv_notification = v.findViewById(R.id.tv_home_notification);
         recentEvent = (RecyclerView) v.findViewById(R.id.rv_recentEvent);
+        pb_circle = v.findViewById(R.id.pb_loading);
 
         final DatabaseReference postRef = FirebaseDatabase.getInstance().getReference(Post.POST);
         Query q = postRef.orderByChild(Post.POST_DATE).limitToFirst(7);
+        q.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getValue() != null) {
+                    pb_circle.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Post, PostViewHolder>(Post.class,
         R.layout.postlist_item, PostViewHolder.class, q) {
             @Override
