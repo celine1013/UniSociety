@@ -12,10 +12,10 @@ import Model.Post;
 
 public class PostViewHolder extends RecyclerView.ViewHolder {
     public View postView;
-    public TextView tv_EventTitle;
-    public TextView tv_EventDate;
-    public TextView tv_EventTime;
-    public TextView tv_EventLocation;
+    private TextView tv_EventTitle;
+    private TextView tv_EventDate;
+    private TextView tv_EventTime;
+    private TextView tv_EventLocation;
 
     public PostViewHolder(View itemView) {
         super(itemView);

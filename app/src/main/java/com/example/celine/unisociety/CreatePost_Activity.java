@@ -109,6 +109,7 @@ public class CreatePost_Activity extends AppCompatActivity {
         if (postType.equals(PostHistoryActivity.EDIT_POST)) {
             //show all data;
             Post p = this.getIntent().getParcelableExtra(CreatePost_Activity.POST_CONTENT);
+            Toast.makeText(CreatePost_Activity.this, postType, Toast.LENGTH_LONG).show();
             // TODO: 23/09/2017 push the info to the interface
         }
 
@@ -143,27 +144,6 @@ public class CreatePost_Activity extends AppCompatActivity {
                 } else {
                     newPost.setLocation(et_eventLocation.getText().toString());
                 }
-
-                if (bt_eventDate.getText().toString().equals(R.string.Text_Choose_Date)) {
-                    Toast.makeText(CreatePost_Activity.this, R.string.Text_Enter_All_Fields, Toast.LENGTH_LONG).show();
-                    return;
-                } else {
-                    newPost.setPostDate(bt_eventDate.getText().toString());
-                }
-                if (bt_startingTime.getText().toString().equals("")) {
-                    Toast.makeText(CreatePost_Activity.this, R.string.Text_Enter_All_Fields, Toast.LENGTH_LONG).show();
-                    return;
-                } else {
-                    newPost.setBeginTime(bt_startingTime.getText().toString());
-
-                }
-                if (bt_endingTime.getText().toString().equals("")) {
-                    Toast.makeText(CreatePost_Activity.this, R.string.Text_Enter_All_Fields, Toast.LENGTH_LONG).show();
-                    return;
-                } else {
-                    newPost.setEndTime(bt_endingTime.getText().toString());
-                }
-
                 if (sp_eventCategory.getSelectedItemPosition() == -1) {
                     Toast.makeText(CreatePost_Activity.this, R.string.Text_Enter_All_Fields, Toast.LENGTH_LONG).show();
                     return;

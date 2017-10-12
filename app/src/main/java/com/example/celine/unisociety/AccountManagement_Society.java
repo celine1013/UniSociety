@@ -42,7 +42,7 @@ public class AccountManagement_Society extends Fragment {
 
         setProfileButtonOnClick(view);
         setButtonChangePassword(view);
-        setButtonManagePosts(view, this.currentUser);
+        setButtonManagePosts(view);
         setButtonEditProfile(view);
         return view;
     }
@@ -65,11 +65,11 @@ public class AccountManagement_Society extends Fragment {
         });
     }
 
-    private void setButtonManagePosts(View view, final Account currentUser) {
+    private void setButtonManagePosts(View view) {
         bt_managePosts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), PostHistoryActivity.class);
+                Intent intent = new Intent(AccountManagement_Society.this.getActivity(), PostHistoryActivity.class);
                 intent.putExtra(MainActivity.CURRENT_USER, currentUser);
                 startActivity(intent);
             }

@@ -9,10 +9,10 @@
 
     <ImageView
         android:id="@+id/btn_selectPicture"
-        android:layout_width="375sp"
+        android:layout_width="match_parent"
         android:layout_height="100sp"
         android:adjustViewBounds="true"
-        android:cropToPadding="false"
+        android:layout_gravity="center_horizontal"
         app:srcCompat="@drawable/bitsa_logo" />
 
     <EditText
