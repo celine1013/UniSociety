@@ -8,14 +8,20 @@
         <item name="android:textColor">@color/textColorDarkBlue</item>
         <item name="android:textColorHint">@color/textColorDarkBlue</item>
 
-        <!-- Customize your theme here. -->
+
     </style>
 
     <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
     </style>
 
+    <style name="AppTheme.Button" parent="Widget.AppCompat.Button">
+        <item name ="android:background"> @drawable/blue_onclickwhite</item>
+        <item name ="android:textColor">@color/colorWhite</item>
+        <item name ="android:padding">@dimen/btn_padding</item>
+
+    </style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />

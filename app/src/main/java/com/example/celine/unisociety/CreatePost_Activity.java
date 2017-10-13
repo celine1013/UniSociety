@@ -54,7 +54,9 @@ public class CreatePost_Activity extends AppCompatActivity {
     private Button bt_startingTime;
     private Button bt_endingTime;
     private EditText et_eventLocation;
-    private ImageView bt_selectPicture;
+    private ImageView iv_selectPicture;
+    private ImageButton bt_upload;
+    private Button bt_delete;
 
     private static final int GALLERY_INTENT = 1;
 
@@ -66,7 +68,7 @@ public class CreatePost_Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_activity);
+        setContentView(R.layout.create_post);
         currentUser = getIntent().getParcelableExtra(MainActivity.CURRENT_USER);
         if (currentUser == null) {
             Toast.makeText(CreatePost_Activity.this, "unknown error", Toast.LENGTH_LONG);
@@ -76,15 +78,17 @@ public class CreatePost_Activity extends AppCompatActivity {
         mStorage = FirebaseStorage.getInstance().getReference();
 
         //binding
-        et_eventTitle = (EditText) findViewById(R.id.title);
-        et_eventDes = (EditText) findViewById(R.id.description);
-        sp_eventCategory = (Spinner) findViewById(R.id.category);
-        bt_eventDate = (Button) findViewById(R.id.bt_date);
-        bt_startingTime = (Button) findViewById(R.id.bt_startTime);
-        bt_endingTime = (Button) findViewById(R.id.bt_endTime);
-        et_eventLocation = (EditText) findViewById(R.id.location);
-        bt_selectPicture = findViewById(R.id.btn_selectPicture);
-        bt_submit = (Button) findViewById(R.id.btn_Submit);
+        et_eventTitle = (EditText) findViewById(R.id.c_et_eventTitle);
+        et_eventDes = (EditText) findViewById(R.id.c_et_desc);
+        sp_eventCategory = (Spinner) findViewById(R.id.c_sp_category);
+        bt_eventDate = (Button) findViewById(R.id.c_bt_date);
+        bt_startingTime = (Button) findViewById(R.id.c_bt_time);
+        bt_endingTime = (Button) findViewById(R.id.c_bt_time2);
+        et_eventLocation = (EditText) findViewById(R.id.c_et_location);
+        iv_selectPicture = findViewById(R.id.c_eventImage);
+        bt_submit = (Button) findViewById(R.id.c_btn_submit);
+        bt_delete = findViewById(R.id.c_btn_delete);
+        bt_upload = findViewById(R.id.c_ib_upload);
 
 
         //set category spinner
@@ -95,7 +99,7 @@ public class CreatePost_Activity extends AppCompatActivity {
         //set time buttons
         setEventTimeBTS();
         newPost = new Post();
-        bt_selectPicture.setOnClickListener(new View.OnClickListener() {
+        bt_upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                selectPicture();
@@ -201,7 +205,7 @@ public class CreatePost_Activity extends AppCompatActivity {
                     Uri downloadUrl = taskSnapshot.getDownloadUrl();
                     Log.d("downloadUrl", downloadUrl.toString());
                    // bt_selectPicture.setImageURI(downloadUrl);
-                    Glide.with(CreatePost_Activity.this).load(downloadUrl).into(bt_selectPicture);
+                    Glide.with(CreatePost_Activity.this).load(downloadUrl).into(iv_selectPicture);
                     // Glide.with(CreatePost_Activity.this).using(new FirebaseImageLoader()).load(filepath).into(bt_selectPicture);
                     newPost.setImageUrl(downloadUrl.toString());
                     Toast.makeText(CreatePost_Activity.this, "Upload Done.", Toast.LENGTH_LONG).show();
