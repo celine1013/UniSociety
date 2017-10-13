@@ -17,6 +17,8 @@ public class Account  implements Parcelable {
     public static final String ACCOUNT_SECURITY_QUESTION = "securityQuestion";
     public static final String ACCOUNT_TYPE = "id";
 
+    public static final int STUDENT = 0;
+
     private String accountName;
     private String password;
     private String securityQuestion;
