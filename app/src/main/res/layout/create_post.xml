@@ -9,31 +9,46 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/c_eventImage"
+        <RelativeLayout
+            android:id="@+id/re_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:adjustViewBounds="true"
-            android:background="@color/colorGray"
-            android:cropToPadding="false"
-            app:srcCompat="@android:drawable/ic_menu_gallery" />
+            android:layout_height="match_parent">
 
-        <ImageButton
-            android:id="@+id/c_ib_upload"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/c_eventImage"
-            android:layout_alignEnd="@+id/c_eventImage"
-            android:layout_margin="@dimen/fab_margin"
-            android:background="@color/colorWhite"
-            android:padding="@dimen/btn_padding"
-            app:srcCompat="@android:drawable/ic_menu_upload" />
+            <ImageView
+                android:id="@+id/c_eventImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:adjustViewBounds="true"
+                android:background="@color/colorGray"
+                android:cropToPadding="false"
+                app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+            <ImageButton
+                android:id="@+id/c_ib_upload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/c_eventImage"
+                android:layout_alignEnd="@+id/c_eventImage"
+                android:layout_margin="@dimen/fab_margin"
+                android:background="@color/colorWhite"
+                android:padding="@dimen/btn_padding"
+                app:srcCompat="@android:drawable/ic_menu_upload" />
+
+            <ProgressBar
+                android:id="@+id/c_pb_imageLoading"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/c_eventImage"
+                android:layout_centerInParent="true"
+                android:visibility="invisible" />
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/c_eventImage"
+            android:layout_below="@+id/re_image"
             android:layout_margin="@dimen/activity_horizontal_margin"
             android:gravity="center_vertical"
             android:orientation="vertical"

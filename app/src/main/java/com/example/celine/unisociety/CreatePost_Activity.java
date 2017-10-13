@@ -4,7 +4,9 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,11 +18,15 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -34,6 +40,8 @@ import java.io.File;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Calendar;
+
+import javax.sql.DataSource;
 
 import Model.Account;
 import Model.Post;
@@ -57,6 +65,7 @@ public class CreatePost_Activity extends AppCompatActivity {
     private ImageView iv_selectPicture;
     private ImageButton bt_upload;
     private Button bt_delete;
+    private ProgressBar pb_loading;
 
     private static final int GALLERY_INTENT = 1;
 
@@ -89,6 +98,7 @@ public class CreatePost_Activity extends AppCompatActivity {
         bt_submit = (Button) findViewById(R.id.c_btn_submit);
         bt_delete = findViewById(R.id.c_btn_delete);
         bt_upload = findViewById(R.id.c_ib_upload);
+        pb_loading = findViewById(R.id.c_pb_imageLoading);
 
 
         //set category spinner
@@ -103,6 +113,8 @@ public class CreatePost_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                selectPicture();
+                pb_loading.setVisibility(View.VISIBLE);
+
             }
         });
 
@@ -205,7 +217,19 @@ public class CreatePost_Activity extends AppCompatActivity {
                     Uri downloadUrl = taskSnapshot.getDownloadUrl();
                     Log.d("downloadUrl", downloadUrl.toString());
                    // bt_selectPicture.setImageURI(downloadUrl);
-                    Glide.with(CreatePost_Activity.this).load(downloadUrl).into(iv_selectPicture);
+                    Glide.with(CreatePost_Activity.this).load(downloadUrl).listener(new RequestListener<Uri, GlideDrawable>() {
+                        @Override
+                        public boolean onException(Exception e, Uri model, Target<GlideDrawable> target, boolean isFirstResource) {
+                            pb_loading.setVisibility(View.GONE);
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(GlideDrawable resource, Uri model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                            pb_loading.setVisibility(View.GONE);
+                            return false;
+                        }
+                    }).into(iv_selectPicture);
                     // Glide.with(CreatePost_Activity.this).using(new FirebaseImageLoader()).load(filepath).into(bt_selectPicture);
                     newPost.setImageUrl(downloadUrl.toString());
                     Toast.makeText(CreatePost_Activity.this, "Upload Done.", Toast.LENGTH_LONG).show();
