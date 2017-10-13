@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +45,7 @@ public class Fragment_SearchByDate extends Fragment {
     private Button bt_chooseDate;
     private Button bt_searchEvDate;
     private TextView tv_note;
+    private ProgressBar pb_loading;
 
     public Fragment_SearchByDate() {
         // Required empty public constructor
@@ -61,6 +63,9 @@ public class Fragment_SearchByDate extends Fragment {
         bt_searchEvDate = v.findViewById(R.id.bt_searchDate);
         eventRecycler = v.findViewById(R.id.rv_eventByDate);
         tv_note = v.findViewById(R.id.notification_pageDate);
+        pb_loading = v.findViewById(R.id.pb_date);
+        pb_loading.setVisibility(View.INVISIBLE);
+
         bt_chooseDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,6 +76,7 @@ public class Fragment_SearchByDate extends Fragment {
             @Override
             public void onClick(View view) {
                 final DatabaseReference postRef = FirebaseDatabase.getInstance().getReference(Post.POST);
+                pb_loading.setVisibility(View.VISIBLE);
                 Query q = postRef.orderByChild(Post.POST_DATE).equalTo(tv_date.getText().toString());
                 q.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -79,7 +85,9 @@ public class Fragment_SearchByDate extends Fragment {
                             tv_note.setVisibility(View.VISIBLE);
                         }else{
                             tv_note.setVisibility(View.INVISIBLE);
+
                         }
+                        pb_loading.setVisibility(View.INVISIBLE);
                     }
 
                     @Override

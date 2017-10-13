@@ -8,25 +8,32 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import Model.Post;
 
 public class EventListByCategory_Activity extends AppCompatActivity{
     private TextView tv_categoryTitle;
     private RecyclerView rv_eventsByCate;
+    private ProgressBar pb_loading;
     private int currentCat;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_list_by_category);
         tv_categoryTitle = findViewById(R.id.tv_catgoryTtitle);
         rv_eventsByCate = findViewById(R.id.rv_eventsByCate);
+        pb_loading = findViewById(R.id.pb_category);
 
         String[] cats = getResources().getStringArray(R.array.categories);
         currentCat = this.getIntent().getIntExtra(Fragment_CategoryMain.TAG_CATEGORY, -1);
@@ -39,6 +46,19 @@ public class EventListByCategory_Activity extends AppCompatActivity{
 
         final DatabaseReference postRef = FirebaseDatabase.getInstance().getReference(Post.POST);
         Query q = postRef.orderByChild(Post.POST_CATEGORY).equalTo(currentCat);
+        q.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getValue() != null) {
+                    pb_loading.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         FirebaseRecyclerAdapter adapter2 = new FirebaseRecyclerAdapter<Post, PostViewHolder>(Post.class,
                 R.layout.postlist_item, PostViewHolder.class, q) {
             @Override

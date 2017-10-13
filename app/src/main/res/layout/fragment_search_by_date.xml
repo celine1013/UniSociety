@@ -17,6 +17,15 @@
         android:layout_alignParentStart="true">
 
 
+        <ProgressBar
+            android:id="@+id/pb_date"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bt_searchDate"
+            android:layout_centerInParent="true"
+            android:visibility="visible" />
+
         <TextView
             android:id="@+id/notification_pageDate"
             android:layout_width="wrap_content"

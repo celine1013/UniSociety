@@ -47,4 +47,12 @@
         app:rippleColor="@android:color/background_dark"
         app:srcCompat="@android:drawable/ic_input_add" />
 
+    <ProgressBar
+        android:id="@+id/pb_history"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="visible" />
+
 </RelativeLayout>

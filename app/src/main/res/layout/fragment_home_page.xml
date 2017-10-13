@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,58 +6,56 @@
     android:layout_margin="@dimen/activity_horizontal_margin"
     tools:context="com.example.celine.unisociety.Fragment_HomePage">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/cv_home_events"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
-        android:layout_alignParentTop="true"
-        android:layout_gravity="center"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:clickable="true"
-        android:foreground="?selectableItemBackground"
-        app:cardElevation="@dimen/btn_padding">
+        android:layout_height="wrap_content">
 
-    </android.support.v7.widget.CardView>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="false"
-        android:layout_below="@+id/cv_home_events">
-
-        <RelativeLayout
+        <android.support.v7.widget.CardView
+            android:id="@+id/cv_home_events"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="@dimen/app_bar_height"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:clickable="true"
+            android:foreground="?selectableItemBackground"
+            app:cardElevation="@dimen/btn_padding">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_recentEvent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+        </android.support.v7.widget.CardView>
 
-            <ProgressBar
-                android:id="@+id/pb_loading"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center"
-                android:progressDrawable="@drawable/circular_process_view"
-                android:visibility="visible" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_recentEvent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/cv_home_events"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
 
-            <TextView
-                android:id="@+id/tv_home_notification"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:gravity="center"
-                android:text="NO RECORDS"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:visibility="invisible" />
+        <ProgressBar
+            android:id="@+id/pb_loading"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/rv_recentEvent"
+            android:layout_below="@+id/cv_home_events"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="false"
+            android:layout_gravity="center"
+            android:progressDrawable="@drawable/circular_process_view"
+            android:visibility="visible" />
 
-        </RelativeLayout>
-    </ScrollView>
+        <TextView
+            android:id="@+id/tv_home_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cv_home_events"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:gravity="center"
+            android:text="NO RECORDS"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:visibility="invisible" />
 
-</RelativeLayout>
+    </RelativeLayout>
+
+</ScrollView>

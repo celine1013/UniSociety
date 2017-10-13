@@ -12,12 +12,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
@@ -31,6 +35,7 @@ public class PostHistoryActivity extends AppCompatActivity {
 
     private RecyclerView history;
     private FloatingActionButton fab_createPost;
+    private ProgressBar pb_loading;
 
     private Account currentUser = null;
 
@@ -60,8 +65,22 @@ public class PostHistoryActivity extends AppCompatActivity {
 
         // TODO: 23/09/2017 get history using id
         history = (RecyclerView) findViewById(R.id.rv_history);
+        pb_loading = findViewById(R.id.pb_history);
         final DatabaseReference postRef = FirebaseDatabase.getInstance().getReference(Post.POST);
         Query q = postRef.orderByChild(Post.POST_SOCIETY_ID).equalTo(currentUser.getId());
+        q.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getValue() != null) {
+                    pb_loading.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Post, HistoryViewHolder>(Post.class,
                 R.layout.history_item, HistoryViewHolder.class, q) {
             @Override
