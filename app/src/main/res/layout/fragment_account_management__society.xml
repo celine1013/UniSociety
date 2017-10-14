@@ -7,73 +7,73 @@
     tools:context="com.example.celine.unisociety.AccountManagement_Society">
 
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@color/MainColor"
-        android:orientation="vertical"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="54dp">
-
-        <ImageButton
-            android:id="@+id/IB_SocietyProfilePic"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/MainColor"
+            android:orientation="vertical"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true">
+
+            <ImageButton
+                android:id="@+id/IB_SocietyProfilePic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:background="@android:color/transparent"
+                android:cropToPadding="true"
+                android:elevation="9dp"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:scaleType="fitCenter"
+                android:src="@drawable/bitsa_logo" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:adjustViewBounds="true"
-            android:background="@android:color/transparent"
-            android:cropToPadding="true"
-            android:elevation="9dp"
-            android:padding="@dimen/activity_horizontal_margin"
-            android:scaleType="fitCenter"
-            android:src="@drawable/bitsa_logo" />
+            android:orientation="vertical"
+            android:id="@+id/linearLayout2"
+            android:layout_marginTop="45dp"
+            android:layout_below="@+id/linearLayout"
+            android:layout_centerHorizontal="true">
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/btn_edit_profile"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/blue_onclickwhite"
+                android:fontFamily="serif"
+                android:padding="@dimen/btn_padding"
+                android:text="@string/Text_Edit_Profile"
+                android:textColor="@color/colorWhite" />
 
-    <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:layout_marginEnd="32dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="75dp"
-        android:id="@+id/linearLayout2">
+            <Button
+                android:id="@+id/btn_change_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_edit_profile"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/blue_onclickwhite"
+                android:fontFamily="serif"
+                android:padding="@dimen/btn_padding"
+                android:text="@string/Text_Change_Password"
+                android:textColor="@color/colorWhite" />
 
-        <Button
-            android:id="@+id/btn_edit_profile"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/blue_onclickwhite"
-            android:padding="@dimen/btn_padding"
-            android:text="@string/Text_Edit_Profile"
-            android:textColor="@color/colorWhite" />
+            <Button
+                android:id="@+id/btn_manage_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_change_password"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/blue_onclickwhite"
+                android:fontFamily="serif"
+                android:padding="@dimen/btn_padding"
+                android:text="@string/Text_Manage_History"
+                android:textColor="@color/colorWhite" />
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_change_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btn_edit_profile"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/blue_onclickwhite"
-            android:padding="@dimen/btn_padding"
-            android:text="@string/Text_Change_Password"
-            android:textColor="@color/colorWhite" />
-
-        <Button
-            android:id="@+id/btn_manage_history"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btn_change_password"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/blue_onclickwhite"
-            android:padding="@dimen/btn_padding"
-            android:text="@string/Text_Manage_History"
-            android:textColor="@color/colorWhite" />
-    </LinearLayout>
 
 </RelativeLayout>
