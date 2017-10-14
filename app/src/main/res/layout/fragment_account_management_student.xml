@@ -6,39 +6,54 @@
     tools:context="com.example.celine.unisociety.AccountManagement_Student">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/textView2"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="@string/Text_Student"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
+        android:orientation="vertical"
+        android:background="@color/MainColor"
+        android:id="@id/linearLayout">
 
-    <Button
-        android:id="@+id/btn_Notification"
-        android:layout_width="175dp"
-        android:layout_height="58dp"
-        android:layout_gravity="center"
-        android:text="@string/Text_Notification"
-        android:background="@drawable/blue_onclickwhite"
-        android:textColor="@color/colorWhite"
-        android:layout_marginBottom="105dp"
-        android:layout_above="@+id/btn_change_password"
-        android:layout_centerHorizontal="true" />
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:src="@drawable/logo1" />
 
-    <Button
-        android:id="@+id/btn_change_password"
-        android:layout_width="187dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:text="@string/Text_Change_Password"
-        android:background="@drawable/blue_onclickwhite"
-        android:textColor="@color/colorWhite"
-        android:layout_marginBottom="192dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/btn_Notification"
-        android:layout_alignStart="@+id/btn_Notification" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/linearLayout">
+
+        <Button
+            android:id="@+id/btn_Notification"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_above="@+id/btn_change_password"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/blue_onclickwhite"
+            android:fontFamily="serif"
+            android:text="@string/Text_Notification"
+            android:textColor="@color/colorWhite" />
+
+        <Button
+            android:id="@+id/btn_change_password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/btn_Notification"
+            android:layout_marginBottom="91dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/blue_onclickwhite"
+            android:fontFamily="serif"
+            android:text="@string/Text_Change_Password"
+            android:textColor="@color/colorWhite" />
+    </LinearLayout>
+
 
 
 </RelativeLayout>

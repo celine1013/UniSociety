@@ -84,7 +84,7 @@
             android:background="@android:color/transparent"
             android:fontFamily="serif"
             android:gravity="center"
-            android:text="Do not have an account? Register Here!" />
+            android:text="without an account? Register Here!" />
     </LinearLayout>
 
 </LinearLayout>
