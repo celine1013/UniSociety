@@ -1,5 +1,6 @@
 package com.example.celine.unisociety;
 
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,9 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -72,6 +76,8 @@ public class PostDetail_Activity extends AppCompatActivity {
         tv_location.setText(post.getLocation());
         tv_date.setText(post.getPostDate());
         tv_time.setText(post.getBeginTime()+ " ~ "+post.getEndTime());
+        String downloadUrl = post.getImageUrl();
+        Glide.with(PostDetail_Activity.this).load(downloadUrl).into(iv_eventImage);
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
         Query q = ref.child(Society.SOCIETY).orderByChild(Society.SOCIETY_ID).equalTo(post.getId());
