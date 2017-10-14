@@ -14,16 +14,6 @@
         android:background="@color/MainColor"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textview_me"
-            android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
-            android:layout_height="20dp"
-            android:gravity="center"
-            android:text="@string/Text_Me"
-            android:textColor="@color/colorWhite"
-            android:textSize="20dp" />
-
         <ImageButton
             android:id="@+id/IB_SocietyProfilePic"
             android:layout_width="match_parent"
