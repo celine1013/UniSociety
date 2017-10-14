@@ -54,29 +54,7 @@
             android:orientation="vertical"
             android:weightSum="1">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/c_btn_submit"
-                    style="@style/AppTheme.Button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Submit" />
-
-                <Button
-                    android:id="@+id/c_btn_delete"
-                    style="@style/AppTheme.Button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Delete"
-                    android:visibility="gone" />
-            </LinearLayout>
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
@@ -95,6 +73,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="Please enter event title."
+                    android:textColorHint="@color/colorGray"
                     android:padding="@dimen/activity_horizontal_margin"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
@@ -158,13 +137,15 @@
 
                 <EditText
                     android:id="@+id/c_et_location"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="301dp"
+                    android:layout_height="47dp"
                     android:hint="Please enter event location/address"
+                    android:textColorHint="@color/colorGray"
                     android:padding="@dimen/activity_horizontal_margin"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     app:layout_constraintLeft_toRightOf="@+id/icon_location"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:layout_editor_absoluteX="59dp" />
 
             </android.support.constraint.ConstraintLayout>
 
@@ -193,21 +174,23 @@
                 <Button
                     android:id="@+id/c_bt_date"
                     style="@style/AppTheme.Button"
-                    android:layout_width="wrap_content"
-
-                    android:layout_height="wrap_content"
+                    android:layout_width="269dp"
+                    android:layout_height="51dp"
                     android:paddingLeft="@dimen/text_margin"
                     android:paddingRight="@dimen/text_margin"
                     android:text="Please choose event date."
                     android:textAlignment="center"
-                    android:textColor="@color/colorWhite"
+                    android:textColor="@color/MainColor"
+                    android:background="@drawable/border_blue_button"
                     app:layout_constraintLeft_toRightOf="@+id/icon_date"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="0dp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="-18dp"
                     android:orientation="horizontal"
                     app:layout_constraintLeft_toRightOf="@+id/icon_date"
                     app:layout_constraintRight_toRightOf="parent"
@@ -218,24 +201,25 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/btn_padding"
+                        android:layout_marginRight="10dp"
                         android:layout_marginTop="8dp"
                         android:layout_weight="1"
-                        android:background="@drawable/blue_onclickwhite"
+                        android:background="@drawable/border_blue_button"
                         android:text="Starting time"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/MainColor"
                         app:layout_constraintLeft_toRightOf="@+id/icon_date"
                         app:layout_constraintTop_toBottomOf="@+id/c_bt_date" />
 
                     <Button
                         android:id="@+id/c_bt_time2"
-                        android:layout_width="wrap_content"
+                        android:layout_width="127dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/btn_padding"
+                        android:layout_marginLeft="10dp"
                         android:layout_marginTop="8dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/blue_onclickwhite"
+                        android:background="@drawable/border_blue_button"
                         android:text="Ending time"
-                        android:textColor="@color/colorWhite"
+                        android:textColor="@color/MainColor"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintLeft_toRightOf="@id/c_bt_time"
                         app:layout_constraintRight_toRightOf="parent"
@@ -255,8 +239,8 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2">
+                android:layout_height="match_parent"
+                android:layout_weight="0.36">
 
                 <ImageView
                     android:id="@+id/imageView2"
@@ -269,12 +253,41 @@
                     android:id="@+id/c_et_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
                     android:layout_toRightOf="@id/imageView2"
+                    android:inputType="textMultiLine"
                     android:paddingLeft="8sp"
                     android:text="Description"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Small" />
-            </RelativeLayout>
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColorHint="@color/colorGray" />
 
+
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.2"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/c_btn_delete"
+                    style="@style/AppTheme.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Delete"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/c_btn_submit"
+                    style="@style/AppTheme.Button"
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="1"
+                    android:text="Submit" />
+            </LinearLayout>
         </LinearLayout>
 
     </RelativeLayout>
