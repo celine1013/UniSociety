@@ -22,12 +22,12 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginLeft="30dp"
         android:layout_width="300dp"
         android:layout_height="350dp"
         android:weightSum="1"
         android:orientation="vertical"
-        android:layout_weight="0.20"
-        android:layout_gravity="center">
+        android:layout_weight="0.20">
 
         <EditText
             android:id="@+id/ET_user_name"
@@ -68,11 +68,12 @@
         <Button
             android:id="@+id/btn_sign_up"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="5dp"
             android:background="@android:color/transparent"
             android:text="Do not have an account? Register Here!"
             android:gravity="center"
-            />
+            android:layout_marginBottom="0dp"
+            android:layout_weight="0.13" />
     </LinearLayout>
 
 </LinearLayout>
