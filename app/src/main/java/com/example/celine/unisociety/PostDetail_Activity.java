@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -55,10 +56,19 @@ public class PostDetail_Activity extends AppCompatActivity {
         post = this.getIntent().getParcelableExtra(Post.POST);
         currentUser = this.getIntent().getParcelableExtra(MainActivity.CURRENT_USER);
 
+        // TODO: 15/10/2017 set switch status according to current user (database needed)
         st_attend = findViewById(R.id.st_attend);
-        if(st_attend.isChecked()){
-            Toast.makeText(PostDetail_Activity.this, "Event Joined", Toast.LENGTH_SHORT).show();
-        }
+        st_attend.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    Toast.makeText(PostDetail_Activity.this, "Event Joined!", Toast.LENGTH_SHORT).show();
+                    st_attend.setText("Attended");
+                }else{
+                    st_attend.setText("Attend");
+                }
+            }
+        });
         iv_eventImage = findViewById(R.id.eventImage);
         ib_socIcon = (ImageView)findViewById(R.id.e_societyIcon);
         ib_socIcon.setOnClickListener(new View.OnClickListener() {
