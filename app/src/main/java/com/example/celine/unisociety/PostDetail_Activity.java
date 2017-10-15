@@ -35,7 +35,7 @@ public class PostDetail_Activity extends AppCompatActivity {
 
     private Switch st_attend;
     private ImageView iv_eventImage;
-    private ImageButton ib_socIcon;
+    private ImageView ib_socIcon;
     private TextView tv_title;
     private TextView tv_socName;
     private TextView tv_description;
@@ -126,6 +126,13 @@ public class PostDetail_Activity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        ib_socIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
             }
         });
