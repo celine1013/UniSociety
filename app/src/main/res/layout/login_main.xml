@@ -36,7 +36,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/oval"
-            android:fontFamily="sans-serif-condensed"
+            android:fontFamily="cursive"
             android:hint="User Name"
             android:inputType="textPersonName"
             android:textColorHint="@color/colorGray" />
@@ -48,7 +48,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/oval"
             android:ems="10"
-            android:fontFamily="sans-serif-condensed"
+            android:fontFamily="cursive"
             android:hint="Password"
             android:inputType="textPassword"
             android:textColorHint="@color/colorGray" />
@@ -59,7 +59,7 @@
             android:layout_height="20dp"
             android:layout_marginTop="10dp"
             android:background="@android:color/transparent"
-            android:fontFamily="sans-serif-condensed"
+            android:fontFamily="serif"
             android:gravity="right"
             android:text="Forget Passwords?" />
 
@@ -70,21 +70,21 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="40dp"
             android:background="@drawable/blue_onclickwhite"
-            android:fontFamily="sans-serif-condensed"
+            android:fontFamily="serif"
             android:text="@string/Text_Login"
             android:textColor="@color/colorWhite" />
 
         <Button
             android:id="@+id/btn_sign_up"
             android:layout_width="match_parent"
-            android:layout_height="5dp"
+            android:layout_height="11dp"
             android:layout_marginBottom="0dp"
             android:layout_marginTop="44dp"
             android:layout_weight="0.13"
             android:background="@android:color/transparent"
-            android:fontFamily="sans-serif-condensed"
+            android:fontFamily="serif"
             android:gravity="center"
-            android:text="Do not have an account? Register Here!" />
+            android:text="without an account? Register Here!" />
     </LinearLayout>
 
 </LinearLayout>
