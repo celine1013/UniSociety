@@ -23,12 +23,15 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.2">
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/societyIcon"
-                    android:layout_width="wrap_content"
+                    android:layout_width="100sp"
                     android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:srcCompat="@mipmap/logo_circle" />
+                    app:srcCompat="@drawable/bitsa_logo"
+                    tools:layout_editor_absoluteY="0dp"
+                    tools:layout_editor_absoluteX="16dp" />
 
                 <TextView
                     android:id="@+id/tv_societyName"
