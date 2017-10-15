@@ -1,5 +1,6 @@
 package com.example.celine.unisociety;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -56,7 +57,14 @@ public class PostDetail_Activity extends AppCompatActivity {
 
         st_attend = findViewById(R.id.st_attend);
         iv_eventImage = findViewById(R.id.eventImage);
-        ib_socIcon = findViewById(R.id.society_icon);
+        ib_socIcon = (ImageView)findViewById(R.id.e_societyIcon);
+        ib_socIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PostDetail_Activity.this, SocProfileActivity.class);
+                startActivity(intent);
+            }
+        });
         tv_title = findViewById(R.id.tv_eventTitle);
         tv_description = findViewById(R.id.tv_desc);
         tv_location = findViewById(R.id.tv_address);
@@ -130,11 +138,6 @@ public class PostDetail_Activity extends AppCompatActivity {
             }
         });
 
-        ib_socIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
     }
 }

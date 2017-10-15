@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,6 +9,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:orientation="vertical">
 
         <ImageView
@@ -16,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            android:elevation="5dp"
             app:srcCompat="@drawable/bitsa_logo" />
 
         <TextView
@@ -39,12 +42,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:elevation="5dp">
+            android:elevation="5dp"
+            app:cardBackgroundColor="@color/colorGray">
 
             <TextView
                 android:id="@+id/pf_soc_dec"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:elevation="5dp"
                 android:gravity="center"
                 android:padding="@dimen/text_margin"
                 android:text="The constituent society for all undergraduate students studying Information Systems at University of New South Wales Business School." />
@@ -53,11 +58,13 @@
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin">
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:elevation="4dp"
+            app:cardBackgroundColor="@color/card_view_background">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <RelativeLayout
                     android:id="@+id/fb_set"
@@ -85,7 +92,7 @@
                 <RelativeLayout
                     android:id="@+id/contact_set"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/fb_set"
                     android:padding="@dimen/activity_vertical_margin">
 
@@ -93,20 +100,25 @@
                         android:id="@+id/imageView7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/btn_padding"
+                        android:padding="@dimen/activity_vertical_margin"
                         app:srcCompat="@android:drawable/ic_menu_info_details" />
 
                     <TextView
                         android:id="@+id/pf_contact_person"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                        android:layout_marginTop="@dimen/activity_horizontal_margin"
+                        android:layout_toRightOf="@+id/imageView7"
                         android:text="Emily" />
 
                     <TextView
                         android:id="@+id/pf_contactContent"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="041" />
+                        android:layout_below="@+id/pf_contact_person"
+                        android:layout_toRightOf="@+id/imageView7"
+                        android:text="president@bitsa.org.au" />
                 </RelativeLayout>
             </RelativeLayout>
 
@@ -114,4 +126,4 @@
 
     </LinearLayout>
 
-</RelativeLayout>
+</ScrollView>
