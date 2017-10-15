@@ -129,6 +129,7 @@ public class CreatePost_Activity extends AppCompatActivity {
             prevPost = this.getIntent().getParcelableExtra(Post.POST);
             newPost.setKey(prevPost.getKey());
             newPost.setImageUrl(prevPost.getImageUrl());
+            pb_loading.setVisibility(View.VISIBLE);
 
 
             et_eventTitle.setText(prevPost.getPostTitle());
@@ -139,6 +140,7 @@ public class CreatePost_Activity extends AppCompatActivity {
             bt_endingTime.setText(prevPost.getEndTime());
             sp_eventCategory.setSelection(prevPost.getEventCategory());
             String downloadUrl = prevPost.getImageUrl();
+
             Glide.with(CreatePost_Activity.this).load(downloadUrl).listener(new RequestListener<String, GlideDrawable>() {
                 @Override
                 public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
@@ -260,6 +262,7 @@ public class CreatePost_Activity extends AppCompatActivity {
                         @Override
                         public boolean onException(Exception e, Uri model, Target<GlideDrawable> target, boolean isFirstResource) {
                             pb_loading.setVisibility(View.GONE);
+                            iv_selectPicture.setImageResource(android.R.drawable.ic_menu_gallery);
                             return false;
                         }
 
