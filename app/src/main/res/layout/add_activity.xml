@@ -25,6 +25,20 @@
         android:textAlignment="center" />
 
     <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine" />
+
+    <EditText
         android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="75dp"
@@ -103,7 +117,7 @@
 
     <Button
         android:id="@+id/btn_Submit"
-        android:layout_width="350dp"
+        android:layout_width="304dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/blue_onclickwhite"

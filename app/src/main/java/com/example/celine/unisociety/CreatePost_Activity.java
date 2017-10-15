@@ -207,6 +207,7 @@ public class CreatePost_Activity extends AppCompatActivity {
     protected void onActivityResult ( int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == GALLERY_INTENT && resultCode ==RESULT_OK) {
+
             Uri uri = data.getData();
             Log.d("Uri", uri.toString());
             final StorageReference filepath = mStorage.child("Post_Images").child(uri.getLastPathSegment());

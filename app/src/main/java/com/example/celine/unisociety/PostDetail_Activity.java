@@ -54,7 +54,7 @@ public class PostDetail_Activity extends AppCompatActivity {
         post = this.getIntent().getParcelableExtra(Post.POST);
         currentUser = this.getIntent().getParcelableExtra(MainActivity.CURRENT_USER);
 
-        st_attend = (Switch)findViewById(R.id.st_attend);
+        st_attend = findViewById(R.id.st_attend);
         iv_eventImage = findViewById(R.id.eventImage);
         ib_socIcon = findViewById(R.id.society_icon);
         tv_title = findViewById(R.id.tv_eventTitle);
@@ -71,8 +71,9 @@ public class PostDetail_Activity extends AppCompatActivity {
             Log.e("POST DETAIL", "NO POST RECEIVED: UNKNOWN ERROR");
         }
 
-        if(currentUser != null && currentUser.getId() == 0){
+        if(currentUser != null && currentUser.getId() == Account.STUDENT){
             st_attend.setVisibility(View.VISIBLE);
+            // TODO: 13/10/2017 switch listener 
         }
 
         // TODO: 6/10/2017 imageview
