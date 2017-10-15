@@ -22,13 +22,13 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_gravity="center_horizontal"
         android:layout_width="300dp"
         android:layout_height="350dp"
-        android:weightSum="1"
-        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:layout_weight="0.20">
+        android:layout_weight="0.20"
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <EditText
             android:id="@+id/ET_user_name"
@@ -36,9 +36,10 @@
             android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/oval"
-            android:fontFamily="cursive"
             android:hint="User Name"
             android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColorHint="@color/colorGray" />
 
         <EditText
@@ -48,9 +49,10 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/oval"
             android:ems="10"
-            android:fontFamily="cursive"
             android:hint="Password"
             android:inputType="textPassword"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColorHint="@color/colorGray" />
 
         <Button
@@ -59,9 +61,8 @@
             android:layout_height="20dp"
             android:layout_marginTop="10dp"
             android:background="@android:color/transparent"
-            android:fontFamily="serif"
             android:gravity="right"
-            android:text="Forget Passwords?" />
+            android:text="Forget Password?" />
 
         <Button
             android:id="@+id/btn_login"
@@ -70,7 +71,6 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="40dp"
             android:background="@drawable/blue_onclickwhite"
-            android:fontFamily="serif"
             android:text="@string/Text_Login"
             android:textColor="@color/colorWhite" />
 
@@ -82,7 +82,7 @@
             android:layout_marginTop="44dp"
             android:layout_weight="0.13"
             android:background="@android:color/transparent"
-            android:fontFamily="serif"
+
             android:gravity="center"
             android:text="without an account? Register Here!" />
     </LinearLayout>
