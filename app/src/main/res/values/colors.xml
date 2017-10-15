@@ -7,4 +7,5 @@
     <color name="MainColor">#00bcd4</color>
     <color name="colorBlack">#000000</color>
     <color name="colorGray">#aaaaaa</color>
+    <color name="card_view_background">#8daae0ff</color>
 </resources>

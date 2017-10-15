@@ -3,58 +3,111 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/activity_horizontal_margin"
     tools:context="com.example.celine.unisociety.Fragment_HomePage">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/cv_home_events"
+        <HorizontalScrollView
+            android:id="@+id/promote"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/app_bar_height"
-            android:layout_alignParentTop="true"
-            android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:clickable="true"
-            android:foreground="?selectableItemBackground"
-            app:cardElevation="@dimen/btn_padding">
+            android:layout_height="wrap_content"
+            android:scrollIndicators="none"
+            android:scrollbars="none">
 
-        </android.support.v7.widget.CardView>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_recentEvent"
+                <android.support.v7.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:elevation="5dp"
+                    app:cardBackgroundColor="@color/card_view_background">
+
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="180dp"
+                        android:adjustViewBounds="true"
+                        android:padding="@dimen/cardview_default_elevation"
+                        app:srcCompat="@drawable/main01" />
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:elevation="5dp"
+                    app:cardBackgroundColor="@color/card_view_background">
+
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="180dp"
+                        android:adjustViewBounds="true"
+                        android:padding="@dimen/cardview_default_elevation"
+                        app:srcCompat="@drawable/main02" />
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:elevation="5dp"
+                    app:cardBackgroundColor="@color/card_view_background">
+
+                    <ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="180dp"
+                        android:adjustViewBounds="true"
+                        android:padding="@dimen/cardview_default_elevation"
+                        app:srcCompat="@drawable/main03" />
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/cv_home_events"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+            android:layout_below="@+id/promote"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin">
 
-        <ProgressBar
-            android:id="@+id/pb_loading"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/rv_recentEvent"
-            android:layout_below="@+id/cv_home_events"
-            android:layout_centerInParent="true"
-            android:layout_centerVertical="false"
-            android:layout_gravity="center"
-            android:progressDrawable="@drawable/circular_process_view"
-            android:visibility="visible" />
+            <TextView
+                android:id="@+id/tv_home_notification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:gravity="center"
+                android:text="NO RECORDS"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:visibility="invisible" />
 
-        <TextView
-            android:id="@+id/tv_home_notification"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/cv_home_events"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:gravity="center"
-            android:text="NO RECORDS"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:visibility="invisible" />
+            <ProgressBar
+                android:id="@+id/pb_loading"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/rv_recentEvent"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="false"
+                android:layout_gravity="center"
+                android:progressDrawable="@drawable/circular_process_view"
+                android:visibility="visible" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_recentEvent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
+        </RelativeLayout>
 
     </RelativeLayout>
 

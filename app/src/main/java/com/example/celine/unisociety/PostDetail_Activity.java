@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,6 +42,7 @@ public class PostDetail_Activity extends AppCompatActivity {
     private TextView tv_location;
     private TextView tv_date;
     private TextView tv_time;
+    private ProgressBar pa_loading;
 
 
     @Override
@@ -51,7 +54,7 @@ public class PostDetail_Activity extends AppCompatActivity {
         post = this.getIntent().getParcelableExtra(Post.POST);
         currentUser = this.getIntent().getParcelableExtra(MainActivity.CURRENT_USER);
 
-        st_attend = (Switch)findViewById(R.id.st_attend);
+        st_attend = findViewById(R.id.st_attend);
         iv_eventImage = findViewById(R.id.eventImage);
         ib_socIcon = findViewById(R.id.society_icon);
         tv_title = findViewById(R.id.tv_eventTitle);
@@ -60,13 +63,17 @@ public class PostDetail_Activity extends AppCompatActivity {
         tv_date = findViewById(R.id.tv_date);
         tv_time = findViewById(R.id.tv_time);
         tv_socName = findViewById(R.id.tv_societyName);
+        pa_loading = findViewById(R.id.pb_imageLoading);
+
+        pa_loading.setVisibility(View.VISIBLE);
 
         if(post == null){
             Log.e("POST DETAIL", "NO POST RECEIVED: UNKNOWN ERROR");
         }
 
-        if(currentUser != null && currentUser.getId() == 0){
+        if(currentUser != null && currentUser.getId() == Account.STUDENT){
             st_attend.setVisibility(View.VISIBLE);
+            // TODO: 13/10/2017 switch listener 
         }
 
         // TODO: 6/10/2017 imageview
@@ -77,7 +84,18 @@ public class PostDetail_Activity extends AppCompatActivity {
         tv_date.setText(post.getPostDate());
         tv_time.setText(post.getBeginTime()+ " ~ "+post.getEndTime());
         String downloadUrl = post.getImageUrl();
-        Glide.with(PostDetail_Activity.this).load(downloadUrl).into(iv_eventImage);
+        Glide.with(PostDetail_Activity.this).load(downloadUrl).listener(new RequestListener<String, GlideDrawable>() {
+            @Override
+            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                return false;
+            }
+
+            @Override
+            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                return false;
+            }
+        }).into(iv_eventImage);
+
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
         Query q = ref.child(Society.SOCIETY).orderByChild(Society.SOCIETY_ID).equalTo(post.getId());

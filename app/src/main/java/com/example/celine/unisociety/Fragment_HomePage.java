@@ -36,7 +36,6 @@ import Model.Post;
  * A simple {@link Fragment} subclass.
  */
 public class Fragment_HomePage extends Fragment {
-    private CardView cv_newEvents;
 
     private RecyclerView recentEvent;
     private List<Post> recentEvents;
@@ -56,7 +55,6 @@ public class Fragment_HomePage extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View v = inflater.inflate(R.layout.fragment_home_page, container, false);
-        cv_newEvents = v.findViewById(R.id.cv_home_events);
         tv_notification = v.findViewById(R.id.tv_home_notification);
         recentEvent = (RecyclerView) v.findViewById(R.id.rv_recentEvent);
         pb_circle = v.findViewById(R.id.pb_loading);
