@@ -49,7 +49,7 @@
 
                 <TextView
                     android:id="@+id/tv_eventTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="227dp"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="false"
                     android:padding="@dimen/activity_horizontal_margin"
