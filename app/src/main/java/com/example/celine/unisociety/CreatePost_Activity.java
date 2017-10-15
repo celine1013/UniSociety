@@ -122,11 +122,15 @@ public class CreatePost_Activity extends AppCompatActivity {
         Intent i = this.getIntent();
         postType = i.getStringExtra(PostHistoryActivity.POST_TYPE);
         Log.d("CREATE POST", postType);
+
         if (postType.equals(PostHistoryActivity.EDIT_POST)) {
             //show all data;
+            bt_delete.setVisibility(View.VISIBLE);
             prevPost = this.getIntent().getParcelableExtra(Post.POST);
-            //Toast.makeText(CreatePost_Activity.this, postType, Toast.LENGTH_LONG).show();
-            // TODO: 23/09/2017 push the info to the interface
+            newPost.setKey(prevPost.getKey());
+            newPost.setImageUrl(prevPost.getImageUrl());
+
+
             et_eventTitle.setText(prevPost.getPostTitle());
             et_eventLocation.setText(prevPost.getLocation());
             et_eventDes.setText(prevPost.getPostDescription());
@@ -195,7 +199,6 @@ public class CreatePost_Activity extends AppCompatActivity {
                 // TODO: 23/09/2017 create or update the post
                 switch (postType) {
                     case PostHistoryActivity.EDIT_POST:
-                        newPost.setKey(prevPost.getKey());
                         DatabaseReference ref_e = FirebaseDatabase.getInstance().getReference(Post.POST);
                         Map<String, Object> postUpdates = new HashMap<String, Object>();
                         postUpdates.put(newPost.getKey(), newPost);
@@ -208,14 +211,26 @@ public class CreatePost_Activity extends AppCompatActivity {
                     case PostHistoryActivity.NEW_POST:
                         //create new post
                         DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Post.POST);
-                        newPost.setKey(ref.push().getKey());
-                        DatabaseReference postRef = ref.child(ref.push().getKey());
+                        String key = ref.push().getKey();
+                        newPost.setKey(key);
+                        DatabaseReference postRef = ref.child(key);
                         postRef.setValue(newPost);
                         Snackbar.make(view, "Post Created!", Snackbar.LENGTH_LONG).show();
-                        Log.v("CREATE POST", "NEW POST CREATED");
+                        Toast.makeText(CreatePost_Activity.this, "Post Created.", Toast.LENGTH_LONG).show();
                         finish();
                         break;
                 }
+            }
+        });
+
+        bt_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseReference ref_d = FirebaseDatabase.getInstance().getReference(Post.POST)
+                        .child(prevPost.getKey());
+                ref_d.setValue(null);
+                Toast.makeText(CreatePost_Activity.this, "Post Deleted.", Toast.LENGTH_LONG).show();
+                finish();
             }
         });
     }
