@@ -37,6 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
                 android:layout_weight="1"
+                android:fontFamily="serif"
                 android:text="Society" />
 
             <RadioButton
@@ -45,6 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
                 android:layout_weight="1"
+                android:fontFamily="serif"
                 android:text="Student" />
         </RadioGroup>
 
@@ -61,68 +63,89 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
         android:layout_weight="0.00"
+        android:background="@drawable/border_blue_button"
         android:ems="10"
-        android:fontFamily="sans-serif"
+        android:fontFamily="cursive"
         android:hint="@string/Text_Security_Code"
         android:inputType="textPersonName"
-        android:textColor="@color/textColorDarkBlue" />
+        android:textColor="@color/textColorDarkBlue"
+        android:textColorHint="@color/colorGray" />
 
     <EditText
         android:id="@+id/signup_user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
         android:layout_weight="0.00"
+        android:background="@drawable/border_blue_button"
         android:ems="10"
+        android:fontFamily="cursive"
         android:hint="@string/Text_User_Name"
         android:inputType="textEmailAddress"
-        android:textColor="@color/textColorDarkBlue" />
+        android:textColor="@color/textColorDarkBlue"
+        android:textColorHint="@color/colorGray" />
 
     <EditText
         android:id="@+id/signup_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
         android:layout_weight="0.00"
+        android:background="@drawable/border_blue_button"
         android:ems="10"
+        android:fontFamily="cursive"
         android:hint="@string/Text_Password"
         android:inputType="textPassword"
-        android:textColor="@color/textColorDarkBlue" />
+        android:textColor="@color/textColorDarkBlue"
+        android:textColorHint="@color/colorGray" />
 
     <EditText
         android:id="@+id/Confirm_Password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
         android:layout_weight="0.00"
+        android:background="@drawable/border_blue_button"
         android:ems="10"
+        android:fontFamily="cursive"
         android:hint="@string/Text_Confirm_Password"
         android:inputType="textPassword"
-        android:textColor="@color/textColorDarkBlue" />
+        android:textColor="@color/textColorDarkBlue"
+        android:textColorHint="@color/colorGray" />
 
     <EditText
         android:id="@+id/Sequrity_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
         android:layout_weight="0.00"
+        android:background="@drawable/border_blue_button"
         android:ems="10"
+        android:fontFamily="cursive"
         android:hint="What is your favorite color?"
         android:inputType="textPersonName"
         android:selectAllOnFocus="false"
         android:singleLine="true"
-        android:textColor="@color/textColorDarkBlue" />
+        android:textColor="@color/textColorDarkBlue"
+        android:textColorHint="@color/colorGray" />
 
     <Button
         android:id="@+id/btn_sign_up"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_gravity="center"
-        android:layout_weight="0.14"
         android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0.14"
+        android:background="@drawable/blue_onclickwhite"
+        android:fontFamily="serif"
         android:text="@string/Text_Sign_Up"
         android:textColor="@color/colorWhite"
-        android:textSize="20dp"
-        android:background="@drawable/blue_onclickwhite" />
+        android:textSize="20dp" />
 </LinearLayout>
