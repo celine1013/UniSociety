@@ -40,6 +40,8 @@ import java.io.File;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -49,11 +51,10 @@ import Model.Post;
 import static android.R.attr.data;
 
 public class CreatePost_Activity extends AppCompatActivity {
-    public static final String USER_ID = "user_id";
-    public static final String POST_CONTENT = "POST_CONTENT";
     private Account currentUser = null;
     private String postType;
     private Post newPost;
+    private Post prevPost;
 
     private EditText et_eventTitle;
     private EditText et_eventDes;
@@ -113,7 +114,6 @@ public class CreatePost_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                selectPicture();
-                pb_loading.setVisibility(View.VISIBLE);
 
             }
         });
@@ -122,11 +122,38 @@ public class CreatePost_Activity extends AppCompatActivity {
         Intent i = this.getIntent();
         postType = i.getStringExtra(PostHistoryActivity.POST_TYPE);
         Log.d("CREATE POST", postType);
+
         if (postType.equals(PostHistoryActivity.EDIT_POST)) {
             //show all data;
-            Post p = this.getIntent().getParcelableExtra(CreatePost_Activity.POST_CONTENT);
-            Toast.makeText(CreatePost_Activity.this, postType, Toast.LENGTH_LONG).show();
-            // TODO: 23/09/2017 push the info to the interface
+            bt_delete.setVisibility(View.VISIBLE);
+            prevPost = this.getIntent().getParcelableExtra(Post.POST);
+            newPost.setKey(prevPost.getKey());
+            newPost.setImageUrl(prevPost.getImageUrl());
+            pb_loading.setVisibility(View.VISIBLE);
+
+
+            et_eventTitle.setText(prevPost.getPostTitle());
+            et_eventLocation.setText(prevPost.getLocation());
+            et_eventDes.setText(prevPost.getPostDescription());
+            bt_eventDate.setText(prevPost.getPostDate());
+            bt_startingTime.setText(prevPost.getBeginTime());
+            bt_endingTime.setText(prevPost.getEndTime());
+            sp_eventCategory.setSelection(prevPost.getEventCategory());
+            String downloadUrl = prevPost.getImageUrl();
+
+            Glide.with(CreatePost_Activity.this).load(downloadUrl).listener(new RequestListener<String, GlideDrawable>() {
+                @Override
+                public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                    pb_loading.setVisibility(View.INVISIBLE);
+                    return false;
+                }
+
+                @Override
+                public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                    pb_loading.setVisibility(View.INVISIBLE);
+                    return false;
+                }
+            }).into(iv_selectPicture);
         }
 
         //set submit button
@@ -166,32 +193,45 @@ public class CreatePost_Activity extends AppCompatActivity {
                 } else {
                     newPost.setEventCategory(sp_eventCategory.getSelectedItemPosition());
                 }
+                newPost.setPostDate(bt_eventDate.getText().toString());
+                newPost.setBeginTime(bt_startingTime.getText().toString());
+                newPost.setEndTime(bt_endingTime.getText().toString());
 
                 //upload the new post to the database
                 // TODO: 23/09/2017 create or update the post
                 switch (postType) {
                     case PostHistoryActivity.EDIT_POST:
-                        //update the post
+                        DatabaseReference ref_e = FirebaseDatabase.getInstance().getReference(Post.POST);
+                        Map<String, Object> postUpdates = new HashMap<String, Object>();
+                        postUpdates.put(newPost.getKey(), newPost);
+                        ref_e.updateChildren(postUpdates);
+                        Log.v("CREATE POST", "POST UPDATED");
+                        Toast.makeText(CreatePost_Activity.this, "Post Updated.", Toast.LENGTH_LONG).show();
+                        finish();
                         break;
 
                     case PostHistoryActivity.NEW_POST:
                         //create new post
                         DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Post.POST);
-                        newPost.setKey(ref.push().getKey());
-                        DatabaseReference postRef = ref.child(ref.push().getKey());
+                        String key = ref.push().getKey();
+                        newPost.setKey(key);
+                        DatabaseReference postRef = ref.child(key);
                         postRef.setValue(newPost);
-                        Toast.makeText(CreatePost_Activity.this, "New Post Created.", Toast.LENGTH_LONG).show();
-                        Log.v("CREATE POST", "NEW POST CREATED");
+                        Snackbar.make(view, "Post Created!", Snackbar.LENGTH_LONG).show();
+                        Toast.makeText(CreatePost_Activity.this, "Post Created.", Toast.LENGTH_LONG).show();
                         finish();
                         break;
-
-                    default:
                 }
+            }
+        });
 
-                //show success message
-                Snackbar.make(view, "Post Created!", Snackbar.LENGTH_LONG).show();
-                // TODO: 9/09/2017 implement undo function using snackbar
-                //finish the activity
+        bt_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseReference ref_d = FirebaseDatabase.getInstance().getReference(Post.POST)
+                        .child(prevPost.getKey());
+                ref_d.setValue(null);
+                Toast.makeText(CreatePost_Activity.this, "Post Deleted.", Toast.LENGTH_LONG).show();
                 finish();
             }
         });
@@ -207,7 +247,7 @@ public class CreatePost_Activity extends AppCompatActivity {
     protected void onActivityResult ( int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == GALLERY_INTENT && resultCode ==RESULT_OK) {
-
+            pb_loading.setVisibility(View.VISIBLE);
             Uri uri = data.getData();
             Log.d("Uri", uri.toString());
             final StorageReference filepath = mStorage.child("Post_Images").child(uri.getLastPathSegment());
@@ -222,6 +262,7 @@ public class CreatePost_Activity extends AppCompatActivity {
                         @Override
                         public boolean onException(Exception e, Uri model, Target<GlideDrawable> target, boolean isFirstResource) {
                             pb_loading.setVisibility(View.GONE);
+                            iv_selectPicture.setImageResource(android.R.drawable.ic_menu_gallery);
                             return false;
                         }
 

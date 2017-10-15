@@ -130,6 +130,7 @@ public class PostHistoryActivity extends AppCompatActivity {
                     Intent intent = new Intent(context, CreatePost_Activity.class);
                     intent.putExtra(MainActivity.CURRENT_USER, currentUser);
                     intent.putExtra(PostHistoryActivity.POST_TYPE, PostHistoryActivity.EDIT_POST);
+                    intent.putExtra(Post.POST, post);
                     context.startActivity(intent);
                 }
             });
