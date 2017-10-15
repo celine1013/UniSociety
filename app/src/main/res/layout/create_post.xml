@@ -46,13 +46,15 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/re_image"
-            android:orientation="vertical"
-            android:weightSum="1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="30dp"
-            android:layout_centerHorizontal="true">
+            android:orientation="vertical"
+            android:weightSum="1">
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
@@ -71,10 +73,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="Please enter event title."
-                    android:textColorHint="@color/colorGray"
                     android:padding="@dimen/activity_horizontal_margin"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColorHint="@color/colorGray"
                     app:layout_constraintLeft_toRightOf="@+id/c_ic_edit" />
 
             </android.support.constraint.ConstraintLayout>
@@ -138,9 +140,9 @@
                     android:layout_width="301dp"
                     android:layout_height="47dp"
                     android:hint="Please enter event location/address"
-                    android:textColorHint="@color/colorGray"
                     android:padding="@dimen/activity_horizontal_margin"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColorHint="@color/colorGray"
                     app:layout_constraintLeft_toRightOf="@+id/icon_location"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:layout_editor_absoluteX="59dp" />
@@ -174,16 +176,16 @@
                     style="@style/AppTheme.Button"
                     android:layout_width="250dp"
                     android:layout_height="49dp"
+                    android:layout_marginTop="0dp"
+                    android:background="@drawable/border_blue_button"
                     android:paddingLeft="@dimen/text_margin"
                     android:paddingRight="@dimen/text_margin"
                     android:text="Please choose event date."
                     android:textAlignment="center"
                     android:textColor="@color/MainColor"
-                    android:background="@drawable/border_blue_button"
                     app:layout_constraintLeft_toRightOf="@+id/icon_date"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginTop="0dp"
                     tools:layout_editor_absoluteX="71dp" />
 
                 <LinearLayout
@@ -289,8 +291,8 @@
                     style="@style/AppTheme.Button"
                     android:layout_width="200dp"
                     android:layout_height="50dp"
-                    android:layout_marginTop="10dp"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:text="Submit" />
             </LinearLayout>
