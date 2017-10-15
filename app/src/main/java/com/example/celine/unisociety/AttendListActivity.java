@@ -44,7 +44,7 @@ public class AttendListActivity extends AppCompatActivity {
         final DatabaseReference postRef = FirebaseDatabase.getInstance().getReference(Eventlist.EVENTLIST);
         Query q = postRef.orderByChild(Eventlist.ACCOUNT_ACCOUNT_NAME).equalTo(currentUser.getAccountName());
         FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Eventlist, AttendViewHolder>(Eventlist.class,
-                R.layout.history_item, AttendViewHolder.class, q) {
+                R.layout.postlist_item, AttendViewHolder.class, q) {
             @Override
             protected void populateViewHolder(final AttendViewHolder viewHolder, final Eventlist model, int position) {
                 viewHolder.setPost(model, AttendListActivity.this.currentUser);
@@ -58,8 +58,6 @@ public class AttendListActivity extends AppCompatActivity {
     private static class AttendViewHolder extends RecyclerView.ViewHolder {
         public View postView;
         private Context context;
-        private ImageView ib_socIcon;
-        private ImageButton ib_editPost;
         private TextView tv_EventTitle;
         private TextView tv_EventDate;
         private TextView tv_EventTime;
@@ -69,13 +67,10 @@ public class AttendListActivity extends AppCompatActivity {
             super(itemView);
             postView = itemView;
             context = itemView.getContext();
-            ib_socIcon = itemView.findViewById(R.id.his_socIcon);
-            ib_editPost = itemView.findViewById(R.id.ib_editPost);
-            tv_EventTitle = itemView.findViewById(R.id.his_postTitle);
-            tv_EventLocation = itemView.findViewById(R.id.his_location);
-            tv_EventDate = itemView.findViewById(R.id.his_date);
-            tv_EventTime = itemView.findViewById(R.id.his_time);
-
+            tv_EventTitle = (TextView) itemView.findViewById(R.id.tv_eventTitle);
+            tv_EventDate = (TextView) itemView.findViewById(R.id.tv_eventDate);
+            tv_EventTime = (TextView) itemView.findViewById(R.id.tv_eventTime);
+            tv_EventLocation = (TextView) itemView.findViewById(R.id.tv_eventLocation);
         }
 
         public void setPost(final Eventlist el, final Account currentUser) {
@@ -84,7 +79,7 @@ public class AttendListActivity extends AppCompatActivity {
             q.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-
+                    // TODO: 15/10/2017 show notification on the screen
                 }
 
                 @Override
@@ -100,16 +95,16 @@ public class AttendListActivity extends AppCompatActivity {
                     tv_EventDate.setText(post.getPostDate());
                     tv_EventTime.setText(post.getBeginTime()+"~"+post.getEndTime());
                     tv_EventLocation.setText(post.getLocation());
-                    ib_editPost.setOnClickListener(new View.OnClickListener() {
+                    postView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent intent = new Intent(context, CreatePost_Activity.class);
+                            Intent intent = new Intent(context, PostDetail_Activity.class);
                             intent.putExtra(MainActivity.CURRENT_USER, currentUser);
-                            intent.putExtra(PostHistoryActivity.POST_TYPE, PostHistoryActivity.EDIT_POST);
                             intent.putExtra(Post.POST, post);
                             context.startActivity(intent);
                         }
                     });
+
                 }
 
                 @Override
