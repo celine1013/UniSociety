@@ -58,5 +58,6 @@
     <string name="title_event_list">Events</string>
     <string name="title_event_detail">Event Detail</string>
     <string name="Text_Me">Me</string>
+    <string name="Text_logout">Logout</string>
 
 </resources>
