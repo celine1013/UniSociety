@@ -87,11 +87,13 @@ public class PostDetail_Activity extends AppCompatActivity {
         Glide.with(PostDetail_Activity.this).load(downloadUrl).listener(new RequestListener<String, GlideDrawable>() {
             @Override
             public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                pa_loading.setVisibility(View.INVISIBLE);
                 return false;
             }
 
             @Override
             public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                pa_loading.setVisibility(View.INVISIBLE);
                 return false;
             }
         }).into(iv_eventImage);
