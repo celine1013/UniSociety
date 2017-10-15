@@ -65,6 +65,7 @@
             android:layout_marginEnd="@dimen/btn_padding"
             android:adjustViewBounds="true"
             android:baselineAlignBottom="false"
+            android:elevation="0dp"
             app:srcCompat="@drawable/bitsa_logo" />
     </RelativeLayout>
 

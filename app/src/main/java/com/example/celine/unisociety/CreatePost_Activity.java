@@ -113,7 +113,6 @@ public class CreatePost_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                selectPicture();
-                pb_loading.setVisibility(View.VISIBLE);
 
             }
         });
@@ -125,7 +124,7 @@ public class CreatePost_Activity extends AppCompatActivity {
         if (postType.equals(PostHistoryActivity.EDIT_POST)) {
             //show all data;
             Post p = this.getIntent().getParcelableExtra(CreatePost_Activity.POST_CONTENT);
-            Toast.makeText(CreatePost_Activity.this, postType, Toast.LENGTH_LONG).show();
+            //Toast.makeText(CreatePost_Activity.this, postType, Toast.LENGTH_LONG).show();
             // TODO: 23/09/2017 push the info to the interface
         }
 
@@ -207,7 +206,7 @@ public class CreatePost_Activity extends AppCompatActivity {
     protected void onActivityResult ( int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == GALLERY_INTENT && resultCode ==RESULT_OK) {
-
+            pb_loading.setVisibility(View.VISIBLE);
             Uri uri = data.getData();
             Log.d("Uri", uri.toString());
             final StorageReference filepath = mStorage.child("Post_Images").child(uri.getLastPathSegment());
