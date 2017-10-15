@@ -93,7 +93,8 @@ public class MainActivity extends AppCompatActivity {
                         if (currentUser.getId() == STUDENT) {
                             Log.d("FRAGMENT", "GOING TO STUDENT ACCOUNT MANAGEMENT");
                             // TODO: 4/10/2017 pass current user to new activity 
-                            
+                            AccountManagement_Student accountManagementStu = new AccountManagement_Student();
+                            manager.beginTransaction().replace(R.id.content, accountManagementStu, accountManagementStu.getTag()).commit();
                             Log.d("FRAGMENT", "GONE TO STUDENT ACCOUNT MANAGEMENT");
                         } else {
 

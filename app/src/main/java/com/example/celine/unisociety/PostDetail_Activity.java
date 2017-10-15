@@ -56,6 +56,9 @@ public class PostDetail_Activity extends AppCompatActivity {
         currentUser = this.getIntent().getParcelableExtra(MainActivity.CURRENT_USER);
 
         st_attend = findViewById(R.id.st_attend);
+        if(st_attend.isChecked()){
+            Toast.makeText(PostDetail_Activity.this, "Event Joined", Toast.LENGTH_SHORT).show();
+        }
         iv_eventImage = findViewById(R.id.eventImage);
         ib_socIcon = (ImageView)findViewById(R.id.e_societyIcon);
         ib_socIcon.setOnClickListener(new View.OnClickListener() {
