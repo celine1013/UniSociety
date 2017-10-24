@@ -47,6 +47,7 @@ public class AccountManagement_Society extends Fragment {
         return view;
     }
 
+    // TODO: 24/10/2017  do we need this?
     private void setProfileButtonOnClick(View view) {
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +82,7 @@ public class AccountManagement_Society extends Fragment {
         bt_editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //send soc ID to editProfileActivity
             }
         });
 

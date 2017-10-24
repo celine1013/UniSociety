@@ -33,7 +33,8 @@
         <activity android:name=".PostHistoryActivity" />
         <activity android:name=".EventListByCategory_Activity" />
         <activity android:name=".SocProfileActivity" />
-        <activity android:name=".AttendListActivity"></activity>
+        <activity android:name=".AttendListActivity" />
+        <activity android:name=".EditSocProfileActivity"></activity>
     </application>
 
 </manifest>

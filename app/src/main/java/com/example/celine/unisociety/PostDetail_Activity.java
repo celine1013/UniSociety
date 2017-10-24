@@ -46,6 +46,8 @@ public class PostDetail_Activity extends AppCompatActivity {
     private TextView tv_time;
     private ProgressBar pa_loading;
 
+    private Society soc;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,13 +73,6 @@ public class PostDetail_Activity extends AppCompatActivity {
         });
         iv_eventImage = findViewById(R.id.eventImage);
         ib_socIcon = (ImageView)findViewById(R.id.e_societyIcon);
-        ib_socIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(PostDetail_Activity.this, SocProfileActivity.class);
-                startActivity(intent);
-            }
-        });
         tv_title = findViewById(R.id.tv_eventTitle);
         tv_description = findViewById(R.id.tv_desc);
         tv_location = findViewById(R.id.tv_address);
@@ -125,9 +120,17 @@ public class PostDetail_Activity extends AppCompatActivity {
         q.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Society soc = dataSnapshot.getValue(Society.class);
+                soc = dataSnapshot.getValue(Society.class);
                 // TODO: 6/10/2017 soc icon
                 tv_socName.setText(soc.getSocietyName());
+                ib_socIcon.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(PostDetail_Activity.this, SocProfileActivity.class);
+                        // TODO: 24/10/2017  send soc to profile activity
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override

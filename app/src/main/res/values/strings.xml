@@ -43,7 +43,12 @@
     <string-array name="societies">
         <item>BITSA</item>
         <item>WIT</item>
-        <item>TESTING</item>
+    </string-array>
+
+    <string-array name="soc_cate">
+        <item>Information System</item>
+        <item>Accounting</item>
+        <item>Engineering</item>
     </string-array>
 
     <string-array name="categories">
@@ -53,7 +58,6 @@
         <item>Food</item>
     </string-array>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_event_list">Events</string>
     <string name="title_event_detail">Event Detail</string>
