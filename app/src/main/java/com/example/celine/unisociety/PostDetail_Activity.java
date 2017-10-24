@@ -127,7 +127,8 @@ public class PostDetail_Activity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(PostDetail_Activity.this, SocProfileActivity.class);
-                        // TODO: 24/10/2017  send soc to profile activity
+                        // 24/10/2017  send soc to profile activity
+                        intent.putExtra(Society.SOCIETY, soc);
                         startActivity(intent);
                     }
                 });

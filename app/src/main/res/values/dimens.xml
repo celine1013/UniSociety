@@ -8,4 +8,5 @@
     <dimen name="item_width">200dp</dimen>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="list_item_margin">32dp</dimen>
+    <dimen name="soc_des_pad">32dp</dimen>
 </resources>
