@@ -164,7 +164,7 @@ public class Sign_Up_Activity extends AppCompatActivity {
         registerNewUser.child("Username").setValue(userName_val);
         registerNewUser.child("Password").setValue(password_val);
         registerNewUser.child("SecQuestion").setValue(secQuestion_val);*/
-        // TODO: 13/09/2017 userid push
+        // 13/09/2017 userid push
 
         DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
         final String v = et_securityCode.getText().toString();

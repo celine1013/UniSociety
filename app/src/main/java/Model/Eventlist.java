@@ -13,21 +13,25 @@ public class Eventlist implements Parcelable {
     public static final String EVENTLIST = "Eventlist";
     public static final String POST_KEY = "key";
     public static final String ACCOUNT_ACCOUNT_NAME = "accountName";
+    public static final String QUERY = "query";
 
     private String accountName;
     private String key;
+    private String query;
 
     public Eventlist() {
     }
 
-    public Eventlist(String accountName, String key) {
+    public Eventlist(String key, String accountName) {
         this.accountName = accountName;
         this.key = key;
+        this.query = toString(key,accountName);
     }
 
     protected Eventlist(Parcel in) {
         accountName = in.readString();
         key = in.readString();
+        query = in.readString();
     }
 
 
@@ -59,6 +63,10 @@ public class Eventlist implements Parcelable {
         this.key = key;
     }
 
+    public static String toString(String postKey, String userName){
+        return postKey + "_" + userName;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -68,5 +76,6 @@ public class Eventlist implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(accountName);
         parcel.writeString(key);
+        parcel.writeString(query);
     }
 }

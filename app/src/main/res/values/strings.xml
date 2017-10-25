@@ -38,6 +38,8 @@
     <string name="Text_Starting_Time">Starting Time</string>
     <string name="Text_Ending_Time">Ending Time</string>
     <string name="Text_Enter_All_Fields">Please enter all fields.</string>
+    <string name="Text_Attend">Attend</string>
+    <string name="Text_Attended">Attended</string>
 
 
     <string-array name="societies">

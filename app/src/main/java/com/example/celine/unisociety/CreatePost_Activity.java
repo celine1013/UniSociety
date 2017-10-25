@@ -198,7 +198,7 @@ public class CreatePost_Activity extends AppCompatActivity {
                 newPost.setEndTime(bt_endingTime.getText().toString());
 
                 //upload the new post to the database
-                // TODO: 23/09/2017 create or update the post
+                // 23/09/2017 create or update the post
                 switch (postType) {
                     case PostHistoryActivity.EDIT_POST:
                         DatabaseReference ref_e = FirebaseDatabase.getInstance().getReference(Post.POST);
