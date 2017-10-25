@@ -138,7 +138,8 @@
         android:layout_marginTop="12dp"
         android:layout_weight="0.14"
         android:background="@drawable/blue_onclickwhite"
+        android:fontFamily="serif"
         android:text="@string/Text_Sign_Up"
         android:textColor="@color/colorWhite"
-        android:textSize="20dp" />
+        android:textSize="18sp" />
 </LinearLayout>
