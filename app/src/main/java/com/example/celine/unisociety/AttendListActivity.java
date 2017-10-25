@@ -80,6 +80,7 @@ public class AttendListActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     // TODO: 15/10/2017 show notification on the screen
+                    //sth
                 }
 
                 @Override
