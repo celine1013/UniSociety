@@ -94,7 +94,6 @@ public class PostHistoryActivity extends AppCompatActivity {
     }
 
     // TODO: 23/09/2017 editing finished, will the  userID still be remained
-
     // TODO: 23/09/2017 back functionality (buggy, to be improved)
     private static class HistoryViewHolder extends RecyclerView.ViewHolder {
         public View postView;

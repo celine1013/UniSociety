@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -37,17 +38,30 @@ public class AttendListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_attend_list);
 
         currentUser = this.getIntent().getParcelableExtra(Account.ACCOUNT);
+        Log.d("ATTEND LIST", currentUser.getAccountName());
 
         rv_events = findViewById(R.id.rv_attendList);
         pb_loading = findViewById(R.id.pb_attend);
 
         final DatabaseReference postRef = FirebaseDatabase.getInstance().getReference(Eventlist.EVENTLIST);
         Query q = postRef.orderByChild(Eventlist.ACCOUNT_ACCOUNT_NAME).equalTo(currentUser.getAccountName());
+        q.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getValue() != null) Log.d("ATTEND LIST", "YES RECORD");
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
         FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Eventlist, AttendViewHolder>(Eventlist.class,
                 R.layout.postlist_item, AttendViewHolder.class, q) {
             @Override
             protected void populateViewHolder(final AttendViewHolder viewHolder, final Eventlist model, int position) {
                 viewHolder.setPost(model, AttendListActivity.this.currentUser);
+                Log.d("ATTEND LIST", "LINE 52");
             }
         };
         LinearLayoutManager manager = new LinearLayoutManager(this);
@@ -75,12 +89,14 @@ public class AttendListActivity extends AppCompatActivity {
 
         public void setPost(final Eventlist el, final Account currentUser) {
             final DatabaseReference postRef = FirebaseDatabase.getInstance().getReference(Post.POST);
-            Query q = postRef.orderByChild(Post.POST_KEY).equalTo(el.getKey());
+            Query q = postRef.orderByChild(Post.POST_KEY).equalTo(el.getPostKey());
+            Log.d("ATTEND LIST", el.getPostKey());
             q.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     // TODO: 15/10/2017 show notification on the screen
                     //sth
+                    Log.d("ATTEND LIST", "LINE 86");
                 }
 
                 @Override
@@ -105,7 +121,7 @@ public class AttendListActivity extends AppCompatActivity {
                             context.startActivity(intent);
                         }
                     });
-
+                    Log.d("ATTEND LIST", "LINE 109");
                 }
 
                 @Override

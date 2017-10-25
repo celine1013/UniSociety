@@ -25,7 +25,7 @@ public class Eventlist implements Parcelable {
     public Eventlist(String key, String accountName) {
         this.accountName = accountName;
         this.key = key;
-        this.query = toString(key,accountName);
+        this.query = key+ "_" +accountName;
     }
 
     protected Eventlist(Parcel in) {
@@ -55,7 +55,7 @@ public class Eventlist implements Parcelable {
         this.accountName = accountName;
     }
 
-    public String getKey() {
+    public String getPostKey() {
         return key;
     }
 
@@ -65,6 +65,14 @@ public class Eventlist implements Parcelable {
 
     public static String toString(String postKey, String userName){
         return postKey + "_" + userName;
+    }
+
+    public String getQuery() {
+        return query;
+    }
+
+    public void setQuery(String query) {
+        this.query = query;
     }
 
     @Override

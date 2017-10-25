@@ -78,7 +78,7 @@ public class PostDetail_Activity extends AppCompatActivity {
         DatabaseReference atref = FirebaseDatabase.getInstance().getReference();
         // 25/10/2017 set method in eventlist class to transform string
         final String attendKey = Eventlist.toString(post.getKey(),currentUser.getAccountName());
-        Query qat = atref.child(Eventlist.EVENTLIST).orderByChild(Eventlist.QUERY).equalTo(attendKey);
+        Query qat = atref.child(Eventlist.EVENTLIST).orderByKey().equalTo(attendKey);
         qat.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
