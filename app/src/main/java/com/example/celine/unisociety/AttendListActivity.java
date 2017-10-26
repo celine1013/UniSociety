@@ -60,7 +60,55 @@ public class AttendListActivity extends AppCompatActivity {
                 R.layout.postlist_item, AttendViewHolder.class, q) {
             @Override
             protected void populateViewHolder(final AttendViewHolder viewHolder, final Eventlist model, int position) {
-                viewHolder.setPost(model, AttendListActivity.this.currentUser);
+                Log.d("ATTEND LIST 63", String.valueOf(model.getAccountName()));
+                Log.d("ATTEND LIST 63", String.valueOf(model.getQuery()));
+                Log.d("ATTEND LIST 63", String.valueOf(model.getPostKey()));
+                final DatabaseReference postRef = FirebaseDatabase.getInstance().getReference(Post.POST);
+                Query q = postRef.orderByKey().equalTo(model.getPostKey());
+                q.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        //
+                        //sth
+                        if(dataSnapshot.getValue() != null)Log.d("ATTEND LIST", "LINE 73");
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+                q.addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                        final Post post = dataSnapshot.getValue(Post.class);
+                        Log.d("ATTEND LIST 114", String.valueOf(post.getPostTitle()));
+                        viewHolder.setPost(post, AttendListActivity.this.currentUser);
+
+                    }
+
+                    @Override
+                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
                 Log.d("ATTEND LIST", "LINE 52");
             }
         };
@@ -87,64 +135,21 @@ public class AttendListActivity extends AppCompatActivity {
             tv_EventLocation = (TextView) itemView.findViewById(R.id.tv_eventLocation);
         }
 
-        public void setPost(final Eventlist el, final Account currentUser) {
-            final DatabaseReference postRef = FirebaseDatabase.getInstance().getReference(Post.POST);
-            Query q = postRef.orderByChild(Post.POST_KEY).equalTo(el.getPostKey());
-            Log.d("ATTEND LIST", el.getPostKey());
-            q.addValueEventListener(new ValueEventListener() {
+        public void setPost(final Post post, final Account currentUser) {
+            tv_EventTitle.setText(post.getPostTitle());
+            tv_EventDate.setText(post.getPostDate());
+            tv_EventTime.setText(post.getBeginTime()+"~"+post.getEndTime());
+            tv_EventLocation.setText(post.getLocation());
+            Log.d("ATTEND LIST", "LINE 143");
+            postView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    // TODO: 15/10/2017 show notification on the screen
-                    //sth
-                    Log.d("ATTEND LIST", "LINE 86");
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, PostDetail_Activity.class);
+                    intent.putExtra(MainActivity.CURRENT_USER, currentUser);
+                    intent.putExtra(Post.POST, post);
+                    context.startActivity(intent);
                 }
             });
-            q.addChildEventListener(new ChildEventListener() {
-                @Override
-                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    final Post post = dataSnapshot.getValue(Post.class);
-                    tv_EventTitle.setText(post.getPostTitle());
-                    tv_EventDate.setText(post.getPostDate());
-                    tv_EventTime.setText(post.getBeginTime()+"~"+post.getEndTime());
-                    tv_EventLocation.setText(post.getLocation());
-                    postView.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(context, PostDetail_Activity.class);
-                            intent.putExtra(MainActivity.CURRENT_USER, currentUser);
-                            intent.putExtra(Post.POST, post);
-                            context.startActivity(intent);
-                        }
-                    });
-                    Log.d("ATTEND LIST", "LINE 109");
-                }
-
-                @Override
-                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                }
-
-                @Override
-                public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                }
-
-                @Override
-                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-
         }
     }
 }

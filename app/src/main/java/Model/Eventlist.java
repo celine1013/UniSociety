@@ -11,12 +11,12 @@ import java.io.Serializable;
  */
 public class Eventlist implements Parcelable {
     public static final String EVENTLIST = "Eventlist";
-    public static final String POST_KEY = "key";
+    public static final String POST_KEY = "postKey";
     public static final String ACCOUNT_ACCOUNT_NAME = "accountName";
     public static final String QUERY = "query";
 
     private String accountName;
-    private String key;
+    private String postKey;
     private String query;
 
     public Eventlist() {
@@ -24,13 +24,19 @@ public class Eventlist implements Parcelable {
 
     public Eventlist(String key, String accountName) {
         this.accountName = accountName;
-        this.key = key;
+        this.postKey = key;
         this.query = key+ "_" +accountName;
+    }
+
+    public Eventlist(String accountName, String postKey, String query) {
+        this.accountName = accountName;
+        this.postKey = postKey;
+        this.query = query;
     }
 
     protected Eventlist(Parcel in) {
         accountName = in.readString();
-        key = in.readString();
+        postKey = in.readString();
         query = in.readString();
     }
 
@@ -56,11 +62,11 @@ public class Eventlist implements Parcelable {
     }
 
     public String getPostKey() {
-        return key;
+        return postKey;
     }
 
     public void setKey(String key) {
-        this.key = key;
+        this.postKey = key;
     }
 
     public static String toString(String postKey, String userName){
@@ -83,7 +89,7 @@ public class Eventlist implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(accountName);
-        parcel.writeString(key);
+        parcel.writeString(postKey);
         parcel.writeString(query);
     }
 }

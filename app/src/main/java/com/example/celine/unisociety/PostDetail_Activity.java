@@ -61,62 +61,65 @@ public class PostDetail_Activity extends AppCompatActivity {
         //get info from the intent
         post = this.getIntent().getParcelableExtra(Post.POST);
         currentUser = this.getIntent().getParcelableExtra(MainActivity.CURRENT_USER);
-
-        // 15/10/2017 set switch status according to current user (database needed)
-        st_attend = findViewById(R.id.st_attend);
-        st_attend.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b){
-                    st_attend.setText("Attended");
-                }else{
-                    st_attend.setText("Attend");
+        if(currentUser != null && currentUser.getId()==MainActivity.STUDENT) {
+            // 15/10/2017 set switch status according to current user (database needed)
+            st_attend = findViewById(R.id.st_attend);
+            st_attend.setVisibility(View.VISIBLE);
+            st_attend.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    if (b) {
+                        st_attend.setText("Attended");
+                    } else {
+                        st_attend.setText("Attend");
+                    }
                 }
-            }
-        });
-        //st_attend.setChecked(true);
-        DatabaseReference atref = FirebaseDatabase.getInstance().getReference();
-        // 25/10/2017 set method in eventlist class to transform string
-        final String attendKey = Eventlist.toString(post.getKey(),currentUser.getAccountName());
-        Query qat = atref.child(Eventlist.EVENTLIST).orderByKey().equalTo(attendKey);
-        qat.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.getValue()==null){
-                    //haven't attended
-                    st_attend.setChecked(false);
-                }else{
-                    //have attended
-                    st_attend.setChecked(true);
+            });
+            //st_attend.setChecked(true);
+            DatabaseReference atref = FirebaseDatabase.getInstance().getReference();
+            // 25/10/2017 set method in eventlist class to transform string
+            final String attendKey = Eventlist.toString(post.getKey(), currentUser.getAccountName());
+            Query qat = atref.child(Eventlist.EVENTLIST).orderByKey().equalTo(attendKey);
+            qat.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.getValue() == null) {
+                        //haven't attended
+                        st_attend.setChecked(false);
+                    } else {
+                        //have attended
+                        st_attend.setChecked(true);
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
-
-        //reset listener so to create or delete eventlist entry
-        st_attend.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b){
-                    st_attend.setText(getResources().getString(R.string.Text_Attended));
-                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Eventlist.EVENTLIST);
-                    //String key = ref.push().getKey();
-                    e = new Eventlist(post.getKey(), currentUser.getAccountName());
-                    DatabaseReference eRef = ref.child(attendKey);
-                    eRef.setValue(e);
-                    Toast.makeText(PostDetail_Activity.this, "Welcome!", Toast.LENGTH_LONG).show();
-                }else{
-                    st_attend.setText(getResources().getString(R.string.Text_Attend));
-                    DatabaseReference ref_d = FirebaseDatabase.getInstance().getReference(Eventlist.EVENTLIST).child(attendKey);
-                    ref_d.setValue(null);
-                    Toast.makeText(PostDetail_Activity.this, "See you next time.", Toast.LENGTH_LONG).show();
                 }
-            }
-        });
+            });
+
+            //reset listener so to create or delete eventlist entry
+            st_attend.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    if (b) {
+                        st_attend.setText(getResources().getString(R.string.Text_Attended));
+                        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Eventlist.EVENTLIST);
+                        //String key = ref.push().getKey();
+                        e = new Eventlist(post.getKey(), currentUser.getAccountName());
+                        DatabaseReference eRef = ref.child(attendKey);
+                        eRef.setValue(e);
+                        Log.d("ATTEND LIST POST 111", String.valueOf(e.getPostKey()));
+                        //Toast.makeText(PostDetail_Activity.this, "Welcome!", Toast.LENGTH_LONG).show();
+                    } else {
+                        st_attend.setText(getResources().getString(R.string.Text_Attend));
+                        DatabaseReference ref_d = FirebaseDatabase.getInstance().getReference(Eventlist.EVENTLIST).child(attendKey);
+                        ref_d.setValue(null);
+                        //Toast.makeText(PostDetail_Activity.this, "See you next time.", Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+        }
         iv_eventImage = findViewById(R.id.eventImage);
         ib_socIcon = (ImageView)findViewById(R.id.e_societyIcon);
         tv_title = findViewById(R.id.tv_eventTitle);
@@ -134,7 +137,7 @@ public class PostDetail_Activity extends AppCompatActivity {
         }
 
         if(currentUser != null && currentUser.getId() == Account.STUDENT){
-            st_attend.setVisibility(View.VISIBLE);
+
 
         }
 
