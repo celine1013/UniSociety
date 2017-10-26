@@ -21,6 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:layout_weight="0.06"
             android:text="@string/Text_History"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
