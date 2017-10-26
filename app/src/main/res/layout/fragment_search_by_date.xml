@@ -75,10 +75,8 @@
             android:layout_marginTop="3sp"
             android:layout_weight="0.025"
             android:background="@drawable/blue_onclickwhite"
-            android:fontFamily="serif"
             android:text="Search"
-            android:textColor="@color/colorWhite"
-            android:textSize="18sp" />
+            android:textColor="@color/colorWhite" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_eventByDate"

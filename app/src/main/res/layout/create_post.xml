@@ -179,7 +179,7 @@
                     android:background="@drawable/border_blue_button"
                     android:paddingLeft="@dimen/text_margin"
                     android:paddingRight="@dimen/text_margin"
-                    android:text="Please choose event date"
+                    android:text="Please choose event date."
                     android:textAlignment="center"
                     android:textColor="@color/MainColor"
                     app:layout_constraintLeft_toRightOf="@+id/icon_date"
@@ -283,9 +283,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
-                    android:fontFamily="serif"
-                    android:text="Submit"
-                    android:textSize="18sp" />
+                    android:text="Submit" />
 
                 <Button
                     android:id="@+id/c_btn_delete"
