@@ -64,6 +64,7 @@
             android:layout_alignParentTop="false"
             android:layout_marginEnd="@dimen/btn_padding"
             android:adjustViewBounds="true"
+            android:background="@color/colorWhite"
             android:baselineAlignBottom="false"
             android:elevation="0dp"
             app:srcCompat="@drawable/bitsa_logo" />

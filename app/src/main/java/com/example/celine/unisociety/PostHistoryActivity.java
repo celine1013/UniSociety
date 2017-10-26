@@ -15,7 +15,9 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -27,6 +29,7 @@ import java.util.List;
 
 import Model.Account;
 import Model.Post;
+import Model.Society;
 
 public class PostHistoryActivity extends AppCompatActivity {
     public static final String POST_TYPE = "post_type";
@@ -118,6 +121,36 @@ public class PostHistoryActivity extends AppCompatActivity {
         }
 
         public void setPost(final Post post, final Account currentUser) {
+            final  DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+            Query q = ref.child(Society.SOCIETY).orderByChild(Society.SOCIETY_ID).equalTo(currentUser.getId());
+            q.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    Society soc = dataSnapshot.getValue(Society.class);
+                    String downloadUrl = soc.getLogo();
+                    Glide.with(context).load(downloadUrl).into(ib_socIcon);
+                }
+
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
             tv_EventTitle.setText(post.getPostTitle());
             tv_EventDate.setText(post.getPostDate());
             tv_EventTime.setText(post.getBeginTime()+"~"+post.getEndTime());

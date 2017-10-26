@@ -58,6 +58,8 @@ public class AccountManagement_Society extends Fragment {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 soc = dataSnapshot.getValue(Society.class);
+                String downloadUrl = soc.getLogo();
+                Glide.with(AccountManagement_Society.this).load(downloadUrl).into(profileButton);
             }
 
             @Override
@@ -80,10 +82,6 @@ public class AccountManagement_Society extends Fragment {
 
             }
         });
-
-        String downloadUrl = soc.getLogo();
-        Glide.with(AccountManagement_Society.this).load(downloadUrl).into(profileButton);
-        Log.d("Cause","cause");
 
         setProfileButtonOnClick(view);
         setButtonChangePassword(view);

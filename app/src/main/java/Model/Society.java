@@ -35,20 +35,19 @@ public class Society implements Parcelable{
     public Society() {
     }
 
-
-    public Society(int id, String societyName, String societyDescription, int societyCategory,
-                   String emailAddress, String contactPerson, String contactNumber, String facebook,
-                   String logo, boolean available, String verificationCode) {
+    public Society(String societyName, String societyDescription, int societyCategory,
+                   String emailAddress, String contactPerson, String contactNumber, String logo,
+                   String facebook, String verificationCode, boolean available, int id) {
         this.societyName = societyName;
         this.societyDescription = societyDescription;
         this.societyCategory = societyCategory;
         this.emailAddress = emailAddress;
         this.contactPerson = contactPerson;
         this.contactNumber = contactNumber;
-        this.facebook = facebook;
         this.logo = logo;
-        this.available = available;
+        this.facebook = facebook;
         this.verificationCode = verificationCode;
+        this.available = available;
         this.id = id;
     }
 

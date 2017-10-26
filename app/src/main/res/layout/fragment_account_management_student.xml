@@ -62,7 +62,8 @@
             android:background="@drawable/border_blue_button"
             android:fontFamily="serif"
             android:text="@string/Text_logout"
-            android:textColor="@color/MainColor" />
+            android:textColor="@color/MainColor"
+            android:visibility="gone" />
 
     </LinearLayout>
 

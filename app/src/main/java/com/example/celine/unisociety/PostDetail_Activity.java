@@ -136,10 +136,6 @@ public class PostDetail_Activity extends AppCompatActivity {
             Log.e("POST DETAIL", "NO POST RECEIVED: UNKNOWN ERROR");
         }
 
-        if(currentUser != null && currentUser.getId() == Account.STUDENT){
-
-
-        }
 
         // 6/10/2017 imageview
 
@@ -171,6 +167,8 @@ public class PostDetail_Activity extends AppCompatActivity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 soc = dataSnapshot.getValue(Society.class);
                 // TODO: 6/10/2017 soc icon
+                String downloadUrl = soc.getLogo();
+                Glide.with(PostDetail_Activity.this).load(downloadUrl).into(ib_socIcon);
                 tv_socName.setText(soc.getSocietyName());
                 ib_socIcon.setOnClickListener(new View.OnClickListener() {
                     @Override
