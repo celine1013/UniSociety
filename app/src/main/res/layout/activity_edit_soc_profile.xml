@@ -1,155 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.celine.unisociety.SocProfileActivity">
 
-    <LinearLayout
+    <Button
+        android:id="@+id/epf_btnSubmit"
+        style="@style/AppTheme.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="SUBMIT" />
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:orientation="vertical">
+        android:layout_above="@+id/epf_btnSubmit">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageView
-                android:id="@+id/epf_soc_icon"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:elevation="5dp"
-                app:srcCompat="@drawable/bitsa_logo" />
-
-            <ImageButton
-                android:id="@+id/c_ib_upload"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_margin="@dimen/fab_margin"
-                android:background="@color/colorWhite"
-                android:padding="@dimen/btn_padding"
-                app:srcCompat="@android:drawable/ic_menu_upload" />
-        </RelativeLayout>
-
-        <EditText
-            android:id="@+id/epf_soc_name"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/activity_vertical_margin"
-            android:gravity="center"
-            android:text=""
-            android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
-
-        <Spinner
-            android:id="@+id/epf_category"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:gravity="center"
-             />
-
-        <android.support.v7.widget.CardView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:elevation="5dp"
-            app:cardBackgroundColor="@color/card_view_background">
-
-            <EditText
-                android:id="@+id/epf_soc_dec"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:elevation="5dp"
-                android:gravity="center"
-                android:paddingBottom="@dimen/soc_des_pad"
-                android:paddingLeft="@dimen/text_margin"
-                android:paddingRight="@dimen/text_margin"
-                android:paddingTop="@dimen/soc_des_pad"
-                android:text="" />
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            android:elevation="4dp"
-            app:cardBackgroundColor="@color/card_view_background">
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingEnd="@dimen/btn_padding">
+                android:layout_height="match_parent">
 
-                <RelativeLayout
-                    android:id="@+id/efb_set"
+                <ImageView
+                    android:id="@+id/epf_socIcon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/activity_vertical_margin">
+                    android:layout_weight="0.2"
+                    android:adjustViewBounds="true"
+                    android:background="@color/colorGray"
+                    android:cropToPadding="false"
+                    app:srcCompat="@android:drawable/ic_menu_gallery" />
 
-                    <ImageView
-                        android:id="@+id/epfimageView3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:padding="@dimen/btn_padding"
-                        app:srcCompat="@mipmap/ic_fb" />
-
-                    <EditText
-                        android:id="@+id/epf_soc_fb"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@+id/epfimageView3"
-                        android:text=""
-                        android:textAllCaps="false"
-                        android:textColor="@android:color/holo_blue_light" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/contact_set"
-                    android:layout_width="match_parent"
+                <ImageButton
+                    android:id="@+id/epf_ib_upload"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/efb_set"
-                    android:paddingBottom="@dimen/activity_vertical_margin">
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="@dimen/fab_margin"
+                    android:background="@color/colorWhite"
+                    android:padding="@dimen/btn_padding"
+                    app:srcCompat="@android:drawable/ic_menu_upload" />
 
-                    <ImageView
-                        android:id="@+id/epfimageView7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:padding="@dimen/activity_vertical_margin"
-                        app:srcCompat="@android:drawable/ic_menu_info_details" />
-
-                    <EditText
-                        android:id="@+id/epf_contact_person"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                        android:layout_marginTop="@dimen/activity_horizontal_margin"
-                        android:layout_toRightOf="@+id/epfimageView7"
-                        android:text="" />
-
-                    <EditText
-                        android:id="@+id/epf_contactContent"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/epf_contact_person"
-                        android:layout_toRightOf="@+id/epfimageView7"
-                        android:text="" />
-                </RelativeLayout>
             </RelativeLayout>
 
-        </android.support.v7.widget.CardView>
+            <EditText
+                android:id="@+id/epf_soc_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_vertical_margin"
+                android:gravity="center"
+                android:hint="Society Name"
+                android:text=""
+                android:textAppearance="@style/TextAppearance.AppCompat.Display2" />
 
-    </LinearLayout>
+            <Spinner
+                android:id="@+id/epf_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:gravity="center" />
 
-</ScrollView>
+            <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:elevation="5dp"
+                app:cardBackgroundColor="@color/card_view_background">
+
+                <EditText
+                    android:id="@+id/epf_soc_dec"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    android:gravity="center"
+                    android:hint="Society Description"
+                    android:paddingBottom="@dimen/soc_des_pad"
+                    android:paddingLeft="@dimen/text_margin"
+                    android:paddingRight="@dimen/text_margin"
+                    android:paddingTop="@dimen/soc_des_pad"
+                    android:text="" />
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:elevation="4dp"
+                app:cardBackgroundColor="@color/card_view_background">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="@dimen/btn_padding">
+
+                    <RelativeLayout
+                        android:id="@+id/efb_set"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/activity_vertical_margin">
+
+                        <ImageView
+                            android:id="@+id/epfimageView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:padding="@dimen/btn_padding"
+                            app:srcCompat="@mipmap/ic_fb" />
+
+                        <EditText
+                            android:id="@+id/epf_soc_fb"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/epfimageView3"
+                            android:hint="Enter Facebook Page's URL"
+                            android:text=""
+                            android:textAllCaps="false"
+                            android:textColor="@android:color/holo_blue_light" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/contact_set"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/efb_set"
+                        android:paddingBottom="@dimen/activity_vertical_margin">
+
+                        <ImageView
+                            android:id="@+id/epfimageView7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:padding="@dimen/activity_vertical_margin"
+                            app:srcCompat="@android:drawable/ic_menu_info_details" />
+
+                        <EditText
+                            android:id="@+id/epf_contact_person"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                            android:layout_marginTop="@dimen/activity_horizontal_margin"
+                            android:layout_toRightOf="@+id/epfimageView7"
+                            android:hint="Contact Person"
+                            android:text="" />
+
+                        <EditText
+                            android:id="@+id/epf_contactContent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/epf_contact_person"
+                            android:layout_toRightOf="@+id/epfimageView7"
+                            android:hint="E-mail"
+                            android:text="" />
+                    </RelativeLayout>
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

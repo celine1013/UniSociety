@@ -133,6 +133,10 @@ public class Society implements Parcelable{
         this.facebook = facebook;
     }
 
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
     public String getLogo() {
         return logo;
     }

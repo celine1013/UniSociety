@@ -35,7 +35,7 @@ public class AccountManagement_Society extends Fragment {
     private Button bt_editProfile;
 
     private Society soc;
-
+    private String socKey;
     public AccountManagement_Society() {
         // Required empty public constructor
     }
@@ -58,6 +58,7 @@ public class AccountManagement_Society extends Fragment {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 soc = dataSnapshot.getValue(Society.class);
+                socKey = dataSnapshot.getKey();
                 String downloadUrl = soc.getLogo();
                 Glide.with(AccountManagement_Society.this).load(downloadUrl).into(profileButton);
             }
@@ -83,22 +84,12 @@ public class AccountManagement_Society extends Fragment {
             }
         });
 
-        setProfileButtonOnClick(view);
         setButtonChangePassword(view);
         setButtonManagePosts(view);
         setButtonEditProfile(view);
         return view;
     }
 
-    // TODO: 24/10/2017  do we need this?
-    private void setProfileButtonOnClick(View view) {
-        profileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-    }
 
     private void setButtonChangePassword(View view) {
         bt_changePassword.setOnClickListener(new View.OnClickListener() {
@@ -125,7 +116,11 @@ public class AccountManagement_Society extends Fragment {
         bt_editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //send soc ID to editProfileActivity
+                Intent intent = new Intent(AccountManagement_Society.this.getActivity(), EditSocProfileActivity.class);
+                //intent.putExtra(Society.SOCIETY, soc);
+                //intent.putExtra("SOCKEY",socKey);
+                intent.putExtra(Society.SOCIETY_ID, currentUser.getId());
+                startActivity(intent);
             }
         });
 
