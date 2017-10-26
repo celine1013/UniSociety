@@ -66,7 +66,7 @@ public class PostHistoryActivity extends AppCompatActivity {
             }
         });
 
-        // TODO: 23/09/2017 get history using id
+        // 23/09/2017 get history using id
         history = (RecyclerView) findViewById(R.id.rv_history);
         pb_loading = findViewById(R.id.pb_history);
         final DatabaseReference postRef = FirebaseDatabase.getInstance().getReference(Post.POST);
@@ -74,9 +74,7 @@ public class PostHistoryActivity extends AppCompatActivity {
         q.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.getValue() != null) {
-                    pb_loading.setVisibility(View.INVISIBLE);
-                }
+                pb_loading.setVisibility(View.INVISIBLE);
             }
 
             @Override

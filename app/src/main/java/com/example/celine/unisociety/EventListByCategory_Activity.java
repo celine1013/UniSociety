@@ -49,9 +49,9 @@ public class EventListByCategory_Activity extends AppCompatActivity{
         q.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.getValue() != null) {
-                    pb_loading.setVisibility(View.INVISIBLE);
-                }
+
+                pb_loading.setVisibility(View.INVISIBLE);
+
             }
 
             @Override

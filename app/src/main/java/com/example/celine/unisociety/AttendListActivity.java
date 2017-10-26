@@ -46,32 +46,18 @@ public class AttendListActivity extends AppCompatActivity {
 
         final DatabaseReference postRef = FirebaseDatabase.getInstance().getReference(Eventlist.EVENTLIST);
         Query q = postRef.orderByChild(Eventlist.ACCOUNT_ACCOUNT_NAME).equalTo(currentUser.getAccountName());
-        q.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.getValue() != null) Log.d("ATTEND LIST", "YES RECORD");
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
         FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<Eventlist, AttendViewHolder>(Eventlist.class,
                 R.layout.postlist_item, AttendViewHolder.class, q) {
             @Override
             protected void populateViewHolder(final AttendViewHolder viewHolder, final Eventlist model, int position) {
-                Log.d("ATTEND LIST 63", String.valueOf(model.getAccountName()));
-                Log.d("ATTEND LIST 63", String.valueOf(model.getQuery()));
-                Log.d("ATTEND LIST 63", String.valueOf(model.getPostKey()));
+
                 final DatabaseReference postRef = FirebaseDatabase.getInstance().getReference(Post.POST);
                 Query q = postRef.orderByKey().equalTo(model.getPostKey());
                 q.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        //
-                        //sth
-                        if(dataSnapshot.getValue() != null)Log.d("ATTEND LIST", "LINE 73");
+                        pb_loading.setVisibility(View.INVISIBLE);
                     }
 
                     @Override
