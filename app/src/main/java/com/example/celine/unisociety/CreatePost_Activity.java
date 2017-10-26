@@ -39,6 +39,7 @@ import com.google.firebase.storage.UploadTask;
 import java.io.File;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -315,8 +316,7 @@ public class CreatePost_Activity extends AppCompatActivity {
                 new DatePickerDialog.OnDateSetListener() {
                     public void onDateSet(DatePicker view, int year,
                                           int monthOfYear, int dayOfMonth) {
-                        bt_eventDate.setText(year + "-" + (monthOfYear + 1) + "-"
-                                + dayOfMonth);
+                        bt_eventDate.setText(formatDate(year,monthOfYear,dayOfMonth));
 
                     }
                 }, mYear, mMonth, mDay);
@@ -334,7 +334,7 @@ public class CreatePost_Activity extends AppCompatActivity {
                 new TimePickerDialog.OnTimeSetListener() {
                     public void onTimeSet(TimePicker view, int hourOfDay,
                                           int minute) {
-                        bt_startingTime.setText(hourOfDay + ":" + minute);
+                        bt_startingTime.setText(String.format("%02d:%02d", hourOfDay, minute));
                     }
                 }, mHour, mMinute, false);
         tpd.show();
@@ -350,9 +350,20 @@ public class CreatePost_Activity extends AppCompatActivity {
                 new TimePickerDialog.OnTimeSetListener() {
                     public void onTimeSet(TimePicker view, int hourOfDay,
                                           int minute) {
-                        bt_endingTime.setText(hourOfDay + ":" + minute);
+                        bt_endingTime.setText(String.format("%02d:%02d", hourOfDay, minute));
                     }
                 }, mHour, mMinute, false);
         tpd.show();
+    }
+
+    private static String formatDate(int year, int month, int day) {
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(0);
+        cal.set(year, month, day);
+        java.util.Date date = cal.getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
+
+        return sdf.format(date);
     }
 }

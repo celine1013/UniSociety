@@ -58,7 +58,6 @@
             android:layout_toLeftOf="@+id/ib_editPost"
             android:layout_toRightOf="@+id/his_date"
             android:gravity="end"
-            android:paddingRight="@dimen/activity_vertical_margin"
             android:text="19:00~20:00" />
 
         <ImageButton

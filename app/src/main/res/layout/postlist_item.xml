@@ -23,7 +23,6 @@
             android:layout_alignParentEnd="true"
             android:layout_toRightOf="@+id/tv_eventDate"
             android:gravity="end"
-            android:paddingRight="@dimen/activity_vertical_margin"
             android:text="19:00~20:00" />
 
         <TextView
