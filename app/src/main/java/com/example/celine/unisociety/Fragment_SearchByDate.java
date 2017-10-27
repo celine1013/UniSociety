@@ -26,6 +26,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -66,6 +68,9 @@ public class Fragment_SearchByDate extends Fragment {
         pb_loading = v.findViewById(R.id.pb_date);
         pb_loading.setVisibility(View.INVISIBLE);
 
+        DateFormat df = new SimpleDateFormat("dd/MMM/yyyy");
+        String date = df.format(Calendar.getInstance().getTime());
+        tv_date.setText(date);
         bt_chooseDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -136,11 +141,21 @@ public class Fragment_SearchByDate extends Fragment {
                 new DatePickerDialog.OnDateSetListener() {
                     public void onDateSet(DatePicker view, int year,
                                           int monthOfYear, int dayOfMonth) {
-                        tv_date.setText(year + "-" + (monthOfYear + 1) + "-"
-                                + dayOfMonth);
+                        tv_date.setText(formatDate(year, monthOfYear, dayOfMonth));
 
                     }
                 }, mYear, mMonth, mDay);
         dpd.show();
+    }
+
+    private static String formatDate(int year, int month, int day) {
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(0);
+        cal.set(year, month, day);
+        java.util.Date date = cal.getTime();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MMM/yyyy");
+
+        return sdf.format(date);
     }
 }

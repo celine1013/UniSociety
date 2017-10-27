@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -68,6 +69,10 @@ public class EditSocProfileActivity extends AppCompatActivity {
         socMail = findViewById(R.id.epf_contactContent);
         btn_sumbit = findViewById(R.id.epf_btnSubmit);
         bt_upload = findViewById(R.id.epf_ib_upload);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.soc_cate, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        socCate.setAdapter(adapter);
 
         mStorage = FirebaseStorage.getInstance().getReference();
 
@@ -91,6 +96,8 @@ public class EditSocProfileActivity extends AppCompatActivity {
                 socFb.setText(fbLink);
                 contactPerson.setText(soc.getContactPerson());
                 socMail.setText(soc.getEmailAddress());
+                socCate.setSelection(soc.getSocietyCategory());
+
                 // 24/10/2017 load icon
                 Glide.with(EditSocProfileActivity.this).load(soc.getLogo()).listener(new RequestListener<String, GlideDrawable>() {
                     @Override

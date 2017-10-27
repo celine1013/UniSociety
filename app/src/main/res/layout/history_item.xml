@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/his_date"
             android:layout_alignParentBottom="false"
-            android:layout_toLeftOf="@+id/ib_editPost"
+            android:layout_alignParentRight="true"
             android:layout_toRightOf="@+id/his_date"
             android:gravity="end"
             android:text="19:00~20:00" />
