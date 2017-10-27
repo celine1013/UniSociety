@@ -29,12 +29,24 @@
         <activity
             android:name=".CreatePost_Activity"
             android:screenOrientation="portrait" />
-        <activity android:name=".PostDetail_Activity" />
-        <activity android:name=".PostHistoryActivity" />
-        <activity android:name=".EventListByCategory_Activity" />
-        <activity android:name=".SocProfileActivity" />
-        <activity android:name=".AttendListActivity" />
-        <activity android:name=".EditSocProfileActivity"></activity>
+        <activity
+            android:name=".PostDetail_Activity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".PostHistoryActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".EventListByCategory_Activity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".SocProfileActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".AttendListActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".EditSocProfileActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
